@@ -1,0 +1,48 @@
+
+* {
+    font-family: 'Lexend'; 
+}
+.matcard{
+    display: flex;
+    flex-grow: 2;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px; */
+    width: 390px !important;
+    height: 370px !important;
+    border: 1px solid #80808080;
+    border-radius: 15px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+    background-color: #fff
+}
+
+.no-data-message {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    margin-top: 20px;
+  }
+  
+
+canvas#MyCharts {
+    display: flex !important;
+    flex-grow: 2 !important;
+    /* width: 60% !important;
+    height: 100% !important; */
+}
+
+.hghchart{
+    display:flex;
+    
+}
+
+.heading {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items:start !important;
+    font-weight: 700;
+}
+
+
+

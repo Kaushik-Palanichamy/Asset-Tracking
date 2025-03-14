@@ -1,0 +1,286 @@
+<!-- <div *ngIf="show" class="divloader">
+    <div class="loader"></div>
+</div> -->
+
+<div class="header">
+  <p-button icon="pi pi-check"  label="Add" role="button" styleClass="p-button-raised " *ngIf='currentUserType == "Base Admin"' (click)="showDialog()" severity="info" size="small" class="primebtn" [rounded]="true" />
+
+  <p-button  icon="pi pi-trash" label="Delete" role="button" styleClass="p-button-raised "  [disabled]="!selected.length" (click)="deleteRow()" severity="danger" size="small" class="primebtn" *ngIf='currentUserType == "Base Admin"'  [rounded]="true" />
+</div>
+
+
+<div class="card">
+    <p-table
+        [value]="userManagement"
+        styleClass="p-datatable-sm"
+        [tableStyle]="{ 'min-width': '79rem' }"
+        [(selection)]="selected"
+        scrollHeight="65vh"
+        [scrollable]="true"
+        paginatorPosition="bottom"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Entries"
+        >
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th><p-tableHeaderCheckbox  [ngStyle]="{ 'visibility': currentUserType === 'Base Admin' ? 'visible' : 'hidden' }" ></p-tableHeaderCheckbox></th>
+                <th>S.No</th>
+                <th>User Type</th>
+                <th>User Name</th>
+                <th>Plant Name</th>
+                <th >EMAIL ID</th>
+                <th>Address 1</th>
+                <th>Address 2</th>
+                <th ><label [ngStyle]="{ 'visibility': currentUserType === 'Base Admin' ? 'visible' : 'hidden' }">Edit</label></th>
+                <!-- <th ><i class="pi pi-plus-circle" (click)="showDialog()"></i></th> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+            <tr>
+              <td >
+                <p-tableCheckbox [ngStyle]="{ 'visibility': currentUserType === 'Base Admin' ? 'visible' : 'hidden' }" [value]="i"></p-tableCheckbox>
+              </td>
+                <td>{{rowIndex}}</td>
+                <td>{{i.udtype}}</td>
+                <td>{{i.udusername}}</td>
+                <td>{{i.udplantname.pmcompanyname}}</td>
+                <td style="text-align: left;">{{i.udemail}}</td>
+                <td>{{i.udaddress1}}</td>
+                <td>{{i.udaddress2}}</td>
+                <td >
+                    <svg id="changeColor " [ngStyle]="{ 'visibility': currentUserType === 'Base Admin' ? 'visible' : 'hidden' }" fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="editRow(i)" width="30" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" preserveAspectRatio="xMidYMid meet" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(80,70) "> <svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3" id="IconChangeColor"><path d="M12 20h9" id="mainIconPathAttribute" stroke-width="1.2" stroke="#478ecd"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" id="mainIconPathAttribute" stroke="#478ecd"></path></svg> </g></svg>
+
+
+                    <!-- <svg id="changeColor" fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" (click)="deleteRow(i)" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(85, 75)"> <svg xmlns="http://www.w3.org/2000/svg" width="199.8" height="199.8" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" id="mainIconPathAttribute" fill="#f50505"></path> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" id="mainIconPathAttribute" fill="#f50505"></path> </svg> </g></svg> -->
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td class="emptymessage" colspan="9">No Data found...</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog  [(visible)]="display" [draggable]="false" [closable]="false" [modal]="true" focusOnShow="false">
+
+        <ng-template pTemplate="header">
+            <button class="edtBtn" (click)="closeModal()"><fa-icon class="fa-solid fa-circle-xmark" [icon]="close"></fa-icon>
+            </button>
+        </ng-template>
+
+
+        <form [formGroup]="Addform" novalidate>
+            <div class="formgroup-inline">
+
+                <div class="field">
+                    <label for="name" class="block mb-2">User Name</label>
+                    <input type="text" maxlength="25" id="name"  pInputText class="flex-auto" formControlName="udusername" placeholder="Enter" [style]="{'width':'180px'}" required pInputText-sm>
+                    <div *ngIf="Addform.get('udusername')?.invalid && (Addform.get('udusername')?.dirty || Addform.get('udusername')?.touched)" class="error">
+                        <div *ngIf="Addform.get('udusername')?.errors!required">
+                        *Username is required
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="name"  class="block mb-2">First Name</label>
+                    <input type="text" maxlength="25"  pInputText class="flex-auto" formControlName="udfirstName" placeholder="Enter" [style]="{'width':'180px'}" pInputText-sm>
+                    <div *ngIf="Addform.get('udfirstName')?.invalid && (Addform.get('udfirstName')?.dirty || Addform.get('udfirstName')?.touched)" class="error">
+                        <div *ngIf="Addform.get('udfirstName')?.errors!required">
+                        *First name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="name"  class="block mb-2">Last Name</label>
+                    <input type="text" maxlength="25"  id="name"   pInputText class="flex-auto" formControlName="udlastName" placeholder="Enter"  [style]="{'width':'180px'}" required pInputText-sm>
+                    <div *ngIf="Addform.get('udlastName')?.invalid && (Addform.get('udlastName')?.dirty || Addform.get('udlastName')?.touched)" class="error">
+                        <div *ngIf="Addform.get('udlastName')?.errors!required">
+                        *Last name is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="formgroup-inline">
+                <div class="field">
+                    <label for="name"  class="block mb-2">Address 1 </label>
+                    <input type="text" maxlength="25"  id="name"  pInputText class="flex-auto" formControlName="udaddress1" placeholder="Enter"  [style]="{'width':'180px'}" required pInputText-sm>
+                    <div *ngIf="Addform.get('udaddress1')?.invalid && (Addform.get('udaddress1')?.dirty || Addform.get('udaddress1')?.touched)" class="error">
+                        <div *ngIf="Addform.get('udaddress1')?.errors!required">
+                        *Address 1 is required
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="name"  class="block mb-2">Address 2</label>
+                    <input type="text" maxlength="25" id="name"  pInputText class="flex-auto" formControlName="udaddress2" placeholder="Enter" [style]="{'width':'180px'}" required pInputText-sm>
+                    <div *ngIf="Addform.get('udaddress2')?.invalid && (Addform.get('udaddress2')?.dirty || Addform.get('udaddress2')?.touched)" class="error">
+                        <div *ngIf="Addform.get('udaddress2')?.errors!required">
+                        *Address 2 is required
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="name"  class="block mb-2">Language</label>
+                    <input type="text" maxlength="25" id="name"  pInputText class="flex-auto" formControlName="udlanguage" placeholder="Enter" [style]="{'width':'180px'}" required pInputText-sm>
+                    <div *ngIf="Addform.get('udlanguage')?.invalid && (Addform.get('udlanguage')?.dirty || Addform.get('udlanguage')?.touched)" class="error">
+                        <div *ngIf="Addform.get('udlanguage')?.errors!required">
+                        *Language is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="formgroup-inline">
+                <div class="field">
+                    <label  class="block mb-2">User Type</label>
+                    <p-dropdown [options]="dropdown"  formControlName="udtype" optionLabel="name" optionValue="code"  (onChange)="onUserTypeChange($event)" placeholder="Select" [style]="{'width':'180px'}"  [ngClass]="{'error-border': Addform.get('udtype')?.invalid && (Addform.get('udtype')?.dirty || Addform.get('udtype')?.touched)}" required></p-dropdown>
+
+                    <p-dialog
+
+                        [(visible)]="displayDialog"
+                        [style]="{width:'400px'}"
+                        [draggable]="false"
+                        [closable]="false"
+                        [modal]="true"
+                        >
+
+                        <ng-template pTemplate="header">
+                            <div class="dialog-header">
+                                <span class="Hconfrm">Confirmation</span> &nbsp;
+                                <i class="pi pi-exclamation-triangle icon-warning"></i>
+                            </div>
+                        </ng-template>
+
+                        <div class="dialog-content">
+                            <p class="udtype">
+                                Changing the User Type from
+                                <span class="highlight-text">"Base Admin"</span>  to
+                                <span class="highlight-text">"User"</span>  will limit access.
+                            </p>
+                        </div>
+                        <ng-template pTemplate="footer">
+                            <button type="button" pButton label="Cancel" icon="pi pi-times"  class="p-button-danger p-button-text" (click)="onDialogNo()"></button>
+                            <button type="button" pButton label="Ok" icon="pi pi-check" class="p-button-text p-button-text" (click)="onDialogYes()"></button>
+                        </ng-template>
+                    </p-dialog>
+
+                    <div *ngIf="Addform.get('udtype')?.invalid && (Addform.get('udtype')?.dirty || Addform.get('udtype')?.touched)" class="error">
+                        <div *ngIf="Addform.get('udtype')?.errors!required">
+                            *Usertype is required
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                  <label for="udemail" class="block mb-2">Email</label>
+                  <input type="email"
+                         formControlName="udemail"
+                         placeholder="Enter your email"
+                         (blur)="Addform.get('udemail')?.updateValueAndValidity()"
+                         pInputText class="flex-auto" ngModel [email]="true" required pInputText-sm
+                         [style]="{'width':'380px'}"/>
+                  
+                  <!-- Display error message only after the field is touched (blurred) and invalid -->
+                  <div *ngIf="Addform.get('udemail')?.touched && Addform.get('udemail')?.invalid" class="error">
+                    <!-- Required field validation -->
+                    <div *ngIf="Addform.get('udemail')?.hasError('required')">
+                      *Email is required
+                    </div>
+                    <!-- Display the duplicate email error only when it is set -->
+                    <div *ngIf="Addform.get('udemail')?.hasError('duplicateEmail')">
+                              *This Email is already registered
+                    <!-- <div *ngIf="Addform.get('udemail')?.hasError('duplicateEmail')" class="error">
+                              *{{ duplicateEmailError }} 
+                    </div> -->
+                    </div>
+                    <!-- Invalid email validation (only if field is not empty) -->
+                    <div *ngIf="!Addform.get('udemail')?.hasError('required') && Addform.get('udemail')?.hasError('invalidEmail')">
+                      *Enter a valid Email Id
+                    </div>
+                  </div>
+                </div>
+                
+                
+            </div>
+            <div class="formgroup-inline d-flex justify-content-center">
+              <div class="field">
+                <label for="udpassword" class="block mb-2">Password</label>
+                <p-password [(ngModel)]="value"
+                            formControlName="udpassword"
+                            [toggleMask]="true"
+                            class="pswrd"
+                            (ngModelChange)="checkPassword()"
+                            (blur)="onPasswordChange()"
+                            placeholder="Enter"
+                            appendTo="body">
+                  <ng-template pTemplate="footer">
+                    <p-divider></p-divider>
+                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                      <li *ngIf="!passwordRequirements.lowercase">At least one lowercase</li>
+                      <li *ngIf="!passwordRequirements.uppercase">At least one uppercase</li>
+                      <li *ngIf="!passwordRequirements.numeric">At least one numeric</li>
+                      <li *ngIf="!passwordRequirements.length">Minimum 8 characters</li>
+                    </ul>
+                  </ng-template>
+                </p-password>
+            
+                <div class="error">
+                  <div *ngIf="Addform.get('udpassword')?.hasError('required') && Addform.get('udpassword')?.touched && !Addform.get('udpassword')?.value">
+                    *Password is required
+                  </div>
+                  
+                  <div *ngIf="Addform.get('udpassword')?.value && Addform.get('udpassword')?.hasError('passwordInvalid') && Addform.get('udpassword')?.touched">
+                    *Password doesn't meet requirements
+                  </div>
+                </div>
+              </div>
+            
+              <div class="field">
+                <label for="udconfirmpassword" class="block mb-2">Confirm Password</label>
+                <p-password formControlName="udconfirmpassword"
+                            [toggleMask]="true"
+                            (blur)="onConfirmPasswordBlur()"
+                            placeholder="Enter"
+                            [feedback]="false"></p-password>
+            
+                <div *ngIf="Addform.get('udconfirmpassword')?.invalid && 
+                            (Addform.get('udconfirmpassword')?.touched || 
+                             Addform.get('udconfirmpassword')?.dirty)"
+                     class="error">
+                  <div *ngIf="Addform.get('udconfirmpassword')?.errors && !Addform.errors?.['passwordMismatch'] && !Addform.errors?.['passwordFirst']">
+                    *Confirm password is required
+                  </div>
+                </div>
+            
+                <div *ngIf="Addform.get('udconfirmpassword')?.touched && Addform.errors?.['passwordMismatch']"
+                     class="error">
+                  *Passwords do not match
+                </div>
+            
+                <div *ngIf="!Addform.get('udpassword')?.value && Addform.get('udconfirmpassword')?.value && Addform.errors?.['passwordFirst']"
+                     class="error">
+                  *Enter the password first
+                </div>
+              </div>
+            </div>
+            
+            <p-footer>
+              <button (click)="OnSubmit()"
+                      class="savebutton"
+                      [disabled]="Addform.invalid || Addform.get('udpassword')?.errors?.['passwordInvalid']"
+                      [style]="{'border-radius':'15px'}"
+                      [ngStyle]="{'cursor': Addform.invalid || Addform.get('udpassword')?.errors?.['passwordInvalid'] ? 'not-allowed' : 'pointer'}">
+                {{ModalType}}
+              </button>
+            </p-footer>
+            
+
+    </form>
+</p-dialog>
+
+
+

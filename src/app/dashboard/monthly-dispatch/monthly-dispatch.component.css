@@ -1,0 +1,96 @@
+* {
+  font-family: 'Lexend'; 
+  letter-spacing: 0.7px;
+ }
+
+mat-card{
+  display: flex;
+  flex-grow: 2;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 390px !important;
+  height: 350px !important;
+  border: 1px solid #80808080;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+#chart{
+  display: flex !important;
+  flex-grow: 2 !important;
+  background-color: #fff;
+}
+
+::ng-deep .highcharts-button-symbol{
+  display: none !important;
+}
+
+mat-card-content {
+  padding: 18px;
+  /* height: 150% !important;
+    width: 100% !important; */
+
+  /* overflow: auto; */
+}
+
+#hghchart{
+  /* display: flex !important; */
+    height: 150px !important;
+    width: 300px !important;
+}
+
+.tabletitle{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading{
+  font-weight: 600;
+  text-wrap: nowrap;
+}
+
+::ng-deep .p-dropdown .p-dropdown-label{
+  font-size: 12px !important;
+  font-family: 'Lexend';
+}
+
+@media (max-width: 1100px){
+  mat-card{
+    display: flex;
+    flex-grow: 2;
+    margin-top: .3rem;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* width: 390px !important; */
+    height: 350px !important;
+    border: 1px solid #80808080;
+    border-radius: 15px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  }
+  #hghchart{
+    /* display: flex !important; */
+      height: 150px !important;
+      /* width: 300px !important; */
+  }
+}
+
+/* @media (max-width: 1370px){
+  mat-card{
+    display: flex;
+    flex-grow: 2;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 31vw !important;
+    height: 350px !important;
+    border: 1px solid #80808080;
+    border-radius: 15px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  }
+} */
+ 
+

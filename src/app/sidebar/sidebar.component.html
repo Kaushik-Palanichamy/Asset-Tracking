@@ -1,0 +1,50 @@
+<div class="sidebar">
+  <div class="logo-container">
+    <img src="assets/icons/logo.png" alt="Logo" class="logo">
+    <img src="assets/icons/logo2.png" alt="robis" class="logo2">
+  </div>
+  <ul>
+    <li class="sidebar-item">
+      <a routerLink="dashboard" routerLinkActive="active">
+        <img src="assets/icons/Sidebar/D1.png" alt="Dashboard">
+        <span class="icon-text">Dashboard</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a routerLink="/Assets-view" routerLinkActive="active">
+        <img src="assets/icons/Sidebar/D3.png" alt="Assets View">
+        <span class="icon-text">Assets View</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a routerLink="/item-management" routerLinkActive="active">
+        <img src="../../assets/icons/Sidebar/D4.png" alt="Items">
+        <span class="icon-text">Items</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a routerLink="reports" routerLinkActive="active">
+        <img src="assets/icons/Sidebar/D9.png" alt="Accounts">
+        <span class="icon-text">Reports</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a routerLink="/workflow" routerLinkActive="active">
+        <img src="assets/icons/Sidebar/D6.png" alt="Workflow">
+        <span class="icon-text">Workflow</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a routerLink="/settings" routerLinkActive="active">
+        <img src="assets/icons/Sidebar/D5.png" alt="Settings">
+        <span class="icon-text">Settings</span>
+      </a>
+    </li>
+  </ul>
+    <li class="sidebar-item bottom-item">
+      <a class="bottom-icon" (click)="logout()">
+        <fa-icon [icon]="signout" style="margin-left: 5px"></fa-icon>
+        <span class="icon-text">Logout</span>
+      </a>
+    </li>
+</div>

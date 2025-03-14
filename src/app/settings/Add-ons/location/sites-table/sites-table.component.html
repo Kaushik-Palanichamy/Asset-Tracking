@@ -1,0 +1,109 @@
+<div class="header">
+
+    <p-button icon="pi pi-check"   label="Add" class="space" role="button" styleClass="p-button-raised " (click)="showDialog()" severity="info" size="small" class="primebtn" [rounded]="true" />
+      
+    <p-button  icon="pi pi-trash" class="space" label="Delete" role="button" styleClass="p-button-raised "  [disabled]="!selected.length" (click)="deleteRow()" severity="danger" size="small" class="primebtn" [rounded]="true" />  
+
+ </div>
+
+<div class="mt-2">
+  <p-table 
+        [value]="sites" 
+        [(selection)]="selected"  
+        styleClass="p-datatable-sm"
+        paginatorPosition="bottom"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Entries"
+         >
+      <ng-template pTemplate="header">
+          <tr>
+              <th><p-tableHeaderCheckbox  ></p-tableHeaderCheckbox></th>
+              <th>S.No</th>
+              <th>Site Name</th>
+              <th>Notes</th>
+              <!-- <th>Latitude</th> -->
+              <!-- <th>Longitude</th> -->
+              <th>Created By</th>
+              <th>Created On</th>
+              <th>Modified By</th>
+              <th>Modified On</th>
+              <th>Edit</th>
+              <!-- <th ><i class="pi pi-plus-circle" (click)="showDialog()"></i></th> -->
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+          <tr>
+            <td>
+                <p-tableCheckbox [value]="i" ></p-tableCheckbox>
+            </td>
+              <td>{{rowIndex}}</td>
+              <td>{{i.sc_name}}</td>
+              <td>{{i.sc_notes}}</td>
+              <!-- <td>{{i.sc_latitude}}</td> -->
+              <!-- <td>{{i.sc_longitude}}</td> -->
+              <td>{{i.sc_createdby}}</td>
+              <td>{{i.sc_createdon | date:'dd-MM-yyyy' }}</td>
+              <td>{{i.sc_modifiedby}}</td>
+              <td>{{i.sc_modifiedon | date:'dd-MM-yyyy' }}</td>
+              <td>
+                  <svg id="changeColor " fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="editRow(i)" width="30" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" preserveAspectRatio="xMidYMid meet" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(80,70) "> <svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3" id="IconChangeColor"><path d="M12 20h9" id="mainIconPathAttribute" stroke-width="1.2" stroke="#478ecd"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" id="mainIconPathAttribute" stroke="#478ecd"></path></svg> </g></svg>
+
+
+                  <!-- <svg id="changeColor" fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" (click)="deleteRow(i)" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(85, 75)"> <svg xmlns="http://www.w3.org/2000/svg" width="199.8" height="199.8" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" id="mainIconPathAttribute" fill="#f50505"></path> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" id="mainIconPathAttribute" fill="#f50505"></path> </svg> </g></svg> -->
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+            <td class="emptymessage" colspan="9">No Data found...</td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog  [(visible)]="display" [draggable]="false" [closable]="false" [modal]="true" focusOnShow="false" >
+
+    <ng-template pTemplate="header">
+        <button class="edtBtn" (click)="closeModal()"><fa-icon class="fa-solid fa-circle-xmark" [icon]="close"></fa-icon>
+        </button>
+    </ng-template>
+
+    <form [formGroup]="form"  novalidate>
+        <div class="formgroup">
+            <div class="field mt-2">
+                <label for="name" style="width:100px">Site Name</label>
+                <input type="text" maxlength="25" pInputText  id="name" formControlName="sc_name" placeholder="Enter" [style]="{'width':'180px'}" required  pInputText-sm>
+                <div *ngIf="form.get('sc_name')?.invalid && (form.get('sc_name')?.dirty || form.get('sc_name')?.touched)" class="error">
+                    <div *ngIf="form.get('sc_name')?.errors!required">
+                      *Site name is required
+                    </div>
+                </div>
+            </div>
+       
+            <div class="field mt-2">
+                <label for="name"  style="width:100px">Notes</label>
+                <input type="text" maxlength="25" pInputText id="name" formControlName="sc_notes" placeholder="Enter" [style]="{'width':'180px'}" required pInputText-sm>
+                <div *ngIf="form.get('sc_notes')?.invalid && (form.get('sc_notes')?.dirty || form.get('sc_notes')?.touched)" class="error">
+                    <div *ngIf="form.get('sc_notes')?.errors!required">
+                      *Notes field is required
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- <button pButton pRipple label={{ModalType}} (click)="OnSubmit()" icon="pi pi-check" class="p-button-text" id="savebutton" [disabled]="this.form.invalid"></button> -->
+            <button   
+                label= ""  
+                (click)="OnSubmit()"  
+                class="savebutton" 
+                [disabled]="this.form.invalid" 
+                [style]="{'border-radius':'15px'}" 
+                [ngStyle]="{'cursor': form.invalid ? 'not-allowed' : 'pointer'}" 
+            >
+                {{ModalType}}
+            </button>
+    </form>
+</p-dialog>
+
+

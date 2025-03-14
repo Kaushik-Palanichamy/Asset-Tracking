@@ -1,0 +1,71 @@
+
+
+  <div class="notification-container" >
+    <div class="notification-icon" (click)="toggleNotifications()" [ngClass]="{ 'shake': unreadCount > 0  }">
+      <i
+        class="pi pi-bell p-text-secondary icon"
+        style="font-size: 1.4rem"
+        *ngIf="unreadCount > 0"
+        pBadge
+        [value]="unreadCount"
+        severity="danger"
+        (click)="notification.toggle($event)"
+      ></i>
+      <i *ngIf="unreadCount === 0" (click)="notification.toggle($event)" class="pi pi-bell p-text-secondary icon" style="font-size: 1.4rem"></i>
+    </div>
+  
+    <p-overlayPanel #notification>
+    <div class="notification-dropdown" #dialogBox>
+      <div class="notification-header">
+        <span>Notifications</span>
+        <span class="unread-toggle">
+          <input type="checkbox" [(ngModel)]="onlyShowUnread" /> Only show unread
+        </span>
+      </div>
+  
+      <div *ngIf="notifications.length === 0 " class="no-notifications">
+        <img src="../../assets/notification.png" class="notify">
+        No new notifications
+      </div>
+  
+      <div
+        *ngFor="let notification of filteredNotifications()"
+        class="notification-item"  (mouseover)="markAsRead(notification)"
+      >
+      <div 
+      class="notification-avatar" 
+      [ngClass]="{
+        'alert-icon': notification.type === 'alert',
+        'mail-icon': notification.emailType === 'Daily Report' || 'Beacon Expiry'
+      }"
+    >
+      <i  class="pi pi-envelope"></i>
+      <i *ngIf="notification.type === 'alert'" class="pi pi-exclamation-triangle"></i>
+    </div>
+    
+      
+        <div class="notification-content" >
+          <div class="notification-title">
+            {{ notification.emailType }}
+            <span class="notification-time">{{ notification.time }}</span>
+          </div>
+          <div class="notification-description">
+            {{ notification.date }}
+          </div>
+          <div class="notification-meta">{{ notification.status }}</div>
+        </div>
+        <div *ngIf="notification.unread" class="notification-dot"></div>
+      </div>
+  
+      <button
+        *ngIf="notifications.length > 0"
+        class="clear-btn"
+        (click)="clearNotifications()"
+      >
+        Clear All
+      </button>
+    </div>
+    </p-overlayPanel>
+  </div>
+
+  

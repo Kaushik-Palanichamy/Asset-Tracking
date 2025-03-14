@@ -1,0 +1,849 @@
+[
+    {
+        "cm_id": 1,
+        "cm_code": "CATEGORY_1",
+        "cm_name": "TRUCK",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "TRUCK",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 2,
+        "cm_code": "CATEGORY_2",
+        "cm_name": "DICV TOP PANEL",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV TOP PANEL",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 3,
+        "cm_code": "CATEGORY_3",
+        "cm_name": "DICV CCB  Trolley ",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV CCB  Trolley ",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 4,
+        "cm_code": "CATEGORY_4",
+        "cm_name": "DICV MDT IP PANEL",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV MDT IP PANEL",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 5,
+        "cm_code": "CATEGORY_5",
+        "cm_name": "DICV LHD IP PANEL",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV LHD IP PANEL",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 6,
+        "cm_code": "CATEGORY_6",
+        "cm_name": "HMIL - AI3 PANEL SIDE COVER",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "HMIL - AI3 PANEL SIDE COVER",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 7,
+        "cm_code": "CATEGORY_7",
+        "cm_name": "DICV HDT ROOF TRIM KIT ",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV HDT ROOF TRIM KIT ",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 8,
+        "cm_code": "CATEGORY_8",
+        "cm_name": "HMIL - Ai3 CTR PLR UPR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "HMIL - Ai3 CTR PLR UPR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 9,
+        "cm_code": "CATEGORY_9",
+        "cm_name": "HMIL - Ai3 PNL UDR COVER",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "HMIL - Ai3 PNL UDR COVER",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 10,
+        "cm_code": "CATEGORY_10",
+        "cm_name": "HMIL - AI3 RR BUMBER",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "HMIL - AI3 RR BUMBER",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 11,
+        "cm_code": "CATEGORY_11",
+        "cm_name": "HMIL - Ai3 Transverse",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "HMIL - Ai3 Transverse",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 12,
+        "cm_code": "CATEGORY_12",
+        "cm_name": "HMIL - PS7i STANCH ROOF RACK",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "HMIL - PS7i STANCH ROOF RACK",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 13,
+        "cm_code": "CATEGORY_13",
+        "cm_name": "HMIL - SU2I ST ROOF RACK",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "HMIL - SU2I ST ROOF RACK",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 14,
+        "cm_code": "CATEGORY_14",
+        "cm_name": "MOBIS - AI3 SHROUD ASSY LWR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - AI3 SHROUD ASSY LWR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 15,
+        "cm_code": "CATEGORY_15",
+        "cm_name": "MOBIS - PNL CPAD ASSY LWR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - PNL CPAD ASSY LWR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 16,
+        "cm_code": "CATEGORY_16",
+        "cm_name": "MOBIS - QXI AIR GUARD",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - QXI AIR GUARD",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 17,
+        "cm_code": "CATEGORY_17",
+        "cm_name": "MOBIS - SU2i CLUSTER FASIA LWR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - SU2i CLUSTER FASIA LWR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 18,
+        "cm_code": "CATEGORY_18",
+        "cm_name": "MOBIS - SU2i CLUSTER FASIA UPR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - SU2i CLUSTER FASIA UPR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 19,
+        "cm_code": "CATEGORY_19",
+        "cm_name": "MOBIS - SU2i CONNECTOR DUCT",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - SU2i CONNECTOR DUCT",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 20,
+        "cm_code": "CATEGORY_20",
+        "cm_name": "MOBIS - Su2i COVER CPAD MAIN",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - Su2i COVER CPAD MAIN",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 21,
+        "cm_code": "CATEGORY_21",
+        "cm_name": "MOBIS - SU2i DUCT DEFROSTER",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - SU2i DUCT DEFROSTER",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 22,
+        "cm_code": "CATEGORY_22",
+        "cm_name": "MOBIS - SU2i PNL CPAD CTR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - SU2i PNL CPAD CTR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 23,
+        "cm_code": "CATEGORY_23",
+        "cm_name": "MOBIS - SU2i SHROUD ASSY LWR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - SU2i SHROUD ASSY LWR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 24,
+        "cm_code": "CATEGORY_24",
+        "cm_name": "MOBIS - QXI FL AIR GUARD",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - QXI FL AIR GUARD",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 25,
+        "cm_code": "CATEGORY_25",
+        "cm_name": "RN COWL TOP",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "RN COWL TOP",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 26,
+        "cm_code": "CATEGORY_26",
+        "cm_name": "RN RBC B PILLAR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "RN RBC B PILLAR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 27,
+        "cm_code": "CATEGORY_27",
+        "cm_name": "RN RBC CD PILLAR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "RN RBC CD PILLAR",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 28,
+        "cm_code": "CATEGORY_28",
+        "cm_name": "RN RBC FR CONSOLE",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "RN RBC FR CONSOLE",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 29,
+        "cm_code": "CATEGORY_29",
+        "cm_name": "RN RBC RR CONSOLE",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "RN RBC RR CONSOLE",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 30,
+        "cm_code": "CATEGORY_30",
+        "cm_name": "RN RBC TRIM TRUNK",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "RN RBC TRIM TRUNK",
+        "cm_createdon": "2022-09-02",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 31,
+        "cm_code": "CATEGORY_31",
+        "cm_name": "QXI LHD PNL ASSY CLF",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "QXI LHD PNL ASSY CLF",
+        "cm_createdon": "2022-11-04",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 32,
+        "cm_code": "CATEGORY_32",
+        "cm_name": "QXI LHD CRASH PAD CTR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "QXI LHD CRASH PAD CTR",
+        "cm_createdon": "2022-11-04",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 43,
+        "cm_code": "CATEGORY_40",
+        "cm_name": "AI3 SUV STANCHION ",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "AI3 SUV STANCHION ",
+        "cm_createdon": "2023-07-19",
+        "cm_maintenance_parameters": [
+            ""
+        ]
+    },
+    {
+        "cm_id": 33,
+        "cm_code": "CATEGORY_33",
+        "cm_name": "SU2I PNL ASSY CLF LWR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "SU2I PNL ASSY CLF LWR",
+        "cm_createdon": "2023-02-20",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 34,
+        "cm_code": "CATEGORY_34",
+        "cm_name": "QXI LHD CRASH PAD LWR ",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "QXI LHD CRASH PAD LWR ",
+        "cm_createdon": "2023-02-20",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 44,
+        "cm_code": "CATEGORY_41",
+        "cm_name": "MOBIS - Ai3 TRIM PLR UPR",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "MOBIS - Ai3 TRIM PLR UPR",
+        "cm_createdon": "2023-07-19",
+        "cm_maintenance_parameters": [
+            ""
+        ]
+    },
+    {
+        "cm_id": 37,
+        "cm_code": "CATEGORY_35",
+        "cm_name": "BN7I - COWL TOP",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "BN7I - COWL TOP",
+        "cm_createdon": "2023-03-09",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 38,
+        "cm_code": "CATEGORY_36",
+        "cm_name": "BN7I - PANEL UNDER COVER",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "BN7I - PANEL UNDER COVER",
+        "cm_createdon": "2023-03-09",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 39,
+        "cm_code": "CATEGORY_37",
+        "cm_name": "DICV ENGINE COVER",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV ENGINE COVER",
+        "cm_createdon": "2023-03-17",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 40,
+        "cm_code": "CATEGORY_38",
+        "cm_name": "DICV KIT",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV KIT",
+        "cm_createdon": "2023-03-17",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 41,
+        "cm_code": "CATEGORY_39",
+        "cm_name": "DICV FRONT GRILL",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": true,
+        "cm_notes": "DICV FRONT GRILL",
+        "cm_createdon": "2023-03-17",
+        "cm_maintenance_parameters": []
+    },
+    {
+        "cm_id": 46,
+        "cm_code": "CATEGORY_42",
+        "cm_name": "AI3 SUV SHROUD UPPER_LOWER",
+        "cm_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cm_active": false,
+        "cm_notes": "AI3 SUV SHROUD UPPER_LOWER",
+        "cm_createdon": "2023-07-19",
+        "cm_maintenance_parameters": [
+            "Paint_Condition",
+            " Screen_Condition"
+        ]
+    }
+]

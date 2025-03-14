@@ -1,0 +1,252 @@
+
+<br>
+
+
+<form class="row gx-4" [formGroup]="form" >
+  <div class="col-md-3">
+    <app-camera></app-camera>
+  </div>
+  
+  <div class="col-md-3">
+
+  
+  <div class="col-md">
+    <label class="form-label">Asset Name</label>
+    <input type="text" class="form-control" formControlName="im_name" [style]="{'width':'180px'}"  pInputText-sm>
+  </div>
+  <div class="col-md">
+    <label class="form-label">Asset Code</label>
+    <input type="text" class="form-control" formControlName="im_assetcode" [style]="{'width':'180px'}" pInputText-sm>
+  </div>
+  <div class="col-md">
+    <label class="form-label">Category</label> 
+      <div>
+        <p-dropdown  formControlName="im_categoryid" [style]="{'width':'180px','height':'37px'}" [autoDisplayFirst]="false" [options]="categories" >{{categories.category}}</p-dropdown>
+      </div>
+  </div>
+</div>
+<div class="col-md-3">
+
+
+  <div class="col-md">
+    <label class="form-label">Condition</label> 
+    <div>
+        <p-dropdown  formControlName="im_conditionid" [style]="{'width':'180px','height':'37px'}" [autoDisplayFirst]="false" [options]="conditions" >{{conditions.condition}}</p-dropdown>
+    </div>   
+  </div>
+  <div class="col-md">
+    <label class="form-label">Status</label> 
+    <div>
+        <p-dropdown  formControlName="im_statusid" [style]="{'width':'180px','height':'37px'}" [autoDisplayFirst]="false" [options]="status"></p-dropdown>
+    </div>   
+  </div>
+  <div class="col-md">
+    <label class="form-label">Item</label>
+    <div>
+      <p-checkbox inputId="checkbox" [binary]="true" ></p-checkbox>
+      <label for="checkbox"> &nbsp; Active</label>
+    </div>  
+  </div>
+</div>
+  
+  <div class="col-md-3">
+
+  
+  <div class="col-md">
+    <label class="form-label">Home Location</label> 
+      <div>
+        <p-dropdown  formControlName="im_zonehomeid" [style]="{'width':'180px','height':'37px'}" [autoDisplayFirst]="false" [options]="locations"></p-dropdown>
+      </div>
+    
+  </div>
+  <div class="col-md">
+    <label class="form-label">Current Location</label>
+    <div>
+      <p-dropdown  formControlName="im_zonecurrentid" [style]="{'width':'180px','height':'37px'}" [autoDisplayFirst]="false" [options]="locations"></p-dropdown>
+    </div> 
+  </div>
+  <div class="col-md">
+    <label class="form-label">MAC Address</label>
+    <div class="p-inputgroup">
+      <input type="text" class="form-control" formControlName="macadd" [style]="{'width':'180px'}"  pInputText-sm>
+      <span><button type="button" pButton icon="pi pi-check" styleClass="p-button-warn"><i class="pi pi-check"></i></button></span>
+    </div> 
+  </div>
+</div>
+    
+<div class="card" >
+  <p-tabView styleClass="tabview-custom">
+      <p-tabPanel>
+          <ng-template pTemplate="header">
+              <i class="pi pi-calendar-times"></i>
+              &nbsp; <span>General</span>
+          </ng-template>
+        <div class="row gx-3">
+            <div class="col-md-4" >
+              <label for="input4" class="form-label"  >Item Description</label>
+              <input type="text" formControlName="br_itemdesc" [style]="{'width':'180px'}" class="form-control" pInputText-sm>
+            </div>
+            <div class="col-md-4">
+              <label for="calendar" class="form-label">Last service</label>
+              <div>
+                  <p-calendar dateFormat="yy.mm.dd" [showIcon]="true" formControlName="br_lastservice" [style]="{'width':'180px','height':'37px'}"></p-calendar>
+              </div>        
+            </div>
+            <div class="col-md-4" >
+              <label for="input4" class="form-label">Expires On</label>
+              <div>
+                <p-calendar dateFormat="yy.mm.dd" [showIcon]="true" formControlName="wr_expireson" [style]="{'width':'180px','height':'37px'}"></p-calendar>
+              </div>
+            </div>  
+        </div>
+      </p-tabPanel>
+      <!-- <p-tabPanel >
+          <ng-template pTemplate="header">
+              <i class="pi pi-tags"></i>
+              &nbsp; <span>Assign Tags</span>
+          </ng-template>
+
+          <p-table [value]="MacAddress" [tableStyle]="{ 'min-width': '30rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ID</th>
+                    <th>CODE</th>
+                    <th>MAC ADDRESS</th>
+                    <th>UUID</th>
+                    <th (click)="AddMacAddress()"><i class="pi pi-plus-circle"></i></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-i>
+                <tr>
+                    <td>1</td>
+                    <td>{{ i.code }}</td>
+                    <td>{{ i.macadd }}</td>
+                    <td>{{ i.uuid }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+      </p-tabPanel> -->
+      <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i class="pi pi-wallet"></i>
+            &nbsp; <span>Purchase</span>
+        </ng-template>
+      <div class="row g-3">
+          
+          <div class="col-md">
+            <label for="calendar" class="form-label">Purchase date</label>
+            <div>
+                <p-calendar dateFormat="yy.mm.dd" [showIcon]="true" formControlName="purchaseDate" [style]="{'width':'180px','height':'37px'}"></p-calendar>
+            </div>        
+          </div>
+          <div class="col-md" >
+            <label for="input4" class="form-label">Purchase From</label>
+            <div>
+              <input type="text" class="form-control" formControlName="purchaseFrom" [style]="{'width':'180px'}" pInputText-sm>
+            </div>
+          </div>
+          <div class="col-md" >
+            <label for="input4" class="form-label">Warranty Period</label>
+            <div>
+              <input type="text" class="form-control" formControlName="warrantyPeriod" [style]="{'width':'180px'}" pInputText-sm>
+            </div>
+          </div> 
+          <div class="col-md" >
+            <label for="input4" class="form-label">Purchase Cost</label>
+            <div>
+              <input type="text" class="form-control" formControlName="purchaseCost" [style]="{'width':'180px'}" pInputText-sm>
+            </div>
+          </div> 
+          <div class="col-md" >
+            <label for="input4" class="form-label">Replacement Cost</label>
+            <div>
+              <input type="text" class="form-control" formControlName="replacementCost" [style]="{'width':'180px'}" pInputText-sm>
+            </div>
+          </div> 
+          <div class="col-md" >
+            <label for="input4" class="form-label">Purchase Order</label>
+            <div>
+              <input type="file" class="form-control" formControlName="purchaseOrder" [style]="{'width':'180px'}" pInputText-sm>
+            </div>
+          </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-check" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/> <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/> <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/> </svg>
+          &nbsp; <span>Audit</span>
+      </ng-template>
+    <div class="row g-3">
+        
+        <div class="col-md">
+          <label for="calendar" class="form-label">Last Audit Date</label>
+          <div>
+              <p-calendar dateFormat="yy.mm.dd" [showIcon]="true" formControlName="lastAuditDate" [style]="{'width':'180px','height':'37px'}"></p-calendar>
+          </div>        
+        </div>
+        <div class="col-md" >
+          <label for="input4" class="form-label">Audit By</label>
+          <div>
+            <input type="text" class="form-control" formControlName="auditBy" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div>
+        <div class="col-md" >
+          <label for="input4" class="form-label">next Audit</label>
+          <div>
+            <p-calendar dateFormat="yy.mm.dd" [showIcon]="true" formControlName="nextAudit" [style]="{'width':'180px','height':'37px'}"></p-calendar>
+          </div>
+        </div> 
+        <div class="col-md" >
+          <label for="input4" class="form-label">Assign To</label>
+          <div>
+            <input type="text" class="form-control" formControlName="AssignTo" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div> 
+        <div class="col-md" >
+          <label for="input4" class="form-label">Send Mail</label>
+          <div>
+            <input type="email" class="form-control" formControlName="sendMail" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div> 
+        <div class="col-md" >
+          <label for="input4" class="form-label">Audit Report</label>
+          <div>
+            <input type="file" class="form-control" formControlName="auditReport" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div>
+        <div class="col-md" >
+          <label for="input4" class="form-label">Created On</label>
+          <div>
+            <input type="text" class="form-control" formControlName="createdOn" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div>
+        <div class="col-md" >
+          <label for="input4" class="form-label">Created By</label>
+          <div>
+            <input type="text" class="form-control" formControlName="createdBy"  [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div> 
+        <div class="col-md" >
+          <label for="input4" class="form-label">Modified On</label>
+          <div>
+            <input type="text" class="form-control" formControlName="modifiedOn" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div> 
+        <div class="col-md" >
+          <label for="input4" class="form-label">Modified By</label>
+          <div>
+            <input type="email" class="form-control" formControlName="modifiedBy" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div> 
+        <div class="col-md" >
+          <label for="input4" class="form-label">last Captured On</label>
+          <div>
+            <input type="file" class="form-control" formControlName="lastCapturedOn" [style]="{'width':'180px'}" pInputText-sm>
+          </div>
+        </div>
+    </div>
+  </p-tabPanel>
+  </p-tabView>
+</div>
+<p-button pRipple label="Create" styleClass="p-button-raised p-button-text p-button-sm p-button-help" (onClick)="OnSubmit()"></p-button>
+</form>

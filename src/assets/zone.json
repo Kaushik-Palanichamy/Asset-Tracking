@@ -1,0 +1,74 @@
+[
+    {
+    "zn_id": 1,
+    "zn_code": "ZONE_1",
+    "zn_name": "MATE III - IN",
+    "zn_companyid": {
+        "pmid": 1,
+        "pmcode": "PLANT_0001",
+        "pmcompanyname": "MATE U3",
+        "pmmaxsites": 10,
+        "pmmaxarea": 10,
+        "pmmaxzone": 10,
+        "pmmaxgateway": 2,
+        "pmmaxbeacons": 1000,
+        "pmmaxusers": 5
+    },
+    "zn_definition": "In",
+    "zn_createdby": "Gokulraj R",
+    "zn_createdon": "2022-09-02",
+    "zn_modifiedby": "Gokulraj R",
+    "zn_modifiedon": "2022-09-02",
+    "zn_areaid": {
+        "ar_id": 1,
+        "ar_code": "AREA_1",
+        "ar_name": "MATE U3",
+        "ar_floor": 1,
+        "ar_image": "0",
+        "ar_city": "CHENNAI",
+        "ar_country": "INDIA",
+        "ar_state": "TAMIL NADU",
+        "ar_zipcode": 602105,
+        "ar_latitude": "0",
+        "ar_longitude": "0",
+        "ar_companyid": 1,
+        "ar_sitekey": 1
+    }
+},
+{
+    "zn_id": 2,
+    "zn_code": "ZONE_2",
+    "zn_name": "MATE III - OUT",
+    "zn_companyid": {
+        "pmid": 1,
+        "pmcode": "PLANT_0001",
+        "pmcompanyname": "MATE U3",
+        "pmmaxsites": 10,
+        "pmmaxarea": 10,
+        "pmmaxzone": 10,
+        "pmmaxgateway": 2,
+        "pmmaxbeacons": 1000,
+        "pmmaxusers": 5
+    },
+    "zn_definition": "Outward",
+    "zn_createdby": "Gokulraj R",
+    "zn_createdon": "2022-09-02",
+    "zn_modifiedby": "Gokulraj R",
+    "zn_modifiedon": "2022-09-02",
+    "zn_areaid": {
+        "ar_id": 1,
+        "ar_code": "AREA_1",
+        "ar_name": "MATE U3",
+        "ar_floor": 1,
+        "ar_image": "0",
+        "ar_city": "CHENNAI",
+        "ar_country": "INDIA",
+        "ar_state": "TAMIL NADU",
+        "ar_zipcode": 602105,
+        "ar_latitude": "0",
+        "ar_longitude": "0",
+        "ar_companyid": 1,
+        "ar_sitekey": 1
+    }
+}
+]

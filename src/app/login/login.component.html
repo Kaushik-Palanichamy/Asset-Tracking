@@ -1,0 +1,145 @@
+<div class="container">
+  <!-- <div class="content"> -->
+    <div class="grid">
+      <div class="left">
+        <div class="image">
+          <div class="heading">
+            <div class="logo">
+              <img src="../../assets/logo3.png" alt="" height="103px" width="107px">
+            </div>
+            <!-- <div class="mobheader" >
+              <h2 >R-Asset Tracking</h2>  <img src="../../assets/motherson_logo.png" alt="" width="50px" height="45px">
+            </div> -->
+            <h2>R-ASSET TRACKING</h2>
+          </div>
+          <div class="gif">
+            <img src="../../assets/login-Image.gif" alt="" height="auto" width="auto">
+          </div>
+          <!-- <div> -->
+            <span>
+              <em><h3 class="para"> <b>-</b> {{ currentMessage }} </h3></em>
+            </span>
+          <!-- </div> -->
+        </div>
+
+      </div>
+      <div class="right">
+        <!-- <div class="form-column">
+          <div class="login-container">
+            <div class="form-column">
+              <div class="form"> -->
+                <!-- <h2 class="welcome">Welcome</h2> -->
+                <div class="one">
+
+                <form [formGroup]="form" (ngSubmit)="login()" class="form_main">
+                  <p class="head">Welcome</p>
+                  <p class="subheading"><marquee><em> - Login to know your Asset Transaction's</em></marquee></p>
+
+                  <!-- <marquee class="truckimg" direction="right"> <img src="../../assets/unload.png" alt="" height="55px" width="80px"></marquee> -->
+
+                  <div class="inputContainer">
+                      <!-- <svg class="inputIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2e2e2e" viewBox="0 0 16 16">
+                      <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"></path>
+                      </svg> -->
+                      <fa-icon class="inputIcon" [icon]="atsymbol"></fa-icon>
+                    <input type="email" id="email" class="inputField" id="username" formControlName="email" placeholder="Enter your Email" />
+
+                    <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)" class="error">
+                      {{ form.get('email')?.hasError('required') ? '*Email is required' : 'Email is invalid' }}
+                    </div>
+
+                  </div>
+
+              <div class="inputContainer">
+                  <!-- <svg class="inputIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2e2e2e" viewBox="0 0 16 16">
+                  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                  </svg> -->
+                  <fa-icon class="inputIcon" [icon]="lock"></fa-icon>
+                  <input  class="inputField"  type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" placeholder="Enter your Password"   required>
+                  <fa-icon class="eye" [icon]="showPassword ? eyeCls : eye" (click)="togglePasswordVisibility()"></fa-icon>
+
+
+
+                  <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)" class="error">
+                    <div *ngIf="form.get('password')?.errors!required">
+                      *Password is required
+                    </div>
+                  </div>
+
+              </div>
+
+              <div class="inputContainer">
+                <fa-icon class="inputIcons" [icon]="industry"></fa-icon>
+             
+                <div class="custom-dropdown">
+                   <select  formControlName="pl_name"  class="inputFields" [(ngModel)]="SelectedPlant"  >
+                    <option value="" disabled selected>Select Plant</option>
+                    <option *ngFor="let i of plantsname" [value]="i.code">{{i.name}}</option>
+                  </select> 
+                </div>
+
+                <div *ngIf="form.get('pl_name')?.invalid && (form.get('pl_name')?.dirty || form.get('pl_name')?.touched)" class="error">
+                  <div *ngIf="form.get('pl_name')?.errors!required">
+                    *Plantname is required
+                  </div>
+                </div>
+
+            </div>
+
+
+              <button type="submit" [disabled]="this.form.invalid"  >
+                <div class="svg-wrapper-1">
+                  <div class="svg-wrapper">
+                    <fa-icon class="svg" [icon]="log"></fa-icon>
+                  </div>
+                </div>
+                <span>LOGIN</span>
+              </button>
+                  <a class="forgotLink" href="#">Forgot your password?</a>
+
+                  <!-- <div class="field">
+                    <label for="email" class="text">Email</label>
+                    <input type="email" id="email" type="email" formControlName="email" placeholder="Enter your email" />
+                    <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)" class="error">
+                      {{ form.get('email')?.hasError('required') ? '*Email is required' : 'Email is invalid' }}
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="password" class="text">Password</label>
+                    <input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" placeholder="Enter your Password" required>
+
+                    <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)" class="error">
+                      <div *ngIf="form.get('password')?.errors!required">
+                        *Password required
+                      </div>
+                    </div>
+                    <fa-icon class="eye" [icon]="showPassword ? eyeCls : eye" (click)="togglePasswordVisibility()"></fa-icon>
+                    <a class="forgot-password">Forgot password?</a>
+                  </div>
+                  <!-- <div class="checkbox-field">
+                    <input type="checkbox" id="remember-me" />
+                    <label for="remember-me">Remember me</label>
+                  </div> -->
+                  <!-- <button type="submit" class="login-button">
+                    LOGIN  <fa-icon class="svg" [icon]="log"></fa-icon>
+                  </button>
+                  <div class="login-button">
+                    <button type="submit" [disabled]="this.form.invalid"  >
+                      <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                          <fa-icon class="svg" [icon]="log"></fa-icon>
+                        </div>
+                      </div>
+                      <span>LOGIN</span>
+                    </button>
+                  </div> -->
+                </form>
+              </div>
+              <!-- </div>
+            </div>
+          </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  <!-- </div> -->
+</div>

@@ -1,0 +1,115 @@
+* {
+  font-family: 'Lexend'; 
+ }
+
+#chart{
+  display: flex !important;
+  flex-grow: 2 !important;
+  background-color: #fff;
+}
+
+mat-card{
+  display: flex;
+  flex-grow: 2;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border: 1px solid #80808080;
+  border-radius: 15px;
+  padding: 2px;
+  width: fit-content !important;
+  height: 370px !important;
+}
+
+.heading{
+  font-weight:  600;
+}
+
+.mat-mdc-slider {
+  --mdc-slider-handle-color: #f76c6c;
+  --mdc-slider-focus-handle-color: #f76c6c;
+  --mdc-slider-hover-handle-color: #f76c6c;
+  --mdc-slider-active-track-color: #f76c6c;
+  --mdc-slider-inactive-track-color: #f76c6c;
+  --mdc-slider-with-tick-marks-active-container-color: #ffff;
+  --mdc-slider-with-tick-marks-inactive-container-color: #ffff;
+  /* --mat-mdc-slider-ripple-color: #143864;
+  --mat-mdc-slider-hover-ripple-color: #3861b80d;
+  --mat-mdc-slider-focus-ripple-color: #3861b833; */
+  --mdc-slider-label-container-color: #f76c6c;
+  /* --mdc-slider-label-label-text-color: black;
+  --mdc-slider-disabled-handle-color: #143864;
+  --mdc-slider-disabled-active-track-color: #143864;
+  --mdc-slider-disabled-inactive-track-color: #143864;
+  --mdc-slider-with-tick-marks-disabled-container-color: #143864; */
+  --mat-mdc-slider-value-indicator-opacity: 0.9;
+}
+
+::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+  background: #f76c6c;
+  height: 1.5rem;
+}
+
+
+.tabletitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apxchart{
+  margin-top: 1rem;
+  height: 90% !important;
+}
+
+::ng-deep .custom-toggle-button .p-button {
+  width: 40px;  /* Set your desired width */
+  height: 20px;  /* Set your desired height */
+  display: flex;
+  align-items: center;
+  font-family: 'Lexend';
+  justify-content: center;
+  padding: 0;
+  background-color: #f76c6c !important;  /* Change button background color */
+  border: #f76c6c;  /* Remove border if needed */
+}
+
+::ng-deep .custom-toggle-button .p-button-label {
+  flex: 1;
+  text-align: center;
+  line-height: 10px;
+  font-size: 11px;
+  color: white !important;
+}
+
+
+::ng-deep .p-button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #f76c6c, 0 1px 2px 0 black;
+}
+
+
+.switch{
+  display: flex;
+
+}
+
+.switchText{
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+
+
+
+.p-calendar .p-inputtext {
+  flex: 1 1 auto;
+  width: 1%;
+  text-overflow: ellipsis;
+  border-radius: 10px;
+}
+
+::ng-deep .p-input-icon-right > .p-icon-wrapper, .p-input-icon-right > i:last-of-type {
+  right: 0.7rem;
+  color: #da2020;
+  margin-top: -0.55rem;
+
+
+}

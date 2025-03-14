@@ -1,0 +1,53 @@
+<div class="wrapper">
+    <div class="container">
+      <div class="container-fluid" style="display:flex">
+        <mat-card id="chart">
+          <div class="tabletitle">
+            <div>
+              <mat-card-subtitle><span class="head">Statistics</span></mat-card-subtitle>
+              <mat-card-subtitle><span class="subhead">Assets Outcome</span></mat-card-subtitle>
+            </div>
+            <div style="display:inline-block;">
+              <img mat-card-image src="assets/icons/Info/truck.png" alt="Beacon_img" style="height: 60px; width: 75px;">
+            </div>
+            <div>
+              <p-calendar
+                [(ngModel)]="date"
+                placeholder="Select"
+                view="year"
+                dateFormat="yy"
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                [style]="{'width':'73px','height':'30px'}"
+                (onSelect)="changeYear($event)"
+                [minDate]="minDate"
+                [maxDate]="maxDate"
+              >
+              </p-calendar>
+            </div>
+          </div>
+          <hr style="color:grey; margin-top:-0.1rem; margin-right:1rem; margin-left: 1rem">
+          <mat-card-content>
+            <div class="apxchart">
+              
+              <div *ngIf="loadingicon" class="loader"></div>
+
+              <apx-chart *ngIf="!loadingicon"
+                [series]="chartOptions.series!"
+                [chart]="chartOptions.chart!"
+                [colors]="chartOptions.colors"
+                [yaxis]="chartOptions.yaxis!"
+                [dataLabels]="chartOptions.dataLabels!"
+                [markers]="chartOptions.markers!"
+                [stroke]="chartOptions.stroke!"
+                [grid]="chartOptions.grid!"
+                [xaxis]="chartOptions.xaxis!"
+                [tooltip]="chartOptions.tooltip!"
+                [annotations]="chartOptions.annotations!">
+              </apx-chart>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>

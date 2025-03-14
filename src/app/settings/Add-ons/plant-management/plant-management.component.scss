@@ -1,0 +1,96 @@
+@import "primeicons/primeicons.css";
+
+*{
+  font-family: 'Lexend';
+  letter-spacing: 0.7px;
+}
+
+.header{
+  display:flex;
+  justify-content:end;
+  align-items: center;
+  gap:0.7rem;
+  margin-right:1rem;
+  margin-top: -1rem;
+  margin-bottom:0.5rem;
+}
+
+th{
+  font-size:small;
+  color: #000000 !important;
+  background: #FFcdcd !important;
+  text-align: left !important;
+  text-transform: uppercase;
+  // font-weight: 500;
+}
+td{
+  font-size:small;
+  text-align: left !important;
+  text-transform: uppercase;
+}
+
+::ng-deep .p-datatable .p-paginator-bottom {
+  display: flex;
+  // justify-content: flex-end !important;
+  padding: 0.5rem; 
+    font-family: 'Lexend'
+}
+
+::ng-deep .p-paginator .p-paginator-current{
+  color: #0b8dbd !important;
+    font-family: 'Lexend'
+}
+
+::ng-deep .p-paginator-page{
+  color: #0b8dbd !important;
+    font-family: 'Lexend'
+}
+
+::ng-deep .p-paginator .p-paginator-first, 
+::ng-deep .p-paginator .p-paginator-prev,
+::ng-deep .p-paginator .p-paginator-next,
+::ng-deep .p-paginator .p-paginator-last{
+  color: #0b8dbd;
+    font-family: 'Lexend'
+}
+
+
+#savebutton{
+    float:right;
+    height:35px;
+    margin-top: 1rem;
+}
+
+::ng-deep {
+.p-datatable-wrapper{
+  border-radius: 6px;
+}
+}
+
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  padding: 0.8rem 0.5rem;
+  border: 1px solid #e9ecef;
+  border-width: 0 0 1px 0;
+  font-weight: 600;
+  transition: box-shadow 0.2s;
+}
+
+.emptymessage{
+  text-align: center !important;
+  font-weight:700
+}
+
+:host {
+  ::ng-deep {
+      * {
+          &::-webkit-scrollbar {
+              width: 10px;
+              height: 8px;
+          }
+          &::-webkit-scrollbar-thumb {
+              background-color: #FFCDCD;
+              border-radius: 20px;
+          }
+      }
+    }
+  }

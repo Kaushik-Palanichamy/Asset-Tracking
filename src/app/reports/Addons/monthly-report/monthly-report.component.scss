@@ -1,0 +1,309 @@
+@import "primeicons/primeicons.css";
+
+*{
+  font-family:'Lexend';
+
+}
+
+
+.divloader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 59vh;
+}
+
+.loader {
+  width: 53px;
+  height: 53px;
+  border: 5px dotted #000;
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px dotted #F00;
+  border-style: solid solid dotted;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.searchtab{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // top: px;
+  bottom: 16px;
+  position: relative;
+  margin-bottom: 31px;
+  height: 71px;
+}
+
+.filter-icon-container {
+  position: absolute; 
+  left: 0; 
+  z-index: 1; 
+}
+
+.emptymessage{
+  text-align: center !important;
+  font-weight:700
+}
+
+p-table#monthly.p-element{
+  position: relative;
+  left: 10px;
+  bottom: 60px;
+}
+
+
+.tablehead{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+
+
+.img{
+  width: 40px;
+  left: 18px; //18px
+  position: relative;
+  top: 19px; //34px
+  margin-right: 10px;
+  cursor:pointer
+}
+
+.heading{
+    margin-right: 6rem;
+    height: 3rem;
+}
+
+::ng-deep{
+  .pi-filter[_ngcontent-lux-c81]:before {
+    content: "\e94c";
+    top: 9px;
+    left: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+}
+
+.top-align{
+  position:relative;
+  top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  // justify-content: space-between;
+  align-items: stretch;
+}
+
+/* Optional: Adjust alignment and spacing */
+.vertical-header {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: left;
+  white-space: nowrap;
+  padding-top: 10px;
+  height: 100px;
+  padding-right: 0px;
+  padding-left: 10px;
+}
+
+
+.table-container {
+  overflow-x: auto; /* Ensures horizontal scroll if needed */
+}
+
+.table-wrapper {
+  display: block;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  // border: 1px solid #ddd;
+  // padding: 8px;
+  white-space: nowrap; /* Prevents cell contents from wrapping */
+}
+
+th {
+  position: sticky;
+  top: 0;
+  // background-color: #f1f1f1;
+}
+
+// .fixed-column {
+//   position: sticky;
+//   left: 0;
+//   background-color: inherit;
+//   z-index: 1;
+// }
+
+/* Additional fixed columns */
+// .fixed-column:nth-child(2) {
+//   left: 241px; /* Adjust based on the width of your first column */
+// }
+
+// .fixed-column:nth-child(3) {
+//   left: 16.7rem; /* Adjust based on the width of your first and second columns */
+// }
+
+::ng-deep .p-datatable .p-paginator-bottom {
+  display: flex;
+  // justify-content: flex-end !important;
+  padding: 0.5rem; 
+}
+
+::ng-deep .p-paginator .p-paginator-current{
+  color: #0b8dbd !important
+}
+
+::ng-deep .p-paginator-page{
+  color: #0b8dbd !important;
+  margin-right: 1rem !important;
+}
+
+::ng-deep .p-paginator .p-paginator-first, 
+::ng-deep .p-paginator .p-paginator-prev,
+::ng-deep .p-paginator .p-paginator-next,
+::ng-deep .p-paginator .p-paginator-last{
+  color: #0b8dbd
+}
+
+.primebtn{
+  cursor: pointer;
+  font-size: 13px;
+}
+
+::ng-deep .p-button-label {
+  font-weight: 600 !important;
+}
+
+.button {
+  position: relative;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  padding-block: 0.4rem;
+  padding-inline: 1rem;
+  background-color: rgb(0, 107, 179);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 10px;
+  font-weight: bold;
+  border: 3px solid rgba(255, 255, 255, 0.3019607843);
+  outline: none;
+  overflow: hidden;
+  font-size: 13px;
+  cursor: pointer;
+  &:disabled {  
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.button:not(:disabled):hover {
+  transform: scale(1.05);
+  border-color: #fff9;
+}
+
+.button:not(:disabled):hover .icon {
+  transform: translate(4px);
+}
+
+
+.button:not(:disabled):hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+.p-frozen-column-3{
+  left: 225px !important;
+  
+}
+
+.p-frozen-column-2{
+  left: 66px !important;
+  position: sticky;
+  max-width: 159px !important;
+}

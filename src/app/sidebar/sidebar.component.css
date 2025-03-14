@@ -1,0 +1,158 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: -webkit-fill-available;
+  background-color: #f76c6c;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  z-index: 1106;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar:hover {
+  width: 200px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  margin-left: 11px;
+}
+
+.logo-text {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.sidebar:hover .logo-text {
+  opacity: 1;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px 5px 10px;
+}
+
+.sidebar-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar img {
+  width: 26px;
+  height: 50px;
+  padding-top: 24px;
+  bottom: 11px;
+  position: relative;
+}
+.sidebar .logo2{
+  width: 170px;
+  height: 60px;
+  padding-top: 24px;
+}
+
+.icon-text {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 17px;
+  transition: opacity 0.3s ease;
+  margin-left: 0.8rem;
+  margin-top: 0px;
+  color: white;
+}
+
+.sidebar:hover .icon-text {
+  opacity: 1;
+}
+
+.sidebar:hover .logo{
+  opacity: 0;
+  display:none;
+}
+
+.logo2{
+  opacity: 0;
+}
+.sidebar:hover .logo2{
+  opacity: 1;
+
+}
+
+.sidebar-item a {
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  width: 180px; /* Set a fixed width */
+  height: 60px; /* Set a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Aligns content to the left */
+}
+
+.sidebar-item a.active {
+  color: white;
+  border: 5px solid whitesmoke;
+  background-color: #e64a4a; /* Highlight color for the selected option */
+  border-radius: 10px; /* Rounded corners for the box */
+}
+
+.sidebar-item a.active img {
+  filter: brightness(0) invert(1); /* Optional: Inverts icon color to white */
+}
+
+/* .sidebar-item img {
+  width: 30px;
+  height: 30px;
+} */
+
+.icon-text {
+  margin-left: 15px;
+  color: white;
+  font-size: 17px;
+}
+
+.sidebar-item a:hover {
+  background-color: #e64a4a; /* Optional: Change background on hover */
+}
+
+.bottom-item {
+  margin-top: auto;
+
+}
+
+.bottom-icon {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.bottom-icon img {
+  width: 26px;
+  height: 26px;
+}

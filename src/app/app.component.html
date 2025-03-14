@@ -1,0 +1,51 @@
+<!-- <app-toolbar *ngIf="getRouter().url !== '/' "></app-toolbar>
+<app-sidebar *ngIf="getRouter().url !== '/' "></app-sidebar>
+
+<router-outlet></router-outlet> -->
+
+<!-- <p-scrollTop>
+  <ng-template pTemplate="icon">
+    <i class="fi fi-sr-arrow-small-up"></i>
+  </ng-template>
+</p-scrollTop> -->
+
+<!-- <p-scrollTop  class="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-circle-up" [style]="{'background':'#da2020','margin-bottom':'1.5rem'}"/>
+
+<app-footer *ngIf="getRouter().url !== '/' "></app-footer>
+
+
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog> -->
+
+
+<app-toolbar *ngIf="getRouter().url !== '/' "></app-toolbar>
+<app-sidebar *ngIf="getRouter().url !== '/' "></app-sidebar>
+ 
+<router-outlet></router-outlet>
+ 
+<!-- <p-scrollTop>
+  <ng-template pTemplate="icon">
+    <i class="fi fi-sr-arrow-small-up"></i>
+  </ng-template>
+</p-scrollTop> -->
+<div>
+  <!-- WebSocket connection start button or any other trigger -->
+  <!-- <button pButton type="button" label="Start Session" (click)="WebSocketConnection()"></button> -->
+ 
+  <!-- PrimeNG Dialog to show the logout message with countdown -->
+  <p-dialog [(visible)]="displayLogoutDialog" [modal]="true" [closable]="true" [responsive]="true" style="width: 5rem;">
+    <p>Session logged in with <strong style="color: #da2020;">{{ loggedInUser }}</strong> is active in another session.</p><br>
+    <p style="text-align: center;"> You will be logged out in <strong style="color: #da2020;">{{ remainingTime }}</strong> seconds.</p>
+  </p-dialog>
+</div>
+ 
+ 
+ 
+<p-scrollTop  class="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-circle-up" [style]="{'background':'#da2020','margin-bottom':'1.5rem'}"/>
+ 
+<app-footer *ngIf="getRouter().url !== '/' "></app-footer>
+ 
+ 
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+ 

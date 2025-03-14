@@ -1,0 +1,170 @@
+[
+    {
+        "st_id": 1,
+        "st_code": "STATUS_1",
+        "st_name": "In Production",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-09-02",
+        "st_modifiedby": "Gokulraj R"
+    },
+    {
+        "st_id": 2,
+        "st_code": "STATUS_2",
+        "st_name": "Awaiting Inspection",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-09-02",
+        "st_modifiedby": "Gokulraj R"
+    },
+    {
+        "st_id": 3,
+        "st_code": "STATUS_3",
+        "st_name": "Expired",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-09-02",
+        "st_modifiedby": "Gokulraj R"
+    },
+    {
+        "st_id": 4,
+        "st_code": "STATUS_4",
+        "st_name": "In Maintenance",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-09-02",
+        "st_modifiedby": "Gokulraj R"
+    },
+    {
+        "st_id": 6,
+        "st_code": "STATUS_6",
+        "st_name": "Dispatched",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-09-02",
+        "st_modifiedby": "Gokulraj R"
+    },
+    {
+        "st_id": 7,
+        "st_code": "STATUS_7",
+        "st_name": "In Storage Area",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-09-02",
+        "st_modifiedby": "Gokulraj R"
+    },
+    {
+        "st_id": 8,
+        "st_code": "STATUS_8",
+        "st_name": "Out of Work",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-09-02",
+        "st_modifiedby": "Gokulraj R"
+    },
+    {
+        "st_id": 5,
+        "st_code": "STATUS_5",
+        "st_name": "Pending for action",
+        "st_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "st_active": true,
+        "st_createdon": "2022-09-02",
+        "st_createdby": "Gokulraj R",
+        "st_modifiedon": "2022-10-17",
+        "st_modifiedby": "Krishnan, Sivarama (MATE) "
+    }
+]

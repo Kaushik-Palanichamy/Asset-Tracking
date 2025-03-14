@@ -1,0 +1,24 @@
+[
+    {
+        "sc_id": 1,
+        "sc_code": "SITE_1",
+        "sc_name": "MATE U3",
+        "sc_createdby": "Gokulraj R",
+        "sc_createdon": "2022-09-02",
+        "sc_modifiedby": "Gokulraj R",
+        "sc_modifiedon": "2022-09-02",
+        "sc_notes": "PONDUR PLANT",
+        "sc_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        }
+    }
+    
+   ]

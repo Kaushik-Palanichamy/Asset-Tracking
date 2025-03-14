@@ -1,0 +1,205 @@
+.footer {
+  border-bottom: 1px solid #e8e8e8; /* Changed from border-top */
+  background: #F9FCFB;
+  /* box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.08); Changed the shadow's Y-offset to make it appear at the top */
+  display: flex;
+  /* flex-wrap: wrap; */
+  width: 102%;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  background: #FF7373;
+  height: 40px;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: -7px;
+  z-index: 1100;
+  padding-left: 5rem;
+  padding-right: 1.7rem;
+}
+
+#timer {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 4px;
+  width: 200px;
+  font-weight: bold;
+}
+
+#date_time{
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+  font-size: 15px;
+}
+
+.fi{
+  margin-top: 2.2%;
+  font-size: 15px;
+}
+
+.copyrights{
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.2rem;
+  color: #fff;
+}
+
+.copyrights h5{
+  font-weight: lighter;
+}
+
+.weatherdiv{
+  padding: 0.3rem;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.weather_loader{
+  cursor: not-allowed;
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.weather_details{
+  margin-top: -1rem;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+.details_wind{
+  text-align: center;
+}
+
+.details_wind h5:first-child{
+  text-decoration: underline;
+}
+
+#wat{
+  color: #0057e7;
+}
+
+:host ::ng-deep .odometer.odometer-theme-default{
+  font-family: 'SharpSans', sans-serif;
+  /* line-height: 1.1em; */
+  letter-spacing: 10px !important;
+}
+
+::ng-deep .odometer.odometer-theme-default .odometer-digit{
+  padding: 0.7px;
+}
+
+::ng-deep .p-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: 80px;
+}
+
+/* loader */
+.spinner {
+  --red: #d62d20;
+  --blue: #0057e7;
+  --green: #008744;
+  --yellow: #ffa700;
+  position: relative;
+  width: 25px;
+}
+
+.spinner:before {
+  content: "";
+  display: block;
+  padding-top: 170%;
+}
+
+.circular {
+  animation: rotate73451 2s linear infinite;
+  height: 170%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash0175 1.5s ease-in-out infinite, color7123 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes rotate73451 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash0175 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes color7123 {
+  100%, 0% {
+    stroke: var(--red);
+  }
+
+  40% {
+    stroke: var(--blue);
+  }
+
+  66% {
+    stroke: var(--green);
+  }
+
+  80%, 90% {
+    stroke: var(--yellow);
+  }
+}
+
+img{
+  bottom: -1px;
+  position: relative;
+  width: 112px;
+  height: 24px;
+}
+

@@ -1,0 +1,121 @@
+
+.item_category{
+  height: 100%;
+  width: 100%;
+
+}
+mat-card{
+  background-color: #fff;
+  margin-top: 0.5rem;
+
+  border-radius: 15px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border: 1px solid #80808080;
+}
+
+:host ::ng-deep p-table  tr:nth-child(even) {
+  background-color: #fff1f1;
+
+}
+
+mat-card-title{
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+mat-card-content {
+  margin-bottom: 1rem;
+  display:  grid;
+  padding: 30px;
+  height: 240px;
+  width: 325px;
+  overflow: auto;
+}
+.heading{
+  font-weight:800;
+  color: rgb(29, 37, 62)
+}
+
+.subhead {
+  margin-top: -1rem;
+  display: flex;
+  font-weight: 800;
+  font-size: x-large;
+  color:  rgb(29, 37, 62);
+  padding-bottom: 0.3rem;
+}
+
+.space{
+  padding-bottom: 20px;
+
+}
+.mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #f76c6c;
+  --mdc-linear-progress-track-color: black;
+}
+
+
+  .text {
+
+    color: #696d6e;
+    font-size: 12px;
+
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: left;
+    width: 58px;
+    height: 17px;
+  }
+
+  .text1 {
+    color: #696d6e;
+    font-size: 12px;
+    float:inline-end;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    // width: 58px;
+    height: 17px;
+  }
+
+  :host {
+    ::ng-deep {
+        * {
+            &::-webkit-scrollbar {
+                width: 10px;
+                height: 8px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #e28b8b;
+                border-radius: 20px;
+            }
+        }
+      }
+    }
+
+@media(max-width: 1100px){
+  mat-card-content {
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    display:  grid;
+    padding: 30px;
+    height: 240px;
+    width: auto;
+    overflow: auto;
+  }
+  mat-card{
+    margin-top: 0.5rem;
+    flex-grow: 1;
+    border-radius: 15px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+    border: 1px solid #80808080;
+  }
+}

@@ -1,0 +1,423 @@
+.divloader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 85vh;
+}
+
+.loader {
+  width: 53px;
+  height: 53px;
+  border: 5px dotted #000;
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px dotted #F00;
+  border-style: solid solid dotted;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+
+.container-fluid{
+  margin-left: 60px;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  padding: 20px 10px 20px 10px;
+}
+
+.mat-mdc-card-header {
+  display: flex;
+  padding: 10px 10px 0;
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 5px;
+}
+
+
+
+.custom-card {
+  background: linear-gradient(-394deg, #ffffff 26%, #fb6262 100%);
+  border-radius: 15px;
+  color: #000;
+  flex: 1;
+  /* min-width: calc(100% / 5 - 50px);  */
+  height: 105px;
+  min-width:fit-content;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2),
+              0 1px 2px 0 rgba(0, 0, 0, 0.14),
+              0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  transition: transform 0.6s ease-in-out;
+  /* Ensure the card does not shrink below its content size */
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow: hidden;
+}
+
+.custom-card:hover {
+  background: linear-gradient(492deg, #ffffff 26%, #fb6262 100%);
+  transform: translateY(-3px);
+}
+
+.beacons{
+  background-color: #fff;
+  flex: 1 ;
+  height: 125px;
+  min-width:fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #80808080;
+  border-radius: 15px;
+  padding: 10px;
+  color: #000;
+  bottom: 0;
+
+   /* Smooth transitions for both transform and background */
+  transform: translate3d(0, 0, 0); /* Start at the top and move down on hover */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12); /* Add some shadows to create the "card" effect */
+
+}
+
+.header-content {
+  margin-top: -1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.beacon {
+  display: flex;
+  align-items: center;
+}
+
+.asset-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.asset{
+  color: #ef5555;
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+#update{
+  font-size: 12px;
+  font-weight:600;
+  color:rgb(46, 46, 46)
+}
+
+.seperate .title {
+  margin-top: 5px;
+  font-size: 10px;
+  color:rgb(82, 82, 82)
+}
+
+
+
+
+
+/*
+added styles */
+.card-container {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  padding: 5px;
+  justify-content: flex-start;
+  align-content: space-around;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .secondary {
+    flex-basis: 100%; /* Full width on smaller screens */
+  }
+  .card2, .card1{
+  margin-top:1rem;
+  margin-bottom:.5rem;
+  flex: 1;
+  }
+}
+@media (max-width: 1100px){
+  .card1{
+    margin-top:1rem;
+    margin-bottom:.5rem;
+    flex: 1;
+  }
+}
+ 
+.card1{
+  margin-top: -0.8rem;
+}
+
+.card{
+  margin-top: -0.8rem;
+  flex: 1;
+}
+
+img.mat-card-image {
+  max-height: 24px; /* Adjust height of the beacon image as necessary */
+  max-width: 24px; /* Adjust width of the beacon image as necessary */
+}
+
+.custom-card img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Ensure the image behaves like a block element */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+
+
+
+
+.chart-row2{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin-top: 1.2rem;
+  gap: 1rem;
+  align-items: start;
+
+}
+
+
+
+
+
+
+  .card {
+    /* overflow: hidden; */
+ }
+
+  .transaction{
+    margin-top: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+
+
+  h6{
+    margin: 0;
+    padding-top: 0.5rem;
+  }
+
+
+  .seperate {
+    text-align: center;
+  }
+
+  .seperate h4 {
+    margin-bottom: 5px;
+  }
+
+
+
+  .seperates{
+    margin-top: -1rem;
+    display: flex;
+    gap: 5px;
+    justify-content: space-evenly;
+  }
+
+
+  .title {
+    font-size: 8px; /* Adjust font size as needed */
+  }
+
+
+
+  .details{
+    width: 300px;
+    height:221px;
+  }
+  /* .mat-mdc-card-header .hrs{
+    display:inline-block;
+  }
+
+  .mat-mdc-card-header .details{
+    padding-top: 20px;
+  } */
+
+
+   .montly_details{
+    width: 329px;
+    height: 300px;
+  }
+  /* .mat-mdc-card-header .hrs-dis{
+    display: flow-root;
+  } */
+  .mat-mdc-card-content:last-child{
+    display: flow;
+    /* padding: 0 16px; */
+    padding-top: 20px;
+}
+
+.mat-mdc-card-md-image{
+  width: 78px;
+    height: 78px;
+    top: 33px;
+    left: 17px;
+}
+
+.card-width{
+  background: linear-gradient(-25deg, #ffffff,#ffffff,#fb6060)
+}
+
+
+.custom-card .mat-card-header {
+  padding-bottom: 0; /* Remove padding below the header */
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-content {
+  margin-top: -1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.left-content p {
+  font-size:larger;
+ font-weight: 1000
+}
+.right-content img {
+  /* display: flex;
+  justify-content: center;
+
+  align-items: end; */
+  margin-top: -2rem;
+}
+
+.right-content2 img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 1rem;
+    top: 0.5em;
+    position: relative;
+  max-width: 100px;
+  max-height: 100px;
+  margin-top: -2rem;
+}
+
+.outimg img{
+  width: 120px;
+ height: 70px;
+ left: 1rem;
+ top: 0.5em;
+ position: relative;
+   margin-top: -1.5rem;
+}
+
+@media (min-width: 1440px){
+  .secondary{
+    flex-shrink: 0 !important;
+    flex-basis: 200px !important;
+  }
+}
+
+::ng-deep .p-datepicker table td {
+  padding: 0.2rem !important;
+}
+
+::ng-deep .p-datepicker table td > span {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+::ng-deep .p-datepicker table {
+  font-size: 10pt;
+  margin: -0.143rem 0;
+}
+
+::ng-deep .p-datepicker .p-datepicker-header {
+  padding: 0.2rem;
+}
+
+.dashboard-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.summary-box {
+  flex: 1;
+}
+
+.main-content,
+.bottom-content {
+  display: flex;
+  gap: 20px;
+}
+
+.chart-box {
+  flex: 1;
+}
+
+.table-skeleton p-skeleton {
+  margin: 10px 0;
+}

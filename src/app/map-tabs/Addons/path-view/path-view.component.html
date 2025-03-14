@@ -1,0 +1,179 @@
+
+<div class="report-container">
+  <div class="tab-content">
+    <!-- Zone View Content -->
+    <form [formGroup]="form">
+    <div class="controls">
+      <div class="first">
+        <div class="seperate">
+          <div>
+            <label style="width:100px;font-size:14px;font-weight:600">Site Name:</label>
+            <p-dropdown 
+              [(ngModel)]="sites" 
+              [options]="siteName" 
+              formControlName="siteid"
+              styleClass="dropdown"
+              [style]="{'margin-right':'2rem','margin-bottom':'1rem'}"
+              styleClass="fixed-width-dropdown"
+              [panelStyle]="{'width': '150px'}" 
+              placeholder="Select a Site">
+            </p-dropdown>
+
+            <small *ngIf="form.get('siteid')?.touched && form.get('siteid')?.invalid" class="error">
+              Site Name is required
+            </small>
+
+          </div>
+          <div>
+            <label  style="width:100px;font-size:14px;font-weight:600; margin-right: 4.4rem;" class="labels"> Date: </label>
+            <p-calendar  
+            dateFormat="dd.mm.yy" 
+            id="fromdate"  
+            [showIcon]="true" 
+            formControlName="date"
+            [style]="{'width':'165px','height':'36px','font-size':'14px'}"
+            [iconDisplay]="'input'"
+            placeholder="Select" 
+            >
+          </p-calendar>
+
+          <div *ngIf="form.get('date').touched && form.get('date').invalid" class="errors">
+            From date is required
+          </div>
+
+          </div>
+        </div>
+        <div class="seperate">
+          <div>
+            <label style="width:100px;font-size:14px;font-weight:600;margin-right: 5rem;" >Area:</label>
+            <p-dropdown 
+              [(ngModel)]="area" 
+              [options]="areas"
+              formControlName="areaid"
+              [style]="{'margin-right':'2rem','margin-bottom':'1rem','width': '13.5vw;'}" 
+              placeholder="Select an Area">
+            </p-dropdown>
+
+            <small *ngIf="form.get('areaid')?.touched && form.get('areaid')?.invalid" class="error">
+              Area is required
+            </small>
+          </div>
+          <div>
+            <label style="width:100px;font-size:14px;font-weight:600;margin-right: 4.7rem;" > Time: </label>
+            <!-- From Time Calendar -->
+            <input 
+            type="text" 
+            [value]="displayTimeRange" 
+            placeholder="From Time - To Time" 
+            readonly 
+            formControlName="timing"
+            (click)="openDialog()" 
+            [style]="{'width':'165px','height':'36px','font-size':'14px'}"
+            pInputText
+          />
+
+          <small *ngIf="form.get('from_time')?.touched && form.get('from_time')?.invalid || form.get('to_time')?.touched && form.get('to_time')?.invalid" class="errors">
+            Time is required
+          </small>
+        
+          <!-- PrimeNG Dialog with two time pickers -->
+          <p-dialog [(visible)]="displayDialog" [modal]="true" [draggable]="false" [closable]="true" focusOnShow="false" [header]="'Select Time Range'" (onHide)="onDialogHide()">
+            <div>
+              <label>From Time:</label>
+              <p-calendar 
+                [(ngModel)]="fromTime" 
+                [timeOnly]="true" 
+                formControlName="from_time"
+                (onSelect)="onTimeSelect('from')"
+              ></p-calendar>
+
+              
+          <small *ngIf="form.get('from_time')?.touched && form.get('from_time')?.invalid" class="errors">
+            From time is required
+          </small>
+              
+            </div>
+            
+            <div style="margin-top: 1rem;">
+              <label style="margin-right: 3.4rem;">To Time:</label>
+              <p-calendar 
+                [(ngModel)]="toTime" 
+                [timeOnly]="true" 
+                formControlName="to_time"
+                (onSelect)="onTimeSelect('to')"
+              ></p-calendar>
+
+              
+          <small *ngIf="form.get('to_time')?.touched && form.get('to_time')?.invalid" class="errors">
+            To time is required
+          </small>
+
+            </div>
+            
+            <div class="p-dialog-footer">
+              <button type="button" pButton label="OK" (click)="confirmSelection()" class="p-button-primary"></button>
+            </div>
+          </p-dialog>
+          </div>  
+        </div>  
+        <div class="seperate">
+          <div>
+            <label style="width:100px;font-size:14px;font-weight:600; margin-right: 2.3rem;" >Category:</label>
+            <p-dropdown 
+              [options]="category" 
+              optionLabel="cm_name"
+              optionValue="cm_id"
+              [(ngModel)]="selectedCategory"
+              formControlName="categoryid"
+              (onChange)="onCategoryChange()" 
+              [style]="{'margin-right':'2rem', 'margin-bottom':'1rem'}"
+              placeholder="Select a Category">
+            </p-dropdown>
+
+            <small *ngIf="form.get('categoryid')?.touched && form.get('categoryid')?.invalid" class="error">
+              Category is required
+            </small>
+
+          </div>
+          <div>
+            <label style="width:100px;font-size:14px;font-weight:600;margin-right: 4.2rem;" >Asset:</label>
+            <p-dropdown 
+              [options]="itemsname" 
+              optionLabel="im_name"
+              optionValue="im_name" 
+              formControlName="item_name"
+              [(ngModel)]="selectedAsset"
+              [style]="{'margin-right':'2rem', 'margin-bottom':'1rem'}"
+              placeholder="Select an Asset">
+            </p-dropdown>
+
+            <small *ngIf="form.get('item_name')?.touched && form.get('item_name')?.invalid" class="error">
+              Asset is required
+            </small>
+          </div>
+        </div>
+              
+        <div class="seperate">
+          <div>
+           
+              <p-checkbox 
+                [(ngModel)]="highlightZone" 
+                formControlName="highlight"
+                [style]="{'margin-top': '0.5rem','width': '2rem'}"
+                binary="true"
+                inputId="checkbox"
+              >
+              </p-checkbox> 
+              <label for="checkbox"  style="font-size:14px;font-weight:600; "> Highlight Zone</label>
+             
+            </div>  
+          <div>
+            <button (click)="simulatePath()" [disabled]="this.form.invalid"  [ngStyle]="{'cursor': form.invalid ? 'not-allowed' : 'pointer'}"  severity="danger" pButton label="Apply Now" style= 'top: 1.6rem;'></button>
+          </div> 
+        </div>
+      </div>
+    </div>
+    </form>
+    <div id="pathMap" style="height: 400px;margin-bottom: 20px; margin-top: 20px;z-index: 0;"></div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div *ngIf="show" class="divloader">
+  <div class="loader"></div>
+</div>
+
+
+<div class="container-fluid" *ngIf="!show">
+  <div class="custom">
+    <div class="report-container">
+      <p-tabView [(activeIndex)]="activeIndex" (onChange)="onTabChange($event)">
+        <img id="defaultImage" class="bg" [src]="defaultBackground" alt="Default Background" style="display: none;">
+        <img id="pathTrackingImage" class="bg2" [src]="pathTrackingGif" alt="Path Tracking" >
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2">
+              <img [src]="getImageSource(0)" class="tab-icon" alt="Path Tracking Icon"/>
+              <span  class="tabHead">Path Tracking</span>
+            </div>
+          </ng-template>
+          <app-path-tracking></app-path-tracking>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2">
+              <img [src]="getImageSource(1)" class="tab-icon" alt="Dwell Report Icon"/>
+              <span class="tabHead">Dwell Report</span>
+            </div>
+          </ng-template>
+          <app-dwell-report [siteData]="siteData" [areaData]="areaData"  [zoneData]="zoneData" [categoryData]="categoryData"></app-dwell-report>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2">
+              <img [src]="getImageSource(2)" class="tab-icon" alt="In & Out Report Icon"/>
+              <span class="tabHead">In & Out Report</span>
+            </div>
+          </ng-template>
+          <app-inout-report [siteData]="siteData" [areaData]="areaData"  [zoneData]="zoneData" [categoryData]="categoryData"></app-inout-report>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2">
+              <img [src]="getImageSource(3)" class="tab-icon" alt="Asset Availability Icon"/>
+              <span class="tabHead">Asset Availability</span>
+            </div>
+          </ng-template>
+          <app-asset-availability [siteData]="siteData" [areaData]="areaData"  [zoneData]="zoneData" [categoryData]="categoryData"></app-asset-availability>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2">
+              <img [src]="getImageSource(4)" class="tab-icon" alt="MPL Icon"/>
+              <span class="tabHead">MPL</span>
+            </div>
+          </ng-template>
+          <app-mpl [zoneData]="zoneData" [categoryData]="categoryData"></app-mpl>
+        </p-tabPanel>
+        <p-tabPanel>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2">
+              <img [src]="getImageSource(5)"  class="tab-icon" alt="Monthly Report Icon"/>
+              <span class="tabHead">Monthly Report</span>
+            </div>
+          </ng-template>
+          <app-monthly-report [activeIndex]="activeIndex" [zoneData]="zoneData"></app-monthly-report>
+        </p-tabPanel>
+
+      </p-tabView>
+    </div>
+  </div>
+</div>

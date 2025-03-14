@@ -1,0 +1,180 @@
+<div *ngIf="show" class="divloader">
+  <div class="loader"></div>
+</div>
+
+<div class="wrapper" *ngIf="!show">
+  <div class="container-fluid">
+  
+  <div class="dashboard">
+  
+    <mat-card class="custom-card">
+      <mat-card-header><mat-card-title>Assets In Plant</mat-card-title></mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <div class="left-content">
+            <p>{{cards.In_Assets}}</p>
+          </div>
+          <div class="right-content">
+            <img src="assets/icons/Info/in.png" alt="In image" height="53px" width="59px"/>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="custom-card">
+      <mat-card-header><mat-card-title>Assets Out Plant</mat-card-title> </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <div class="left-content">
+            <p>{{cards.Out_Assets}}</p>
+          </div>
+          <div class="right-content">
+            <img src="assets/icons/Info/out.png" alt="In image" height="56px" width="59px" />
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="custom-card">
+      <mat-card-header><mat-card-title>Asset Inwards</mat-card-title> </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <div class="left-content">
+            <p>{{cards.Cur_In_Assets}}</p>
+          </div>
+          <div class="right-content2">
+            <img src="assets/icons/Info/inward.png" alt="In image"  />
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="custom-card">
+      <mat-card-header> <mat-card-title>Asset Outwards</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <div class="left-content">
+            <p>{{cards.Cur_Out_Assets}}</p>
+          </div>
+          <div class="outimg">
+            <img src="assets/icons/Info/outward.png" alt="In image" class=""/>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    
+  
+    <!-- Beacons Section -->
+    <div class="beacons">
+      <mat-card>
+        <mat-card-header>
+          <div class="header-content">
+            <div class="asset-info">
+              <span class="asset">Assets With Beacon</span>
+              <mat-card-subtitle><span id="update"> {{ bcnDetails[0].lastcapture_time }} </span></mat-card-subtitle>
+            </div>
+            <div class="beacon">
+              <!-- <mat-card-subtitle>1000</mat-card-subtitle> -->
+              <img mat-card-image src="assets/icons/Info/Beacon.png" alt="Beacon_img" 
+              style="
+              padding-top: 1rem;
+              height: 80px;
+              width: 100px;
+              margin-left: 1rem;">
+            </div>
+          </div>  
+        </mat-card-header>
+        <div>
+          <hr style="color:#80808080 ; margin-top:-0.1rem ; margin-right:0.5rem; margin-left: 0.5rem">
+        </div>
+        <mat-card-footer>
+  
+          <div class="seperates">
+         
+          <div class="seperate">
+            <h4>{{ bcnDetails[0].nofitems }}</h4>
+            <p class="title">Total Assets</p>
+          </div>
+  
+          <div class="seperate">
+            <h4 style="color: rgb(87, 243, 87);">{{ bcnDetails[0].nofsites }}</h4>
+            <p class="title">No of Sites</p>
+          </div>
+  
+          <div class="seperate">
+            <h4  style="color: rgb(81, 186, 247);">{{ bcnDetails[0].nofareas }}</h4>
+            <p class="title">No of Areas</p>
+          </div>
+          
+          <div class="seperate">
+            <h4  style="color: black;">{{ bcnDetails[0].nofzones }}</h4>
+            <p class="title">No of Zones</p>
+          </div>
+        
+        </div>
+          
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+  
+  <div class="secondary">
+    <div class="card-container">
+      <div class="card2">
+        <app-cust-details [custData]="custData"></app-cust-details>
+      </div>
+          
+      <div class="card">
+        <app-hourly-dispatch [hourlyData]="hourlyData"></app-hourly-dispatch>
+      </div>
+  
+      <div class="card1">
+          <app-items-category [AssetTableData]="AssetTableData"></app-items-category>
+      </div>
+    </div>
+  </div>
+
+  <div class="secondary">
+    <div class="card-container">
+      <div class="card2">
+          <app-monthly-dispatch></app-monthly-dispatch>
+      </div>
+    
+      <div class="card">
+        <app-asset-table [AssetTableData]="AssetTableData"></app-asset-table>
+      </div>
+  
+      <div class="cards">
+        <app-asset-outcome ></app-asset-outcome>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div class="chart-row2">
+  
+      <div class="card1">
+        <app-monthly-dispatch></app-monthly-dispatch>
+      </div>
+  
+      <div class="card">
+        <app-asset-table></app-asset-table>
+      </div>
+  
+      <div class="card1">
+        <app-asset-outcome></app-asset-outcome>
+      </div>
+  </div> -->
+  
+  
+  <div class="">
+    <div class="transaction">
+      <app-recent-transactions [tdytransaction]="tdyMovements"></app-recent-transactions>
+    </div>
+  
+  </div>
+  
+  </div>
+  </div>
+  
+  

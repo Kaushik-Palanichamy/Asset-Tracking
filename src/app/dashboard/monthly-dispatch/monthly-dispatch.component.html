@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="container-fluid" style="display:flex">
+    <mat-card id="chart">
+      <mat-card-header>
+        <!-- <mat-card-title>Weekly Dispatch Status</mat-card-title> -->
+        <div class="tabletitle">
+          <div>
+              <span class="heading">Weekly Dispatch Details</span>
+          </div>
+
+          <div  class="dropdowns" style="display:inline-block;">
+            <p-dropdown  [options]="weeks" [(ngModel)]="selectedWeek" (onChange)="onWeekChange($event)" optionLabel="label"  [style]="{'width':'100px','height':'30px',}" placeholder="Select"></p-dropdown>
+          </div>
+
+          <!-- <div class="">
+            <form class="form">
+              <p-calendar  dateFormat="dd.mm.yy"  [style]="{'width':'130px','height':'30px'}"
+              [(ngModel)]="rangeDates"
+              selectionMode="range"
+              [touchUI]="true"
+              [readonlyInput]="true" />
+            </form>
+          </div>    -->
+
+      </div>
+
+      </mat-card-header>
+      <mat-card-content>
+
+        <!-- <div style="width: 100%; height: 100%;"> -->
+          <highcharts-chart 
+            #chart
+            [Highcharts]="Highcharts"
+            [options]="Options"
+            id = "chartmodess"
+          ></highcharts-chart>
+        <!-- </div> -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+</div>

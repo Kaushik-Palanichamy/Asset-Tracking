@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="custom">
+    <div class="report-container">
+      <p-tabView (onChange)="onTabChange($event)">
+        <p-tabPanel header="Zone View">
+          <div class="tab-content">
+            <!-- Zone View Content with Map -->
+            <div id="map" style="height: 400px;"></div>
+`             <button (click)="simulatePath()">Simulate Path Tracking</button>
+          </div>
+        </p-tabPanel>
+        
+        <p-tabPanel header="Path Tracking">
+          <div class="tab-content">
+            <!-- Path Tracking Content with Another Map -->
+            <div id="mapPath" style="height: 500px; margin-top: 20px; z-index: 0;"></div>
+          </div>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="container-fluid" style="display:flex">
+      <div class="table-container">
+        <p-table #dt
+          id = "dom"
+          [value]="Table.Location_Wise"
+          [scrollable]="true"
+          scrollHeight="349px"
+          styleClass="p-datatable-gridlines"
+        >
+        <ng-template pTemplate="header">
+            <tr>
+                <th  pSortableColumn="rowIndex">S.No       <p-sortIcon field="rowIndex" ></p-sortIcon></th>
+                <th  pSortableColumn="CategoryName">Category Name   <p-sortIcon field="CategoryName" ></p-sortIcon></th>
+                <th  pSortableColumn="Total">Total    <p-sortIcon field="Total" ></p-sortIcon></th>
+                <th  pSortableColumn="IN">IN    <p-sortIcon field="IN" ></p-sortIcon></th>
+                <th  pSortableColumn="OUT">OUT  <p-sortIcon field="OUT" ></p-sortIcon></th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+            <tr>
+                <td>{{ rowIndex }}</td>
+                <td>{{ i.CategoryName }}</td>
+                <td>{{ i.Total }}</td>
+                <td (click)="AssetInDetails(i)"  pTooltip="Click to View Asset-In Details" class="inColor">{{ i.IN }}</td>
+                <td (click)="AssetOutDetails(i)" pTooltip="Click to View Asset-Out Details" class="outColor">{{ i.OUT }}</td>
+
+            </tr>
+        </ng-template>
+      </p-table>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <p-dialog header="Asset Information" [modal]="true" [(visible)]="visible" [style]="{ width: '85vw',height: '80vh',left: '2rem'}"  [maximizable]="true">
+    <p-table [value]="assetCount" [scrollable]="true" >
+      <ng-template pTemplate="header">
+          <tr>
+            <th>S.NO</th>
+            <th>Item Name</th>
+            <th>Last Updated Time</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowIndex="rowIndex +1" let-rowData>
+          <tr>
+              <td>{{rowIndex}}</td>
+              <td>{{ rowData.item_name }}</td>
+              <td>{{ rowData.lastread_time }}</td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+            <td class="emptymessage" colspan="3">NO DATA..</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-dialog>

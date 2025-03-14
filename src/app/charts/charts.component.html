@@ -1,0 +1,63 @@
+
+<div *ngIf="showCharts" class="divloader">
+  <div class="loader"></div>
+</div>
+
+<div class="container-fluid">
+
+  <div class="row" *ngIf="!showCharts">
+                
+      <div class="custom-card">
+          <h6 class="heading">Site wise-Assets </h6>
+          <highcharts-chart 
+              #chart1   
+              id="chartmode"
+              [Highcharts]="Highcharts" 
+              [options]="SitechartOptions" 
+              >
+          </highcharts-chart>   
+      </div>
+
+      <div class="custom-card">
+          <h6 class="heading">Area wise-Assets </h6>
+        <highcharts-chart  
+          id="chartmode"
+          #chart2
+          [Highcharts]="Highcharts" 
+          [options]="AreachartOptions" 
+          >
+        </highcharts-chart>
+      </div>
+
+      <div class="custom-card">
+            <h6 class="heading">Zone wise-Assets </h6>
+            <highcharts-chart 
+              #chart3 
+              id="chartmode"
+              [Highcharts]="Highcharts" 
+              [options]="ZonechartOptions" 
+              >
+            </highcharts-chart>
+      </div>
+
+      <div class="custom-card">
+          <h6 class="heading">Condition wise-Assets </h6>
+            <highcharts-chart 
+              #chart4 
+              id="chartmode"
+              [Highcharts]="Highcharts" 
+              [options]="CondichartOptions" 
+              >
+            </highcharts-chart>
+      </div>
+
+      <div class="custom-card">
+          <app-status-chart></app-status-chart>
+      </div>
+
+      <!-- <div class="custom-card">
+          <app-category-chart></app-category-chart>
+      </div> -->
+      
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="item_category" >
+  <div class="wrapper">
+    <div class="container">
+      <div class="container-fluid" >
+          <mat-card>
+
+                <mat-card-title><span class="heading">Items per Category</span></mat-card-title>
+                <mat-card-title><span class="subhead">{{item}} / 2000</span>  </mat-card-title>
+
+                <mat-card-content >
+                  <div class="item_space">
+                    <div *ngFor="let category of items.categoryname; let i = index">
+                      <div class="space">
+
+
+                      <span class="text">{{ category }}</span>
+                      <span class="text1">{{ items.totalcount[i] }} / 2000</span>
+
+                      <mat-progress-bar class="example-margin"
+                                        [mode]="'buffer'"
+                                        [value]="items.totalcount[i]"
+                                        [bufferValue]=" items.totalcount[i]">
+                      </mat-progress-bar></div>
+                    </div>
+                  </div>
+                  <!-- <div class="item_space">
+                    <span class="text">RANIPL RBC FR RR DOORS</span>
+                    <span class="text1">89 / 1500</span>
+
+                    <mat-progress-bar
+                        class="example-margin"
+
+                        [mode]="mode"
+                        [value]="value"
+                        [bufferValue]="bufferValue">
+                    </mat-progress-bar>
+                </div>
+
+                  <div class="item_space">
+                    <span class="text">RNAIPL RBC HBC IP Trolley</span>
+                    <span class="text1">192 / 1500</span>
+
+                    <mat-progress-bar
+                        class="example-margin"
+
+                        [mode]="mode"
+                        [value]="value"
+                        [bufferValue]="bufferValue">
+                    </mat-progress-bar>
+
+                  </div>
+                  <div class="item_space">
+                    <span class="text">MOBIS Trolleys</span>
+                    <span class="text1">107 / 1500</span>
+
+                    <mat-progress-bar
+                        class="example-margin"
+
+                        [mode]="mode"
+                        [value]="value"
+                        [bufferValue]="bufferValue">
+                    </mat-progress-bar>
+
+                  </div>
+                  <div class="item_space">
+                    <span class="text">Support Tag</span>
+                    <span class="text1">1 / 1500</span>
+
+                    <mat-progress-bar
+                        class="example-margin"
+                        [color]="color"
+                        [mode]="mode"
+                        [value]="value"
+                        [bufferValue]="bufferValue">
+                    </mat-progress-bar>
+
+                  </div> -->
+              </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+

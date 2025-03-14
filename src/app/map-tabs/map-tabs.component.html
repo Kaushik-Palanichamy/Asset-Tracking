@@ -1,0 +1,14 @@
+<div class="container">
+  <p-tabView class="position" (onChange)="tabChange($event)">
+    <p-tabPanel header="Zone Tracking" >
+    
+      <app-map-view></app-map-view>
+      <!-- <router-outlet></router-outlet> -->
+    </p-tabPanel>
+    <p-tabPanel header="Path Tracking" >
+    
+       <app-path-view></app-path-view>
+      <!-- <router-outlet></router-outlet> -->
+    </p-tabPanel>
+  </p-tabView>
+</div>

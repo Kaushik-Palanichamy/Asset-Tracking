@@ -1,0 +1,24 @@
+@import "primeicons/primeicons.css";
+
+  
+::ng-deep {
+    .p-datepicker td>span {
+            width: 20px !important;
+            height: 20px !important;
+        }
+}
+
+// ::ng-deep {
+//     .p-dropdown{
+//         width:60% !important;
+//     }
+// }
+// ::ng-deep {
+//     .p-calendar{
+//         width:60% !important;
+//     }
+// }
+
+// input{
+//     width: 60% !important;
+// }

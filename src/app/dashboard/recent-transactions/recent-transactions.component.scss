@@ -1,0 +1,198 @@
+@import "primeicons/primeicons.css";
+
+*{
+  font-family: 'Lexend'; 
+  letter-spacing: 0.7px;
+}
+
+.loader1{
+    display: block;
+    width: 10%;
+    margin: auto;
+    justify-content: center;
+    margin-top:25%;
+}
+
+mat-card{
+  display: flex;
+ /* border: 1px solid #80808080; */
+ border-radius: 15px;
+ box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+ background-color: #fff;
+}
+
+
+::ng-deep
+    p-datatable th {
+        color: red !important;
+        text-transform: uppercase;
+
+
+}
+
+:host ::ng-deep p-table  tr:nth-child(even) {
+        background-color: #fff1f1;
+
+}
+
+.heading{
+    margin-right: 6rem;
+    font-size: x-large;
+
+}
+.searchtab{
+    display: flex;
+    height: 3.2rem;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+p-table #dom.p-element{
+    position: relative;
+    left: 10px;
+    bottom: 93px;
+
+}
+.tablehead{
+    gap: 1rem;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+::ng-deep
+    p-dropdown-label  {
+        font-size:small;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        height:38px !important;
+        width: 70px !important;
+        padding: 10px 10px 10px 10px !important;
+        text-overflow: ellipsis;
+        cursor: pointer;
+
+
+
+}
+.icon
+    p-icon{
+        width: 0.5rem !important;
+        height: 0.5rem !important;
+
+}
+
+::ng-deep {
+    .p-icon{
+    width: 0.6rem;
+    }
+}
+
+::ng-deep .p-calendar-w-btn .p-inputtext{
+        height:40px;
+        width:120px !important;
+}
+
+::ng-deep
+    p-calendar-w-btn .p-datepicker-trigger{
+        height:40px;
+
+}
+
+.img{
+    cursor:pointer;
+    width: 50px;
+    left: 2px;
+    position: relative;
+}
+
+.primebtn{
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+::ng-deep .p-button-label {
+    font-weight: 600 !important;
+    font-family: 'Lexend';
+}
+
+::ng-deep
+    p-datatable th {
+        font-size:small;
+        color: #FFCDCD !important;
+        text-align: center !important;
+        text-transform: uppercase;
+
+}
+::ng-deep p-datatable td {
+        font-size:small;
+        text-align: center !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap;
+        overflow: hidden;
+
+}
+::ng-deep
+    p-sortable-column-icon {
+        width: 12px !important;
+        height: 12px !important;
+
+}
+
+:host ::ng-deep p-table {
+	tr:nth-child(even) {
+		background-color: rgb(251, 230, 230);
+	}
+  }
+
+
+
+  .emptymessage{
+    text-align: center !important;
+    font-weight:700
+  }
+
+  :host {
+    ::ng-deep {
+        * {
+            &::-webkit-scrollbar {
+                width: 10px;
+                height: 8px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #FFCDCD;
+                border-radius: 20px;
+            }
+        }
+      }
+    }
+
+::ng-deep .p-datatable .p-paginator-bottom {
+    font-family: 'Lexend';
+    display: flex;
+    // justify-content: flex-end !important;
+    padding: 0.5rem; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+    
+    ::ng-deep .p-paginator .p-paginator-current{
+        font-family: 'Lexend';
+        color: #0b8dbd !important
+    }
+    
+    ::ng-deep .p-paginator-page{
+         font-family: 'Lexend';
+         color: #0b8dbd !important
+    }
+    
+    ::ng-deep .p-paginator .p-paginator-first, 
+    ::ng-deep .p-paginator .p-paginator-prev,
+    ::ng-deep .p-paginator .p-paginator-next,
+    ::ng-deep .p-paginator .p-paginator-last{
+         color: #0b8dbd;
+        
+    
+    }

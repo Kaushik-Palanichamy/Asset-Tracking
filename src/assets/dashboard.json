@@ -1,0 +1,55 @@
+{
+    "Cards":[
+        {"Total_Assets":1000},
+        {"In_Assets":1000},
+        {"Out_Assets":1000},
+        {"Maintenance_Assets":1000},
+        {"Lost_Assets":1000},
+        {"Cur_In_Assets":1000, "currInDate":"10:21AM"},
+        {"Cur_Out_Assets":1000,"currOutDate":"10:21AM"}
+    ],
+    "Vendor_Details" :[
+        { "label":"HMIL","data":100   },
+        { "label":"RNAIPL","data":100 },
+        { "label":"MOBIS","data":100  },
+        { "label":"GLOVIS","data":100 }
+       ],
+       "Category_Details" : { 
+        "label": [
+        "Ai3 Transverse",
+        "Ai3 Center Plr Lower",
+        "Wheel Guard LH/RH"
+    ],
+    "data": [
+        100,
+        181,
+        262
+    ]},
+    "Recent_Transaction":[
+        {"ItemName":"Ctr Plr 25", "Category":"Ai3 Center Plr Lower", "Status":"Working Active","Location":"MATE IN", "LastSeen":"07-07-2023 00:50"}, 
+        {"ItemName":"Ctr Plr 26", "Category":"Ai3 Center Plr Lower", "Status":"Working Active","Location":"MATE IN", "LastSeen":"07-07-2023 00:51"},
+        {"ItemName":"Ctr Plr 27", "Category":"Ai3 Center Plr Lower", "Status":"Working Active","Location":"MATE IN", "LastSeen":"07-07-2023 00:50"},
+        {"ItemName":"Ctr Plr 28", "Category":"Ai3 Center Plr Lower", "Status":"Working Active","Location":"MATE IN", "LastSeen":"07-07-2023 00:50"},
+        {"ItemName":"Ctr Plr 29", "Category":"Ai3 Center Plr Lower", "Status":"Working Active","Location":"MATE IN", "LastSeen":"07-07-2023 00:52"},
+        {"ItemName":"Ctr Plr 30", "Category":"Ai3 Center Plr Lower", "Status":"Working Active","Location":"MATE IN", "LastSeen":"07-07-2023 00:51"},
+        {"ItemName":"Ctr Plr 31", "Category":"Ai3 Center Plr Lower", "Status":"Working Active","Location":"MATE IN", "LastSeen":"07-07-2023 00:51"},
+        {"ItemName":"Panel Under Cover 02", "Category":"Panel Under Cover", "Status":"Working Active","Location":"MATE OUT", "LastSeen":"07-07-2023 02:15"}, 
+        {"ItemName":"Panel Under Cover 03", "Category":"Panel Under Cover", "Status":"Working Active","Location":"MATE OUT", "LastSeen":"07-07-2023 02:51"},
+        {"ItemName":"Panel Under Cover 04", "Category":"Panel Under Cover", "Status":"Working Active","Location":"MATE OUT", "LastSeen":"07-07-2023 02:50"},
+        {"ItemName":"Panel Under Cover 05", "Category":"Panel Under Cover", "Status":"Working Active","Location":"MATE OUT", "LastSeen":"07-07-2023 02:50"},
+        {"ItemName":"Panel Under Cover 06", "Category":"Panel Under Cover", "Status":"Working Active","Location":"MATE OUT", "LastSeen":"07-07-2023 02:52"},
+        {"ItemName":"Panel Under Cover 08", "Category":"Panel Under Cover", "Status":"Working Active","Location":"MATE OUT", "LastSeen":"07-07-2023 02:51"},
+        {"ItemName":"Panel Under Cover 12", "Category":"Panel Under Cover", "Status":"Working Active","Location":"MATE OUT", "LastSeen":"07-07-2023 02:51"}
+    ],
+    "Category_Table":[
+        {"CategoryName":"Ai3 Center Plr Lower", "Total":200, "IN":124,  "OUT":76},
+        {"CategoryName":"Ai3 Transverse",       "Total":100, "IN":54,   "OUT":46},
+        {"CategoryName":"Su2i Cluster Fascia",  "Total":100, "IN":78,   "OUT":22},
+        {"CategoryName":"Stanchion Roof Rack",  "Total":150, "IN":100,  "OUT":50},
+        {"CategoryName":"Qxi IP Assy",          "Total":200, "IN":89,   "OUT":111},
+        {"CategoryName":"RR Bumper",            "Total":150, "IN":24,   "OUT":126},
+        {"CategoryName":"Wheel Guard LH/RH",    "Total":150, "IN":125,  "OUT":25},
+        {"CategoryName":"Panel Under Cover",    "Total":50,  "IN":35,   "OUT":15}
+    ]
+
+}

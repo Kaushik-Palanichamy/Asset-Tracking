@@ -1,0 +1,118 @@
+
+    <div class="report-container">
+          <div class="tab-content">
+            <div class="controls">
+              <form [formGroup]="form" novalidate>
+                <div class="first">
+                  <div class="separate">
+                    <div>
+                      <label  style="width:100px;font-size:14px;font-weight:600">Site Name:</label>
+                      <p-dropdown
+                        [options]="siteName"
+                        styleClass="dropdown"
+                        [style]="{'margin-right':'2rem','margin-bottom':'1rem'}"
+                        placeholder="Select a Site"
+                        formControlName="site_id"
+                        >
+                      </p-dropdown>
+
+                      <small *ngIf="form.get('site_id')?.touched && form.get('site_id')?.invalid" class="error">
+                        Site Name is required.
+                      </small>
+                    </div>
+                    <div>
+                      <label class="labels"  style="width:100px;font-size:14px;font-weight:600;margin-right: 2.8rem;"> Latitude: </label>
+                      <input type="text" class="dropdown" formControlName="lati" placeholder="0.00000" pInputText readonly>
+                    </div>
+                  </div>
+                  <div class="separate">
+                    <div>
+                      <label style="width:100px;font-size:14px;font-weight:600;margin-right: 4.6rem;">Area:</label>
+                      <p-dropdown
+                        [options]="area"
+                        [style]="{'margin-right':'2rem','margin-bottom':'1rem','width': '13.5vw;'}"
+                        placeholder="Select an Area"
+                        formControlName="area_id">
+                      </p-dropdown>
+                      <small *ngIf="form.get('area_id')?.touched && form.get('area_id')?.invalid" class="error">
+                        Area is required.
+                      </small>
+                    </div>
+                    <div>
+                      <label style="width:100px;font-size:14px;font-weight:600"> Longitude: </label>
+                      <input type="text" class="dropdown" formControlName="longi" placeholder="0.00000" pInputText readonly>
+                    </div>
+                  </div>
+                  <div class="separate">
+                    <div>
+                      <label style="width:100px;font-size:14px;font-weight:600">Category:</label>
+                      <p-dropdown
+                        [options]="category"
+                        optionLabel="cm_name"
+                        optionValue="cm_id"
+                        [style]="{'margin-right':'2rem', 'margin-bottom':'1rem'}"
+                        placeholder="Select a Category"
+                        formControlName="cat_id">
+                      </p-dropdown>
+                      <small *ngIf="form.get('cat_id')?.touched && form.get('cat_id')?.invalid" class="error">
+                        Category is required.
+                      </small>
+                    </div>
+                    <div>
+                      <button (click)="applyChanges()" [disabled]="this.form.invalid"
+                      [ngStyle]="{'cursor': form.invalid ? 'not-allowed' : 'pointer'}" severity="danger" pButton label="Apply Now" ></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+
+            </div>
+            <div id="map" style="height: 400px;margin-bottom: 20px; margin-top: 20px;z-index: 0;"></div>
+          </div>
+    </div>
+        <!-- Table that appears on circle click -->
+        <div *ngIf="showTable" class="table-container">
+          <h3>Zone Details</h3>
+          <p-table #dt
+              id = "recent"
+              [value]="tablevalues"
+              [scrollable]="true"
+              scrollHeight="400px"
+              [globalFilterFields]="['ItemName','Category','Status', 'Location','LastSeen']"
+              [scrollable]="true"
+              paginatorPosition="bottom"
+              [paginator]="true"
+              [rows]="10"
+              [showCurrentPageReport]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Entries"
+          >
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th  pSortableColumn="rowIndex">S.No         <p-sortIcon field="rowIndex" ></p-sortIcon></th>
+                      <th  pSortableColumn="item_name">Item Name             <p-sortIcon field="item_name" ></p-sortIcon></th>
+                      <th  pSortableColumn="category_name">Category Name  <p-sortIcon field="category_name" ></p-sortIcon></th>
+                      <th  pSortableColumn="status">Status    <p-sortIcon field="status" ></p-sortIcon></th>
+                      <th  pSortableColumn="location">Location  <p-sortIcon field="location" ></p-sortIcon></th>
+                      <th  pSortableColumn="lastupdated_time">Last Seen    <p-sortIcon field="lastupdated_time" ></p-sortIcon></th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+                  <tr>
+                      <td>{{ rowIndex }}</td>
+                      <td>{{ i.item_name }}</td>
+                      <td>{{ i.category_name }}</td>
+                      <td>{{ i.status }}
+                        <img *ngIf="i.status === 'Working Active'" src="../../assets/icons/Table/Available.png" alt="Working Active" style="width: 13px; height: 13px; margin-left: 15px;">
+                      </td>
+                      <td>{{ i.location }}</td>
+                      <td>{{ i.lastupdated_time | date:'dd-MM-yyyy, HH:mm:ss'  }}</td>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td class="emptymessage" colspan="6">No Data found...</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+        </div>

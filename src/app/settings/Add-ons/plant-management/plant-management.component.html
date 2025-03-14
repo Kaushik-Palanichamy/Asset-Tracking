@@ -1,0 +1,120 @@
+<!-- <div class="header">
+    <p-button icon="pi pi-check"   label="Add" class="space" role="button" styleClass="p-button-raised " (click)="showDialog()" severity="info" />
+      
+    <p-button  icon="pi pi-trash" class="space" label="Delete" role="button" styleClass="p-button-raised "  [disabled]="!selected.length" (click)="deleteRow($event)" severity="danger" />  
+</div> -->
+
+<div class="">
+    <p-table 
+        [value]="plantManagement"  
+        [loading]="loading"
+        [tableStyle]="{'width':'100%'}"
+        paginatorPosition="bottom"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Entries"
+         >
+        <ng-template pTemplate="header">
+            <tr>
+                <!-- <th><p-tableHeaderCheckbox  ></p-tableHeaderCheckbox></th> -->
+                <th>S.No</th>
+                <th>Company Name</th>
+                <th>Users</th>
+                <th>Sites</th>
+                <th>Area</th>
+                <th>Zone</th>
+                <th>gateway</th>
+                <th>Beacons</th>
+                <!-- <th>EDIT</th> -->
+                <!-- <th ><i class="pi pi-plus-circle" (click)="showDialog()"></i></th> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+            <tr>
+                <!-- <td>
+                    <p-tableCheckbox [value]="i" ></p-tableCheckbox>
+                </td> -->
+                <td>{{ rowIndex }}</td>
+                <td>{{i.pmcompanyname}}</td>
+                <td>{{i.pmmaxusers}}</td>
+                <td>{{i.pmmaxsites}}</td>
+                <td>{{i.pmmaxarea}}</td>
+                <td>{{i.pmmaxzone}}</td>
+                <td>{{i.pmmaxgateway}}</td>
+                <td>{{i.pmmaxbeacons}}</td>
+                <!-- <td> -->
+                    <!-- <svg id="changeColor " fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="editRow(i)" width="30" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" preserveAspectRatio="xMidYMid meet" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(80,70) "> <svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3" id="IconChangeColor"><path d="M12 20h9" id="mainIconPathAttribute" stroke-width="1.2" stroke="#478ecd"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" id="mainIconPathAttribute" stroke="#478ecd"></path></svg> </g></svg> -->
+
+
+                    <!-- <svg id="changeColor" fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" (click)="deleteRow(i)" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(85, 75)"> <svg xmlns="http://www.w3.org/2000/svg" width="199.8" height="199.8" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" id="mainIconPathAttribute" fill="#f50505"></path> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" id="mainIconPathAttribute" fill="#f50505"></path> </svg> </g></svg> -->
+                <!-- </td> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td class="emptymessage" colspan="8">No Data found...</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog header="Add User" [(visible)]="display" [modal]="true">
+    <form [formGroup]="Addform" novalidate>
+        <div class="formgroup-inline">
+
+            <div class="field">
+                 <label for="name"  class="block mb-2">Plant Code</label>
+                 <input type="text" pInputText class="flex-auto" formControlName="pmcode" [(ngModel)]="code"  readonly pInputText-sm>
+                 <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+             </div>
+             <div class="field">
+                 <label for="name"  class="block mb-2">Maximum Users</label>
+                 <input type="text"  pInputText class="flex-auto" formControlName="pmmaxusers"  pInputText-sm>
+                 <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+             </div>
+             <div class="field">
+                 <label for="name"  class="block mb-2">Plant Name</label>
+                 <input type="text"  id="name"  pInputText class="flex-auto" formControlName="pmcompanyname"   pInputText-sm>
+                 <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+             </div>
+     </div>
+
+     <div class="formgroup-inline">
+
+         <div class="field">
+              <label for="name"  class="block mb-2">Maximum Sites</label>
+              <input type="text" id="name" pInputText class="flex-auto" formControlName="pmmaxsites"   required pInputText-sm>
+              <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+          </div>
+          <div class="field">
+              <label for="name"  class="block mb-2">Maximum Area</label>
+              <input type="text" pInputText class="flex-auto" formControlName="pmmaxarea"  required pInputText-sm>
+              <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+          </div>
+          <div class="field">
+              <label for="name"  class="block mb-2">Maximum Zones</label>
+              <input type="text" id="name" pInputText class="flex-auto" formControlName="pmmaxzone"   required  pInputText-sm>
+              <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+          </div>
+  </div>
+
+  <div class="formgroup-inline d-flex justify-content-center">
+
+     <div class="field">
+          <label for="name"  class="block mb-2">Maximum Gateways</label>
+          <input type="text" id="name" pInputText class="flex-auto" formControlName="pmmaxgateway"   required pInputText-sm>
+          <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+      </div>
+      <div class="field">
+          <label for="name"  class="block mb-2">Maximum Beacons</label>
+          <input type="text"  pInputText class="flex-auto" formControlName="pmmaxbeacons"  pInputText-sm>
+          <!-- <small class="p-error" *ngIf="submitted && !data.name">Name is required.</small> -->
+      </div>
+ </div>
+        <!-- <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" ></button> -->
+        <button pButton pRipple label="Save" icon="pi pi-check" (click)="OnSubmit()"  class="p-button-text" [disabled]="this.Addform.invalid" id="savebutton"></button>
+</form>
+</p-dialog>
+
+

@@ -1,0 +1,535 @@
+<div class="container-fluid">
+    <span style="padding-top: 10px;"> EVENT MANAGER</span>
+                <div class="options">
+                    <div>
+                        <p-dropdown [options]="dropdown" [(ngModel)]="selectedEvent" optionLabel="name" optionValue="code" placeholder="Select the Event" [style]="{'width':'200px','margin-right' :'10px'}"></p-dropdown>
+                        <p-button styleClass="p-button-sm" label="Add Event" *ngIf="selectedEvent" class="ms-2" size="small" (onClick)="openDialog()" [rounded]="true"></p-button>
+                    </div>
+                     <div class="exportbutton">
+                        <p-button  icon="pi pi-trash" class="space" label="Delete" role="button" styleClass="p-button-raised "  [disabled]="!selected.length" (click)="confirmDelete()" severity="danger" size="small" class="primebtn" [rounded]="true"/>
+
+                        <p-button icon="pi pi-file-excel" label="Export" styleClass="p-button-raised p-button-success "  pTooltip="XLS" tooltipPosition="bottom" size="small"  class="primebtn" (click)="exportExcel()" [rounded]="true"></p-button>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-4">
+                    <div class="box shadow-sm">
+
+                        <p-table  #myTable
+                            id = "dom"
+                            [value]="tableData"
+                            [scrollable]="true"
+                            scrollHeight="280px"
+                            [(selection)]="selected"
+                            [paginator]="true"
+                            [globalFilterFields]="['rowIndex','Status','Name','Type','Description','Priority','Alert','Created On','Created By','Modified On','Modified By']"
+                            styleClass="p-datatable-sm"
+                            [rows]="20"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Events"
+                            [showCurrentPageReport]="true"
+                            [rows]="5"
+                            [rowsPerPageOptions]="[5,10,20]"                           
+                            >
+
+                            <ng-template pTemplate="header" style="text-shadow: red;" >
+                                <tr>
+                                    <th><p-tableHeaderCheckbox  ></p-tableHeaderCheckbox></th>
+                                    <th> S.No         </th>
+                                    <th pSortableColumn="wfeventname"       > Name         <p-sortIcon field="wfeventname" ></p-sortIcon></th>
+                                    <th pSortableColumn="wfdescription"> Description  <p-sortIcon field="wfdescription"></p-sortIcon></th>
+                                    <th pSortableColumn="stime"> Report Time  <p-sortIcon field="stime"></p-sortIcon></th>
+                                    <th pSortableColumn="wfcreatedon" > Created On   <p-sortIcon field="wfcreatedon" ></p-sortIcon></th>
+                                    <th pSortableColumn="wfcreatedby" > Created By   <p-sortIcon field="wfcreatedby" ></p-sortIcon></th>
+                                    <th pSortableColumn="wfmodifiedon"> Modified On      <p-sortIcon field="wfmodifiedon" ></p-sortIcon></th>
+                                    <th pSortableColumn="wfmodifiedby"> Modified By  <p-sortIcon field="wfmodifiedby" ></p-sortIcon></th>
+                                    <th > Edit             </th>
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-row let-rowIndex="rowIndex +1">
+                                <tr>
+                                    <td>
+                                      <p-tableCheckbox [value]="row" ></p-tableCheckbox>
+                                    </td>
+                                    <td> {{ rowIndex }} </td>
+                                    <td> {{ row.wfeventname }}</td>
+                                    <td> {{ row.wfdescription }}</td>
+                                    <td> {{ row.stime }}</td>
+                                    <td> {{ row.wfcreatedon| date:'dd-MM-yyyy'}}</td>
+                                    <td> {{ row.wfcreatedby }}</td>
+                                    <td> {{ row.wfmodifiedon | date:'dd-MM-yyyy'}}</td>
+                                    <td> {{ row.wfmodifiedby }}</td>
+                                    <td>
+                                        <svg id="changeColor " fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="editRow(row)" width="30" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" preserveAspectRatio="xMidYMid meet" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(80,70) "> <svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3" id="IconChangeColor"><path d="M12 20h9" id="mainIconPathAttribute" stroke-width="1.2" stroke="#478ecd"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" id="mainIconPathAttribute" stroke="#478ecd"></path></svg> </g></svg>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                              <tr>
+                                  <td class="emptymessage" colspan="11">No Data found...</td>
+                              </tr>
+                          </ng-template>
+                        </p-table>
+
+                    </div>
+                </div>
+
+</div>
+
+<p-dialog  [(visible)]="display" [maximizable]="false" [closable]="false" [draggable]="false"  [modal]="true" focusOnShow="false" #dialog>
+
+    <ng-template pTemplate="header">
+       <div class="redbtn">
+
+        <button class="edtBtn" (click)="closeModal()">
+            <fa-icon class="fa-solid fa-circle-xmark" [icon]="close"></fa-icon>
+        </button>
+       </div>
+        
+        <h4 class="DialogHead">New {{selectedEvent}} Event</h4>
+    </ng-template>
+
+        <form [formGroup]="Addform" (ngSubmit)="AddNewForm()" novalidate>
+           <p class="sideHead"> - Workflow Details </p> 
+           <div class="formgroup-inline">
+                <div class="field">
+                    <label for="text" class="block mb-2" style="width:350px">Name</label>
+                    <input pInputText id="text" formControlName="wfeventname" type="text"  class="w-full" [maxLength]="150" placeholder="Enter" />
+                    <div *ngIf="Addform.get('wfeventname').touched && Addform.get('wfeventname').invalid" class="error">
+                        *Name is required
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="text" class="block mb-2" style="width:350px">Description</label>
+                    <textarea  pInputTextarea  id="text" formControlName="wfdescription" type="text"  class="w-full"  [style]="{'height':'44px'}" placeholder="Enter"></textarea>
+                    <div *ngIf="Addform.get('wfdescription').touched && Addform.get('wfdescription').invalid" class="error">
+                        *Description is required
+                    </div>
+                </div>
+            </div>
+
+            <hr class="line">
+
+            <div *ngIf="selectedEvent == 'Absence'">
+
+                <pre>-Condition</pre>
+                <div class="field grid">
+                    <label for="time" class="col-fixed" style="width:220px">Remind Me Each </label>
+                    <div class="col">
+                        <input id="time" formControlName = "rmeacht" min="0" max="59" type="number" placeholder="Enter" placeholder="(0-59)" pInputText  />
+                        <div *ngIf="Addform.get('rmeacht').touched && Addform.get('rmeacht').invalid" class="error">
+                            *Reminder field is required
+                        </div>
+                    </div>
+                </div>
+                <div class="field grid">
+                    <label for="time" class="col-fixed" style="width:220px">Item is absente for period of</label>
+                    <div class="col">
+                        <input id="time" min="0" max="59" type="number" placeholder="(0-59)" pInputText formControlName = "wfmins" /> &nbsp;
+                        <input id="time" min="0" max="59" type="number" placeholder="(0-23)" pInputText  formControlName = "wfhrs" /> &nbsp;
+                         <input id="time" min="0" max="59" type="number" placeholder="(0-31)" pInputText formControlName = "wfdays" />
+                    </div>
+                </div>
+            </div>
+
+
+            <p class="sideHead">- Action </p>
+                <div class="formgroup-inline">
+                  <div class="field">
+                    <label for="email" class="block mb-2" style="width:350px">To Email</label>
+                    <input pInputText id="email" formControlName="atoemail" placeholder="Enter" type="email" class="w-full" maxlength="255" />
+                    <div *ngIf="Addform.get('atoemail').hasError('invalidEmail') && Addform.get('atoemail').touched" class="error">
+                        *One or more email addresses are invalid
+                    </div>
+                    
+                  </div>
+
+                    <div class="field">
+                        <label for="dropdown" class="block mb-2"  style="width:350px">Subject</label>
+
+                            <input rows="2" cols="30" formControlName="asubject" pInputText class="w-full" [style]="{'height':'44px'}" placeholder="Enter" />
+                            <div *ngIf="Addform.get('asubject').touched && Addform.get('asubject').invalid" class="error">
+                                *Subject field is required
+                            </div>
+                    </div>
+            
+                    <div class="field">
+                      <label for="text" class="block mb-2"  style="width:350px">Message</label>
+
+                          <textarea pInputTextarea id="text" type="text" rows="2" cols="30" formControlName="amessage"  class="w-full" [style]="{'height':'44px'}" placeholder="Enter"></textarea>
+                          <div *ngIf="Addform.get('amessage').touched && Addform.get('amessage').invalid" class="error">
+                            *Message field is required
+                         </div>
+                    </div>
+                </div>
+
+                <hr class="line">
+
+                <p class="sideHead"> - Scheduling </p>
+                <div class="field">
+                  <label for="time" class="col-fixed" style="width:239px"> Report to be sent on &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;:</label>
+                  
+                  <p-calendar
+                  appendTo="body"
+                  id="time"
+                  formControlName="stime"
+                  timeOnly="true"
+                  [showIcon]="true"
+                  [iconDisplay]="'input'"
+                  hourFormat="24"
+                  placeholder="00:00"
+                  (onSelect)="onTimeChange($event)"
+                  (onInput)="onTimeChange($event.target.value)"
+                  [style]="{'font-size':'medium', 'border-radius':'5px', 'width':'135px'}"
+                  [ngClass]="{'error-border': Addform.get('stime')?.invalid && 
+                              (Addform.get('stime')?.dirty || Addform.get('stime')?.touched)}">
+                </p-calendar>
+                <div *ngIf="Addform.get('stime').touched && Addform.get('stime').invalid" class="error time">
+                    *Time is required
+                  </div>
+
+              
+
+                </div>
+
+
+                <div formGroupName="schedule_days">
+                  <div class="form-group">
+                    <label >Select the remainder days &nbsp;:</label>&nbsp;
+
+                    <p-checkbox formControlName="sun" [binary]="true" label="Sun"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="mon" [binary]="true" label="Mon"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="tue" [binary]="true" label="Tue"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="wed" [binary]="true" label="Wed"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="thu" [binary]="true" label="Thu"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="fri" [binary]="true" label="Fri"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="sat" [binary]="true" label="Sat"></p-checkbox>&nbsp;
+                    <div *ngIf="Addform.get('schedule_days').hasError('atLeastOneDay') && Addform.get('schedule_days').touched" class="error days">
+                      *Please select at least one day.
+                    </div>
+                  </div>
+                  
+                </div><br> <br>
+
+            <button   
+                label= ""  
+                (click)="onSubmit()"
+                class="savebutton" 
+                [disabled]="Addform.invalid" 
+                [style]="{'border-radius':'15px'}" 
+                [ngStyle]="{'cursor': Addform.invalid ? 'not-allowed' : 'pointer'}" 
+                >
+            Save
+          </button>
+
+        </form>
+
+</p-dialog>
+
+
+<p-dialog  [(visible)]="Editpopup" [maximizable]="false" [closable]="false" [draggable]="false"  [modal]="true" focusOnShow="false" #dialogs>
+
+    <ng-template pTemplate="header">
+        <div class="redbtn">
+ 
+         <button class="edtBtn" (click)="closeModal2()">
+             <fa-icon class="fa-solid fa-circle-xmark" [icon]="close"></fa-icon>
+         </button>
+        </div>
+         
+         <h4 class="DialogHead">Edit {{selectedEvent}} Event</h4>
+     </ng-template>
+
+        <form [formGroup]="Editform" (ngSubmit)="EditForm()" novalidate>
+            <p class="sideHead">- Workflow Details </p>
+           <div class="formgroup-inline">
+                <div class="field">
+                    <label for="text" class="block mb-2" style="width:350px">Name</label>
+                    <input pInputText id="text" formControlName="wfeventname" type="text"  class="w-full"/>
+                </div>
+                <div class="field">
+                    <label for="text" class="block mb-2" style="width:350px">Description</label>
+                    <textarea  pInputTextarea  id="text" formControlName="wfdescription" type="text"  class="w-full"  [style]="{'height':'44px'}"></textarea>
+                </div>
+            </div>
+
+            <hr class="line">
+
+            <div *ngIf="selectedEvent == 'Absence'">
+
+                <b>-Condition</b><br> <br>
+                <div class="field grid">
+                    <label for="time" class="col-fixed" style="width:220px">Remind Me Each </label>
+                    <div class="col">
+                        <input id="time" formControlName = "rmeacht" min="0" max="59" type="number" placeholder="(0-59)" pInputText  />
+                    </div>
+                </div>
+                <div class="field grid">
+                    <label for="time" class="col-fixed" style="width:220px">Item is absente for period of</label>
+                    <div class="col">
+                        <input id="time" min="0" max="59" type="number" placeholder="(0-59)" pInputText formControlName = "wfmins" /> &nbsp;
+                        <input id="time" min="0" max="59" type="number" placeholder="(0-23)" pInputText  formControlName = "wfhrs" /> &nbsp;
+                         <input id="time" min="0" max="59" type="number" placeholder="(0-31)" pInputText formControlName = "wfdays" />
+                    </div>
+                </div>
+            </div>
+
+
+            <p class="sideHead"> - Action </p>
+                <div class="formgroup-inline">
+                    <div class="field">
+                        <label for="email" class="block mb-2"  style="width:350px">To Email</label>
+
+                            <input pInputTextarea id="email" formControlName="atoemail" type="text" class="w-full" maxlength="255"/>
+                            <div *ngIf="Addform.get('atoemail').hasError('invalidEmail') && Addform.get('atoemail').touched">
+                                *One or more email addresses are invalid 
+                            </div>
+                            
+                    </div>
+                    <div class="field">
+                        <label for="dropdown" class="block mb-2"  style="width:350px">Subject</label>
+
+                            <textarea rows="2" cols="30" formControlName="asubject" pInputTextarea class="w-full" [style]="{'height':'44px'}"></textarea>
+                    </div>
+                    <div class="field">
+                      <label for="dropdown" class="block mb-2"  style="width:350px">Message</label>
+
+                          <textarea rows="2" cols="30" formControlName="amessage" pInputTextarea class="w-full" [style]="{'height':'44px'}"></textarea>
+                  </div>
+                </div>
+
+                <hr class="line">
+
+                <p class="sideHead" > - Scheduling </p>
+                <div class="field grid">
+                    <label for="time" class="col-fixed" style="width:239px">Report to be sent on &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; :</label>
+
+                    
+                    <p-calendar appendTo="body"
+                        id="time"
+                        formControlName="stime"
+                        [timeOnly]="true"
+                        hourFormat="24"
+                        [stepSecond]="1"
+                        [showIcon]="true"
+                        [iconDisplay]="'input'"
+                        placeholder="00:00"
+                        (onSelect)="onTimeChange($event)"
+                        [style]="{'font-size':'medium', 'border-radius':'5px', 'width':'135px'}">
+                    </p-calendar>
+                  
+                 </div>
+
+                 <div formGroupName="schedule_days">
+                  <div class="form-group">
+                    <label >Select the remainder days &nbsp;:</label>&nbsp;
+
+                    <p-checkbox formControlName="sun" [binary]="true" label="Sun"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="mon" [binary]="true" label="Mon"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="tue" [binary]="true" label="Tue"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="wed" [binary]="true" label="Wed"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="thu" [binary]="true" label="Thu"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="fri" [binary]="true" label="Fri"></p-checkbox>&nbsp;
+                    <p-checkbox formControlName="sat" [binary]="true" label="Sat"></p-checkbox>&nbsp;
+                  </div>
+                </div>
+
+
+                <button   
+                    label= ""  
+                    [disabled]="Editform.invalid" 
+                    (click)="Update(updatedData)"
+                    class="savebutton"                     
+                    [style]="{'border-radius':'15px'}" 
+                    [ngStyle]="{'cursor': Editform.invalid ? 'not-allowed' : 'pointer'}" 
+                    >
+                    Update
+                </button>
+
+        </form>
+</p-dialog>
+
+<div class="container-fluid"  >
+<!-- <div class="content-fluid"> -->
+  <span style="margin-bottom: 10px;">TICKET MANAGER</span><br>
+  <div class="optionss">
+    <div>
+      <!-- <p-dropdown   optionLabel="name" optionValue="code" placeholder="Select the Event" [style]="{'width':'200px','margin-right' :'10px'}"></p-dropdown> -->
+
+      <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-search" />
+        <input type="text" (input)="applyFilterGlobal($event, 'contains')" pInputText placeholder="-- Global Search --" style="height: 37px;
+        width:200px;
+        font-size: 14px;
+        border-radius: 5px;
+        color:rgb(82, 82, 82)
+    " />
+    </p-iconField>
+  </div>
+     <div class="exportbutton">
+      <!-- <p-button icon="pi pi-file-excel" label="Export" styleClass="p-button-raised p-button-success "  [style]="{'width':'120px','height':'37px'}" (click)="openTicket()"></p-button> -->
+     
+
+      <p-button icon="pi pi-file-excel" label="Export" styleClass="p-button-raised p-button-success "  pTooltip="XLS" tooltipPosition="bottom" size="small"  class="primebtn" (click)="exportTktExcel()" [rounded]="true"></p-button>
+      
+    </div>
+
+
+</div>
+  <div class="col-md-12 mt-4">
+    <div class="box shadow-sm">
+        <p-table  #myTables
+            id = "ticket"
+            [value]="tickets"
+            dataKey="id"
+            [(selection)]="selecteds"
+            [scrollable]="true"
+            scrollHeight="280px"
+            [loading]="loading"
+            [filterDelay]="0"
+            [globalFilterFields]="['rowIndex','tkt_ticketcode','tkt_gatewayname','tkt_description','tkt_status','tkt_issuedatetime','tkt_remarks']"
+            styleClass="p-datatable-sm"
+            [rows]="20"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Events"
+            [showCurrentPageReport]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5,10,20]"          
+            [paginator]="true"
+
+            >
+
+            <ng-template pTemplate="header" style="text-shadow: red;" >
+                <tr>
+                    <th> S.No         </th>
+                    <th pSortableColumn="tkt_ticketcode">      Ticket_id          <p-sortIcon field="tkt_ticketcode"></p-sortIcon></th>
+                    <th pSortableColumn="tkt_gatewayname"> Gateway Name <p-sortIcon field="tkt_gatewayname"></p-sortIcon></th>
+                    <th pSortableColumn="tkt_description"> Description   <p-sortIcon field="tkt_description"></p-sortIcon></th>
+                    
+                    <!-- <th pSortableColumn="tm_createdby">   Created By    <p-sortIcon field="tm_createdby"></p-sortIcon></th> -->
+                    <!-- <th pSortableColumn="tm_responsible">   Responsible Person    <p-sortIcon field="tm_responsible"></p-sortIcon></th> -->
+                    <th pSortableColumn="tkt_status">      Status        <p-sortIcon field="tkt_status"></p-sortIcon></th>
+                    <th pSortableColumn="tkt_issuedatetime">  Issued On   <p-sortIcon field="tkt_issuedatetime" ></p-sortIcon></th>
+                    <th pSortableColumn="tkt_remarks">  Remarks   <p-sortIcon field="tkt_remarks" ></p-sortIcon></th>
+                    <th > Edit</th>
+                   
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-row let-rowIndex="rowIndex +1">
+                <tr>
+                    <td> {{ rowIndex }} </td>
+                    <td> {{ row.tkt_ticketcode }}</td>
+                    
+                    <td> {{ row.tkt_gatewayname }}</td>
+                    <td> {{row.tkt_description}}</td>
+                    <!-- <td> {{ row.tm_createdby }} </td> -->
+                   
+                    <td> {{ row.tkt_ticketstatus }}</td>
+                    <td> {{ row.tkt_issuedatetime | date:'dd-MM-yyyy, HH:mm:ss' }} </td>
+                    <td> {{ row.tkt_remarks }}</td>
+                    <td>
+                        <svg id="changeColor " fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="editRow2(row)" width="30" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" preserveAspectRatio="xMidYMid meet" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(80,70) "> <svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3" id="IconChangeColor"><path d="M12 20h9" id="mainIconPathAttribute" stroke-width="1.2" stroke="#478ecd"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" id="mainIconPathAttribute" stroke="#478ecd"></path></svg> </g></svg>
+                    </td>
+                   
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td class="emptymessage" colspan="11">No Data found...</td>
+              </tr>
+          </ng-template>
+        </p-table>
+    </div>
+  </div>
+</div>
+<p-dialog  [(visible)]="displays"  [maximizable]="true" [style]="{ width: '55vw', height: '500px' }" [modal]="true"  >
+  <form [formGroup]="Addform" (ngSubmit)="AddNewForm2()" novalidate>
+     <pre><b>Add Tickets</b></pre>
+     <div class="formgroup-inline">
+          <!-- <div class="field">
+            <label for="tkt_ticketcode" class="block mb-2" style="width:350px" ng-model="tkt_ticketcode">Code</label>
+            <input pInputText id="tkt_ticketcode" [(ngModel)]="code" formControlName="tkt_ticketcode" type="text" class="w-full" readonly />
+          </div>
+          <div class="field">
+              <label for="text" class="block mb-2" style="width:350px">Description</label>
+              <input  pInputTextarea  id="tm_description" formControlName="tm_description" type="text"  class="w-full"  [style]="{'height':'50px'}">
+          </div>
+          <div class="field">
+            <label for="text" class="block mb-2" style="width:350px">Created On</label>
+            <p-calendar  [showIcon]="true" id="tm_createdon" formControlName="tm_createdon" dateFormat="yy-mm-dd"> </p-calendar>
+        </div>
+        <div class="field">
+          <label for="text" class="block mb-2" style="width:350px">Created By</label>
+          <input  pInputText  id="tm_createdby" formControlName="tm_createdby" type="text"  class="w-full"  [style]="{'height':'50px'}">
+      </div> -->
+      <div class="field">
+        <label for="text" class="block mb-2" style="width:350px">Status</label>
+        <input  pInputText  id="tkt_status" formControlName="tkt_status" type="text"  class="w-full"  [style]="{'height':'50px'}" />
+    </div>        
+      <div class="field">
+      <label for="text" class="block mb-2" style="width:350px">Remarks</label>
+      <input  pInputText  id="tkt_remarks" formControlName="tkt_remarks" type="text"  class="w-full"  [style]="{'height':'50px'}">
+  </div>
+      </div>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" id="savebutton" [disabled]="Addform.valid"></button>
+  </form>
+
+</p-dialog>
+
+
+<p-dialog  [(visible)]="Editpopup2" [draggable]="false" [closable]="false" [modal]="true" focusOnShow="false" >
+
+    <ng-template pTemplate="header">
+        <button class="edtBtn" (click)="closeModal3()"><fa-icon class="fa-solid fa-circle-xmark" [icon]="close"></fa-icon>
+        </button>
+
+        <h5 class="DialogHeads">Edit Ticket</h5>
+    </ng-template>
+
+  <form [formGroup]="Editform2" (ngSubmit)="EditForm2()" novalidate>
+   
+     <div class="formgroup">
+          
+
+      <div class="field mt-4">
+       
+        <label for="text" style="width:100px">Status</label> &nbsp;
+        <input  pInputText  id="tkt_status" formControlName="tkt_status" type="text" [style]="{'width':'180px','height':'37px'}"  />
+
+        <div *ngIf="Editform2.get('tkt_status')?.invalid && (Editform2.get('tkt_status')?.dirty || Editform2.get('tkt_status')?.touched)" class="errors">
+            <div *ngIf="Editform2.get('tkt_status')?.errors!required">
+              *Status is required
+            </div>
+        </div>
+    
+       </div>        
+      <div class="field mt-4">
+        <label for="text" style="width:100px">Remarks</label> &nbsp;
+        <input  pInputText  id="tkt_remarks" formControlName="tkt_remarks" type="text" [style]="{'width':'180px','height':'37px'}">
+     
+        <div *ngIf="Editform2.get('tkt_remarks')?.invalid && (Editform2.get('tkt_remarks')?.dirty || Editform2.get('tkt_remarks')?.touched)" class="errors">
+            <div *ngIf="Editform2.get('tkt_remarks')?.errors!required">
+            *Remarks is required
+            </div>
+        </div>
+      </div>
+    </div>
+   
+      <button   
+      label= ""  
+      
+      class="savebutton" 
+      [disabled]="this.Editform2.invalid" 
+      [style]="{'border-radius':'15px'}" 
+      [ngStyle]="{'cursor': Editform2.invalid ? 'not-allowed' : 'pointer'}" 
+      >
+      Update
+  </button>
+
+   
+  </form>
+
+</p-dialog>
+
+
+

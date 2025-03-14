@@ -1,0 +1,144 @@
+
+.map-view {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#pathMap {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.container{
+  margin-left: 60px; /* Sidebar width */
+  margin-top: 66px; /* Topbar height */
+  /* // margin-bottom: 45px; */
+  padding-left: 10px;
+  height: 87vh;
+  padding-top: 2px;
+  background-color: #f9f9f9;
+}
+.report-container{
+  position: relative;
+  top: 3rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.first{
+  display: flex;
+  justify-content: space-evenly;
+  align-content: stretch;
+  // align-items: center;
+}
+
+label{
+  margin-right: 2rem;
+}
+
+.lables{
+  margin-right:2.5rem !important;
+}
+
+.dropdown{
+  margin-right: 2rem;
+  width: 10vw;
+}
+
+.seperate{
+  display: flex;
+  flex-direction: column;
+}
+
+.p-dialog-footer{
+  margin-top: 2rem;
+}
+
+::ng-deep .p-dropdown-label {
+  font-size: small;
+  display: block;
+  white-space: nowrap;
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  height: 36px !important;
+  width: 127px !important;
+  padding: 10px 10px 10px 10px !important;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.errors {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0px;
+  position: relative;
+  text-align: left;
+  left: 125px;
+  top: 6px;
+  display: flex;
+  /* top: 2rem; */
+  font-size: 12px;
+  opacity: 1;
+  transition: opacity 0.3s;
+  animation-name:shake;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0px;
+  position: relative;
+  text-align: left;
+  left: 125px;
+  top: -10px;
+  display: flex;
+  /* top: 2rem; */
+  font-size: 12px;
+  opacity: 1;
+  transition: opacity 0.3s;
+  animation-name:shake;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+
+::ng-deep .error-border {
+  .p-dropdown {
+    border: 1px solid red !important;
+  }
+
+  .p-dropdown .p-dropdown-trigger {
+    border-color: red !important;
+  }
+
+  .p-dropdown .p-dropdown-label {
+    border-color: red !important;
+  }
+}
+

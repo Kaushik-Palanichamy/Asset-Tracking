@@ -1,0 +1,32 @@
+[
+    {
+        "lc_id": 1,
+        "lc_code": "LOCATION_1",
+        "lc_name": "MATE CHENNAI",
+        "lc_createdby": "Gokulraj R",
+        "lc_createdon": "2022-09-02",
+        "lc_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        }
+    }
+]
+        
+       
+        
+
+
+
+       
+
+    
+  
+
+

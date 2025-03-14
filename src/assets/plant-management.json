@@ -1,0 +1,13 @@
+[
+    {
+        "pmid": 1,
+        "pmcode": "PLANT_0001",
+        "pmcompanyname": "MATE U3",
+        "pmmaxsites": 10,
+        "pmmaxarea": 10,
+        "pmmaxzone": 10,
+        "pmmaxgateway": 2,
+        "pmmaxbeacons": 1000,
+        "pmmaxusers": 5
+    }
+]

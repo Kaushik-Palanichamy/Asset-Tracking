@@ -1,0 +1,102 @@
+[
+    {
+        "udid": 1,
+        "udusercode": "USER_1",
+        "udusername": "Gokulraj R",
+        "udtype": "BASE ADMIN",
+        "udfirstName": "GOKULRAJ",
+        "udlastName": "RAJASEKARAN(MATE)",
+        "udemail": "Gokulraj.Rajasekaran@motherson.com",
+        "udpassword": "Gokul@123",
+        "udconfirmpassword": "Gokul@123",
+        "udaddress1": "Chennai",
+        "udaddress2": "Chennai",
+        "udplantname": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "udlanguage": "English"
+    },
+    {
+        "udid": 2,
+        "udusercode": "USER_2",
+        "udusername": "Dhanajeyan, Balachandiran (MAT",
+        "udtype": "BASE ADMIN",
+        "udfirstName": "Balachandiran ",
+        "udlastName": "Dhanajeyan",
+        "udemail": "Balachandiran.Dhanajeyan@motherson.com",
+        "udpassword": "Mate@2022",
+        "udconfirmpassword": "Mate@2022",
+        "udaddress1": "Chennai",
+        "udaddress2": "Chennai",
+        "udplantname": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "udlanguage": "English"
+    },
+    {
+        "udid": 3,
+        "udusercode": "USER_3",
+        "udusername": "Govindan, Dhakshnamurthy ",
+        "udtype": "BASE ADMIN",
+        "udfirstName": "Dhakshnamurthy ",
+        "udlastName": "Govindan",
+        "udemail": "Dhakshanamurthy.Govindan@motherson.com",
+        "udpassword": "Mate@2022",
+        "udconfirmpassword": "Mate@2022",
+        "udaddress1": "Chennai",
+        "udaddress2": "Chennai",
+        "udplantname": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "udlanguage": "English"
+    },
+    {
+        "udid": 4,
+        "udusercode": "USER_4",
+        "udusername": "Krishnan, Sivarama (MATE) ",
+        "udtype": "BASE ADMIN",
+        "udfirstName": "SivaramaKrishnan",
+        "udlastName": " ",
+        "udemail": "sivarama.krishnan01@motherson.com",
+        "udpassword": "Mate@123",
+        "udconfirmpassword": "Mate@123",
+        "udaddress1": "Chennai",
+        "udaddress2": "Chennai",
+        "udplantname": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "udlanguage": "English"
+    }
+]

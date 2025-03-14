@@ -1,0 +1,214 @@
+<!-- <div *ngIf="show" class="divloader">
+    <div class="loader"></div>
+</div> -->
+
+<div class="container-fluid" >
+<div class="header">
+    <p-button icon="pi pi-check"   label="Add" class="space" role="button" styleClass="p-button-raised " (click)="showDialog()" severity="info" size="small" class="primebtn" [rounded]="true" />
+
+    <p-button  icon="pi pi-trash" class="space" label="Delete" role="button" styleClass="p-button-raised "  [disabled]="!selected.length" (click)="deleteRow()" severity="danger" size="small" class="primebtn" [rounded]="true" />
+</div>
+
+
+<div class="card">
+    <p-table
+        [value]="readerManagement"
+        [(selection)]="selected"
+        styleClass="p-datatable-sm"
+        [tableStyle]="{ 'min-width': '60rem' }"
+        scrollHeight="60vh"
+        [scrollable]="true"
+        paginatorPosition="bottom"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5,10,20]"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Entries"
+        
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+                <th>S.No</th>
+                <th>Gateway Name</th>
+                <th>Company</th>
+                <th>MAC Address</th>
+                <th>Manufacturer</th>
+                <th>Web Key</th>
+                <th>Status</th>
+                <th>Zone</th>
+                <th>Condition</th>
+                <th>EDIT</th>
+                <!-- <th ><i class="pi pi-plus-circle"  (click)="showDialog()"></i></th> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="i" ></p-tableCheckbox>
+                </td>
+                <td>{{rowIndex}}</td>
+                <td>{{i.bg_gatewayname}}</td>
+                <td>{{i.bg_companyid.pmcompanyname }}</td>
+                <td>{{i.bg_macaddress}}</td>
+                <td>{{i.bg_manufacturer}}</td>
+                <td>{{i.bg_webkey}}</td>
+                <td>{{i.bg_statusid.st_name}}</td>
+                <td>{{i.bg_zoneid.zn_name}}</td>
+                <td>{{i.bg_conditionid.cdn_name}}</td>
+                <td>
+                    <svg id="changeColor " fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="editRow(i)" width="30" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" preserveAspectRatio="xMidYMid meet" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(80,70) "> <svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3" id="IconChangeColor"><path d="M12 20h9" id="mainIconPathAttribute" stroke-width="1.2" stroke="#478ecd"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" id="mainIconPathAttribute" stroke="#478ecd"></path></svg> </g></svg>
+
+
+                    <!-- <svg id="changeColor" fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" (click)="deleteRow(i)" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="25" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(85, 75)"> <svg xmlns="http://www.w3.org/2000/svg" width="199.8" height="199.8" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" id="mainIconPathAttribute" fill="#f50505"></path> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" id="mainIconPathAttribute" fill="#f50505"></path> </svg> </g></svg> -->
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td class="emptymessage" colspan="11">No Data found...</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</div>
+
+<p-dialog  [(visible)]="display" [draggable]="false" [closable]="false" [modal]="true" focusOnShow="false">
+
+    <ng-template pTemplate="header">
+        <button class="edtBtn" (click)="closeModal()"><fa-icon class="fa-solid fa-circle-xmark" [icon]="close"></fa-icon>
+        </button>
+    </ng-template>
+
+    <form [formGroup]="Addform"  novalidate>
+        <div class="formgroup-inline">
+            <div class="field">
+                <label for="name"  class="block mb-2">Gateway Name</label>
+                <input type="text" maxlength="25"  pInputText class="flex-auto" id="name" formControlName="bg_gatewayname"  [style]="{'width':'180px'}" placeholder="Enter" required >
+                <div *ngIf="Addform.get('bg_gatewayname')?.invalid && (Addform.get('bg_gatewayname')?.dirty || Addform.get('bg_gatewayname')?.touched)" class="error">
+                    <div *ngIf="Addform.get('bg_gatewayname')?.errors!required">
+                      *Gateway name is required
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label for="name"  class="block mb-2">Location</label>
+                <p-dropdown
+                appendTo="body"
+                [options]="spots"
+                [(ngModel)]="selectedspot"
+                optionLabel="name"
+                optionValue="code"
+                formControlName="bg_inorout"
+                [style]="{'width':'180px','height':'37px'}"
+                placeholder="Select"
+                [ngClass]="{'error-border': Addform.get('bg_inorout')?.invalid && (Addform.get('bg_inorout')?.dirty || Addform.get('bg_inorout')?.touched)}"
+                />
+                <div *ngIf="Addform.get('bg_inorout')?.invalid && (Addform.get('bg_inorout')?.dirty || Addform.get('bg_inorout')?.touched)" class="error">
+                    <div *ngIf="Addform.get('bg_inorout')?.errors!required">
+                      *Location name is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="field">
+                <label for="name"  class="block mb-2">Manufacturer</label>
+                <input type="text" maxlength="25"  pInputText class="flex-auto" id="name" formControlName="bg_manufacturer"  [style]="{'width':'180px'}" placeholder="Enter" required pInputText-sm>
+                <div *ngIf="Addform.get('bg_manufacturer')?.invalid && (Addform.get('bg_manufacturer')?.dirty || Addform.get('bg_manufacturer')?.touched)" class="error">
+                    <div *ngIf="Addform.get('bg_manufacturer')?.errors!required">
+                      *Manufacturer field is required
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label for="name"  class="block mb-2">Mac Address</label>
+                <input type="text" maxlength="12" pInputText pKeyFilter="alphanum" class="flex-auto" id="name" formControlName="bg_macaddress"  [style]="{'width':'180px'}" placeholder="Enter" required pInputText-sm>
+                <div *ngIf="Addform.get('bg_macaddress')?.invalid && (Addform.get('bg_macaddress')?.dirty || Addform.get('bg_macaddress')?.touched)" class="error">
+                    <div *ngIf="Addform.get('bg_macaddress')?.errors!required">
+                      *Mac address field is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <pre style="text-align:center; font-weight:600; font-size: 18px; color:#0b8dbd">Update Item Properties</pre>
+
+        <div class="formgroup-inline d-flex justify-content-center">
+            <div class="field">
+                <label for="name"  class="block mb-2">Status</label>
+                <p-dropdown
+                    appendTo="body"
+                    placeholder="Select"
+                    formControlName="bg_statusid"
+                    [options]="status"
+                    optionLabel="st_name"
+                    optionValue="st_id"
+                    [style]="{'width':'180px','height':'37px'}"
+                    [ngClass]="{'error-border': Addform.get('bg_statusid')?.invalid && (Addform.get('bg_statusid')?.dirty || Addform.get('bg_statusid')?.touched)}"
+
+                    >
+                </p-dropdown>
+
+                 <div *ngIf="Addform.get('bg_statusid')?.invalid && (Addform.get('bg_statusid')?.dirty || Addform.get('bg_statusid')?.touched)" class="error">
+                    <div *ngIf="Addform.get('bg_statusid')?.errors!required">
+                      *Status field is required
+                    </div>
+                 </div>
+            </div>
+            <div class="field">
+                <label for="name"  class="block mb-2">Zone</label>
+                <p-dropdown
+                 appendTo="body"
+                 placeholder="Select"
+                 formControlName="bg_zoneid"
+                 [options]="zones"
+                 optionLabel="zn_name"
+                 optionValue="zn_id"
+                 [style]="{'width':'180px','height':'37px'}"
+                 [ngClass]="{'error-border': Addform.get('bg_zoneid')?.invalid && (Addform.get('bg_zoneid')?.dirty || Addform.get('bg_zoneid')?.touched)}"
+                 >
+                </p-dropdown>
+
+                <div *ngIf="Addform.get('bg_zoneid')?.invalid && (Addform.get('bg_zoneid')?.dirty || Addform.get('bg_zoneid')?.touched)" class="error">
+                    <div *ngIf="Addform.get('bg_zoneid')?.errors!required">
+                      *Zone field is required
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label for="name"  class="block mb-2">Condition</label>
+                <p-dropdown
+                  appendTo="body"
+                  placeholder="Select"
+                  formControlName="bg_conditionid"
+                  [options]="conditions"
+                  optionLabel="cdn_name"
+                  optionValue="cdn_id"
+                  [style]="{'width':'180px','height':'37px'}"
+                  [ngClass]="{'error-border': Addform.get('bg_conditionid')?.invalid && (Addform.get('bg_conditionid')?.dirty || Addform.get('bg_conditionid')?.touched)}"
+                  >
+                </p-dropdown>
+
+                <div *ngIf="Addform.get('bg_conditionid')?.invalid && (Addform.get('bg_conditionid')?.dirty || Addform.get('bg_conditionid')?.touched)" class="error">
+                    <div *ngIf="Addform.get('bg_conditionid')?.errors!required">
+                      *Condition field is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <!-- <button pButton pRipple label={{ModalType}} icon="pi pi-check" class="p-button-text" id="savebutton" (click)="OnSubmit()" [disabled]="this.Addform.invalid"></button> -->
+            <button   
+                (click)="OnSubmit()"  
+                class="savebutton" 
+                [disabled]="this.Addform.invalid" 
+                [style]="{'border-radius':'15px'}" 
+                [ngStyle]="{'cursor': Addform.invalid ? 'not-allowed' : 'pointer'}" 
+                >
+                {{ModalType}}
+            </button>
+        </p-footer>
+    </form>
+</p-dialog>
+

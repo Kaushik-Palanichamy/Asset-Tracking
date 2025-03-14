@@ -1,0 +1,746 @@
+<div class="container-fluid">
+
+  <div *ngIf="showtable" class="divloader">
+    <div class="loader"></div>
+  </div>
+  <!-- <app-loader *ngIf="showtable"></app-loader> -->
+
+  <div class="" *ngIf="!showtable">
+
+    <div class="tabletitle">
+
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-search" />
+          <input type="text" (input)="applyFilterGlobal($event, 'contains')" pInputText placeholder="-- Global Search --" style="height: 31px;
+          font-size: 14px;
+          border-radius: 5px;
+          color:rgb(82, 82, 82)
+      " />
+      </p-iconField>
+
+
+      <h3 style="font-weight: bold; color:#fb6262" > Asset Configuration Details</h3>
+
+
+      <div class="expBtn">
+
+          <p-button icon="pi pi-check"   label="Add" class="space" role="button" styleClass="p-button-raised " (click)="openNew()" severity="info" size="small" class="primebtn" [rounded]="true" />
+
+        <div class="" >
+
+        <p-button  icon="pi pi-trash" class="space" label="Delete" role="button" styleClass="p-button-raised "  [disabled]="!selectedItem.length" (click)="deleteRow()" severity="danger" size="small" class="primebtn"  [rounded]="true" />
+        </div>
+
+        <div class="">
+          <p-button icon="pi pi-file-excel" class="space" label="Export" styleClass="p-button-raised p-button-success"  pTooltip="XLS" tooltipPosition="bottom" (click)="exportXls()" size="small" class="primebtn" [rounded]="true"></p-button>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="table-Container">
+
+    <p-table
+        #dt
+        id="item"
+        [value]="tableData.item_data"
+        [(selection)]="selectedItem"
+        [rows]="100"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Items"
+        [paginator]="true"
+        [scrollable]="true"
+        scrollHeight="70vh"
+        [loading]="loading"
+        [filterDelay]="0"
+        [globalFilterFields]="['im_name','im_assetcode','bcn_macid', 'cm_name','cdn_name','st_name','zn_name','im_temp','im_btry_prcnt','im_lastupdated']"
+        styleClass="p-datatable-gridlines p-datatable-sm"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[100,500,1000,1500,2000]"
+    >
+    <!-- currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Items" -->
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th><p-tableHeaderCheckbox  ></p-tableHeaderCheckbox></th>
+            <th pSortableColumn="sno" >       S.No                </th>
+            <th pSortableColumn="im_name" >   Item Name           <p-sortIcon field="im_name"></p-sortIcon> </th>
+            <th pSortableColumn="im_assetcode" > Asset Code       <p-sortIcon field="im_assetcode"></p-sortIcon></th>
+            <th pSortableColumn="bcn_code" > MAC Address  <p-sortIcon field="bcn_macid"></p-sortIcon></th>
+            <th pSortableColumn="cm_name" > Category     <p-sortIcon field="cm_name"></p-sortIcon> </th>
+            <th pSortableColumn="cdn_name" > Condition  <p-sortIcon field="cdn_name"></p-sortIcon></th>
+            <th pSortableColumn="st_name" > Status                <p-sortIcon field="st_name"></p-sortIcon></th>
+            <th pSortableColumn="zn_name" > Current Location <p-sortIcon field="zn_name"></p-sortIcon></th>
+            <!-- <th pSortableColumn="im_zonehomeid.zn_name" > Home Location       <p-sortIcon field="im_zonehomeid.zn_name"></p-sortIcon></th> -->
+            <th pSortableColumn="im_temp" > Temp                      <p-sortIcon field="im_temp"></p-sortIcon></th>
+            <th pSortableColumn="im_btry_prcnt" > Battery %     </th>
+            <th pSortableColumn="im_lastupdated" > Last update        <p-sortIcon field="im_lastupdated"></p-sortIcon></th>
+            <th>Edit</th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowIndex="rowIndex +1" let-item>
+        <tr  >
+            <td>
+                <p-tableCheckbox [value]="item" ></p-tableCheckbox>
+            </td>
+            <td>
+              {{ rowIndex  }}
+            </td>
+
+            <td class="itemcell" pTooltip="{{item.im_name}}" tooltipPosition="top">
+              {{ item.im_name }}
+            </td>
+
+            <td  *ngIf="(item.im_assetcode === 'False') || (item.im_assetcode == null)" > -</td>
+            <td  *ngIf="item.im_assetcode !== 'False' && (item.im_assetcode !== null)" class="assetcell" pTooltip="{{item.im_assetcode}}" tooltipPosition="top">
+              {{item.im_assetcode}}
+            </td>
+
+            <td>
+               {{ item.im_beaconid.bcn_code}}
+            </td>
+
+            <td class="categorycell" pTooltip="{{item.im_categoryid.cm_name}}" tooltipPosition="top">
+              {{ item.im_categoryid.cm_name }}
+            </td>
+
+              <!-- <td class="conditioncell" pTooltip="{{item.cdn_name}}" tooltipPosition="top">
+                {{ item.cdn_name }}
+                <i *ngIf="item.cdn_name === 'Working Active'" class="pi pi-check-circle" style="color: green; margin-left: 10px; font-size: .8rem "></i>
+              </td> -->
+            <td class="conditioncell" pTooltip="{{item.im_conditionid.cdn_name}}" tooltipPosition="top">
+              {{ item.im_conditionid.cdn_name }}
+              <img *ngIf="item.im_conditionid.cdn_name === 'Working Active'" src="../../assets/icons/Table/Available.png" alt="Working Active" style="width: 13px; height: 13px; margin-left: 15px;">
+            </td>
+
+            <td  [ngClass]="{
+              'production': item.im_statusid.st_name === 'In Production',
+              'dispatched': (item.im_statusid.st_name === 'Dispatched')}">
+              {{ item.im_statusid.st_name }}
+              <img *ngIf="item.im_statusid.st_name === 'In Storage Area'" src="../../assets/icons/Table/dispatch.png" alt="Dispatch" style="width: 13px; height: 13px; margin-left: 25px;">
+              <img *ngIf="item.im_statusid.st_name === 'In Production'" src="../../assets/icons/Table/Shipping.png" alt="production" style="width: 13px; height: 13px; margin-left: 15px;">
+            </td>
+
+            <td class="currloc"
+            [ngClass]="{
+              'in1': item.im_zonecurrentid.zn_name === 'MATE-B IN 1',
+              'out1': (item.im_zonecurrentid.zn_name === 'MATE-B OUT 1'),
+              'in2': item.im_zonecurrentid.zn_name === 'MATE-B IN 2',
+              'out2': item.im_zonecurrentid.zn_name === 'MATE-B OUT 2'}">
+              {{ item.im_zonecurrentid.zn_name}}
+            </td>
+
+            <!-- <td class="homeloc"> {{ item.im_zonehomeid.zn_name }}    </td> -->
+            <td>
+              {{ item.im_temp }}
+              <fa-icon *ngIf="item.im_temp >= 0  " [icon]="temperature" class="fa-beat-fade" style="color: red; width:13px; height: 10px; float:right"></fa-icon>
+            </td>
+
+            <td>
+              {{ item.im_btry_prcnt }}
+              <fa-icon *ngIf="item.im_btry_prcnt == 100  " [icon]="batteryfull" class="fa-shake" style="color: green; width:13px; height: 30px; margin-left: 15px; "></fa-icon>
+
+              <fa-icon *ngIf="item.im_btry_prcnt >= 50 && item.im_btry_prcnt < 100 " [icon]="battery" class="fa-shake" style="color: orange; width:13px; height: 30px; margin-left: 15px; "></fa-icon>
+              <fa-icon *ngIf="item.im_btry_prcnt == 0  " [icon]="batteryempty" style="color: red; width:13px; height: 30px; margin-left: 25px; "></fa-icon>
+            </td>
+
+            <!-- <td> {{item.last_updated | slice:0:10}} {{item.im_lastupdated | slice:11:19}}</td> -->
+            <td>
+              {{ item.im_lastupdated |  date:'dd-MM-yyyy, HH:mm:ss'  }}
+            </td>
+
+            <td>
+              <!-- <p-menu #menu [model]="actionRow" [popup]="true" ></p-menu>
+              <i class="pi pi-ellipsis-v" (click)="menu.toggle($event)"></i> -->
+
+               <!-- <button (click)="editItems(item)">click</button> -->
+              <svg id="changeColor " fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="editItems(item)" width="25" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="20" preserveAspectRatio="xMidYMid meet" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(80,70) ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="261" height="261" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3" id="IconChangeColor"><path d="M12 20h9" id="mainIconPathAttribute" stroke-width="1.2" stroke="#478ecd"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" id="mainIconPathAttribute" stroke="#478ecd"></path></svg>
+               </g></svg>
+            </td>
+        </tr>
+
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+          <td class="emptymessage" colspan="13">No Data found...</td>
+      </tr>
+  </ng-template>
+    </p-table>
+    </div>
+
+      <!-- </div> -->
+  </div>
+
+  <!-- <img class="img" src="assets/assetbg.PNG" height="62%" width="80%"> -->
+
+
+  <p-dialog [(visible)]="itemDialog" [breakpoints]="{ '1000px': '60vw', }" [style]="{width: '72vw',height: '100%'}" [maximizable]="false" [closable]="false" [draggable]="false"  [modal]="true" focusOnShow="false" >
+
+
+    <ng-template pTemplate="header">
+      <div class="redbtn">
+       <!-- <button class="edtBtn1" (click)="toggleMaximize(dialog)">
+           <fa-icon class="fa-solid fa-window-maximize" [icon]="maximize" ></fa-icon>
+       </button> -->
+
+       <button class="edtBtn" (click)="closeModal()">
+           <fa-icon class="fa-solid fa-circle-xmark" [icon]="close"></fa-icon>
+       </button>
+      </div>
+
+       <h4 class="DialogHead"> Asset Details </h4>
+   </ng-template>
+
+  <hr class="line1">
+    <div class="dialogdiv">
+
+
+      <div class="formdiv">
+
+      <form [formGroup]="Addform" class="form" >
+
+        <div class="form-control">
+          <label for="name">Asset Name </label>
+          <input  class="input" maxlength="30" type="text" formControlName="im_name" placeholder="Enter" pInputText required>
+          <div *ngIf="Addform.get('im_name')?.invalid && (Addform.get('im_name')?.dirty || Addform.get('im_name')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_name')?.errors!required">
+              *Asset name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">Asset Code</label>
+          <input class="input" maxlength="30" type="text" formControlName="im_assetcode" placeholder="Enter" pInputText required>
+          <div *ngIf="Addform.get('im_assetcode')?.invalid && (Addform.get('im_assetcode')?.dirty || Addform.get('im_assetcode')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_assetcode')?.errors!required">
+              *Asset code is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">Category</label>
+          <p-dropdown
+            placeholder="Select"
+            [(ngModel)]="SelectedCategory"
+            formControlName="im_categoryid"
+            [options]="categories"
+            optionLabel="cm_name"
+            optionValue="cm_id"
+          
+            [style]="{'width':'212px','height':'37px','font-size':'14px'}"
+            [ngClass]="{'error-border': Addform.get('im_categoryid')?.invalid && (Addform.get('im_categoryid')?.dirty || Addform.get('im_categoryid')?.touched)}">
+          </p-dropdown>
+
+          <!-- <select formControlName="im_categoryid" [(ngModel)]="SelectedCategory">
+            <option value = "">--Select--</option>
+            <option *ngFor="let i of categories" [value]="i.im_categoryid">{{i.cm_name}}</option>
+          </select> -->
+
+          <div *ngIf="Addform.get('im_categoryid')?.invalid && (Addform.get('im_categoryid')?.dirty || Addform.get('im_categoryid')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_categoryid')?.errors!required">
+              *Category is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">Status</label>
+          <p-dropdown
+            placeholder="Select"
+            [(ngModel)]="SelectedStatus"
+            formControlName="im_statusid"
+            [options]="status"
+            optionLabel="st_name"
+            optionValue="st_id"
+            [style]="{'width':'212px','height':'37px'}"
+            [ngClass]="{'error-border': Addform.get('im_statusid')?.invalid && (Addform.get('im_statusid')?.dirty || Addform.get('im_statusid')?.touched)}"
+           >
+          </p-dropdown>
+
+          <!-- <select formControlName="im_statusid" [(ngModel)]="SelectedStatus">
+            <option value = "">--Select--</option>
+            <option *ngFor="let i of status" [value]="i.st_id">{{i.st_name}}</option>
+          </select> -->
+
+          <div *ngIf="Addform.get('im_statusid')?.invalid && (Addform.get('im_statusid')?.dirty || Addform.get('im_statusid')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_statusid')?.errors!required">
+              *Status is required
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+      <form [formGroup]="Addform" class="form" >
+
+
+
+        <div class="form-control">
+          <label for="name">Current Location</label>
+
+          <p-dropdown
+            placeholder="Select"
+            [(ngModel)]="SelectedCurrLoc"
+            formControlName="im_zonecurrentid"
+            [options]="locations"
+            optionLabel="zn_name"
+            optionValue="zn_id"
+            [style]="{'width':'212px','height':'37px'}"
+            [ngClass]="{'error-border': Addform.get('im_zonecurrentid')?.invalid && (Addform.get('im_zonecurrentid')?.dirty || Addform.get('im_zonecurrentid')?.touched)}">
+          </p-dropdown>
+
+          <!-- <select formControlName="im_zonecurrentid" [(ngModel)]="SelectedCurrLoc" class="custom-dropdown">
+            <option value = "">--Select--</option>
+            <option *ngFor="let i of locations" [value]="i.zn_id">{{i.zn_name}}</option>
+          </select> -->
+
+          <div *ngIf="Addform.get('im_zonecurrentid')?.invalid && (Addform.get('im_zonecurrentid')?.dirty || Addform.get('im_zonecurrentid')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_zonecurrentid')?.errors!required">
+              *Current location is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">Home Location</label>
+
+          <p-dropdown
+            placeholder="Select"
+            [(ngModel)]="SelectedHomeLoc"
+            formControlName="im_zonehomeid"
+            [options]="locations"
+            optionLabel="zn_name"
+            optionValue="zn_id"
+            [style]="{'width':'212px','height':'37px'}"
+            [ngClass]="{'error-border': Addform.get('im_zonehomeid')?.invalid && (Addform.get('im_zonehomeid')?.dirty || Addform.get('im_zonehomeid')?.touched)}">
+          </p-dropdown>
+
+          <!-- <select formControlName="im_zonehomeid"  [(ngModel)]="SelectedHomeLoc">
+            <option value = "">--Select--</option>
+            <option *ngFor="let i of locations" [value]="i.zn_id">{{i.zn_name}}</option>
+          </select> -->
+
+          <div *ngIf="Addform.get('im_zonehomeid')?.invalid && (Addform.get('im_zonehomeid')?.dirty || Addform.get('im_zonehomeid')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_zonehomeid')?.errors!required">
+              *Home location is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">MAC Address</label>
+          <input class="input" maxlength="12" type="text" formControlName="im_macadd" pKeyFilter="alphanum" placeholder="Enter" pInputText required>
+          <div *ngIf="Addform.get('im_macadd')?.invalid && (Addform.get('im_macadd')?.dirty || Addform.get('im_macadd')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_macadd')?.errors!required">
+              *Mac address is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">Condition </label>
+          <p-dropdown
+            placeholder="Select"
+            [(ngModel)]="SelectedCondi"
+            formControlName="im_conditionid"
+            [options]="conditions"
+            optionLabel="cdn_name"
+            optionValue="cdn_id"
+            [style]="{'width':'212px','height':'37px'}"
+            [ngClass]="{'error-border': Addform.get('im_conditionid')?.invalid && (Addform.get('im_conditionid')?.dirty || Addform.get('im_conditionid')?.touched)}">
+          </p-dropdown>
+
+          <!-- <select formControlName="im_conditionid"  [(ngModel)]="SelectedCondi" >
+            <option value = "">--Select--</option>
+            <option *ngFor="let i of conditions" [value]="i.cdn_id">{{i.cdn_name}}</option>
+          </select> -->
+
+          <div *ngIf="Addform.get('im_conditionid')?.invalid && (Addform.get('im_conditionid')?.dirty || Addform.get('im_conditionid')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_conditionid')?.errors!required">
+              *Condition is required
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="form-control">
+          <label for="name">Active</label>
+          <div class="checkbox-con">
+            <input id="checkbox" type="checkbox" formControlName="im_active">
+          </div>
+          <div *ngIf="Addform.get('im_active')?.invalid && (Addform.get('im_active')?.dirty || Addform.get('im_active')?.touched)" class="error">
+            <div *ngIf="Addform.get('im_active')?.errors!required">
+              *action field is required
+            </div>
+          </div>
+        </div> -->
+
+      </form>
+
+      </div>
+
+  </div>
+
+  <p-tabView  [scrollable]="true" orientation="left"  >
+
+    <!-- GENERAL TAB -->
+
+
+    <!-- PURCHASE TAB -->
+    <!-- <p-tabPanel>
+      <ng-template pTemplate="header">
+        <div class="tabview">
+          <fa-icon [icon]="purchaseHistory"></fa-icon>
+          <span>PURCHASE HISTORY</span>
+        </div>
+      </ng-template>
+
+      <div class="purchasediv">
+
+        <form [formGroup]="Addform" class="form">
+
+          <div class="form-control">
+            <label for="name">Purchase Date</label>
+            <input class="input" type="date" formControlName="im_purchaseDate"  [style]="{'width':'212px'}"  placeholder="Enter" pInputText required>
+            <div *ngIf="Addform.get('im_purchaseDate')?.invalid && (Addform.get('im_purchaseDate')?.dirty || Addform.get('im_purchaseDate')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_purchaseDate')?.errors!required">
+                *Purchase date is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="name">Purchase From</label>
+            <input class="input" type="text" maxlength="30" formControlName="im_purchaseFrom" placeholder="Enter" pInputText required>
+            <div *ngIf="Addform.get('im_purchaseFrom')?.invalid && (Addform.get('im_purchaseFrom')?.dirty || Addform.get('im_purchaseFrom')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_purchaseFrom')?.errors!required">
+                *Purchase from is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="name">Warranty Period (In Months)</label>
+            <input class="input"  pKeyFilter="num" formControlName="im_warrantyPeriod" placeholder="Enter" pInputText required>
+            <div *ngIf="Addform.get('im_warrantyPeriod')?.invalid && (Addform.get('im_warrantyPeriod')?.dirty || Addform.get('im_warrantyPeriod')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_warrantyPeriod')?.errors!required">
+                *Warranty period is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="name">Purchase Cost (INR)</label>
+            <input class="input" formControlName="im_purchaseCost" placeholder="Enter" pKeyFilter="money" pInputText required>
+            <div *ngIf="Addform.get('im_purchaseCost')?.invalid && (Addform.get('im_purchaseCost')?.dirty || Addform.get('im_purchaseCost')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_purchaseCost')?.errors!required">
+                *Purchase cost is required
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+
+        <form [formGroup]="Addform" class="form"  >
+          <div class="form-control">
+            <label for="name">Replacement Cost (INR)</label>
+            <input class="input" formControlName="im_replacementCost" pKeyFilter="money" placeholder="Enter" pInputText required>
+            <div *ngIf="Addform.get('im_replacementCost')?.invalid && (Addform.get('im_replacementCost')?.dirty || Addform.get('im_replacementCost')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_replacementCost')?.errors!required">
+                *Replacement cost is required
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-control">
+            <label >Purchase Order</label>
+            <p-inputGroup class="infiles">
+              <button class="btngroup" type="button" pButton label="">
+              <input
+                  type="file"
+                  formControlName="im_purchaseOrder"
+                  (change)="onFileChange2($event, 'purchaseOrder')"
+                  pInputText
+              /><fa-icon [icon]="uploadss"></fa-icon>
+             </button>
+             <input type="text" [value]="selectedFileName2 || serverFileName2 || 'No file chosen'" pInputText readonly>
+            <p-inputGroupAddon *ngIf="serverFileName2" (click)="openFile2()">
+              <div class="buttonsss"></div>
+            </p-inputGroupAddon>
+        </p-inputGroup>
+            <div *ngIf="Addform.get('im_purchaseOrder')?.invalid && (Addform.get('im_purchaseOrder')?.dirty || Addform.get('im_purchaseOrder')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_purchaseOrder')?.errors!required">
+                *Purchase order is required
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+    </p-tabPanel> -->
+
+    <!-- AUDIT TAB -->
+    <!-- <p-tabPanel>
+      <ng-template pTemplate="header">
+        <div class="tabview">
+          <fa-icon [icon]="audit"></fa-icon>
+          <span>AUDIT</span>
+        </div>
+      </ng-template>
+
+      <div class="purchasediv">
+
+        <form [formGroup]="Addform" class="form" enctype="multipart/form-data">
+
+          <div class="form-control">
+            <label for="name">Last Audit Date</label>
+            <input class="input" type="date" formControlName="im_lastAuditDate"  [style]="{'width':'212px'}" placeholder="Enter" pInputText required>
+            <div *ngIf="Addform.get('im_lastAuditDate')?.invalid && (Addform.get('im_lastAuditDate')?.dirty || Addform.get('im_lastAuditDate')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_lastAuditDate')?.errors!required">
+                *Last audit date is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="name">Audit By</label>
+            <input class="input" type="text" maxlength="30" formControlName="im_auditBy" placeholder="Enter" pInputText required>
+            <div *ngIf="Addform.get('im_auditBy')?.invalid && (Addform.get('im_auditBy')?.dirty || Addform.get('im_auditBy')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_auditBy')?.errors!required">
+                *Audit By is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="name">Next Audit</label>
+            <input class="input" type="date" formControlName="im_nextaudit"  [style]="{'width':'212px'}"[min]="Addform.get('im_lastAuditDate').value ? Addform.get('im_lastAuditDate').value : null"  pInputText required>
+            <div *ngIf="Addform.get('im_nextaudit')?.invalid && (Addform.get('im_nextaudit')?.dirty || Addform.get('im_nextaudit')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_nextaudit')?.errors!required">
+                *Next audit date is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="name">Assign To</label>
+            <input class="input" type="text" maxlength="30" formControlName="im_assignto" placeholder="Enter" pInputText required>
+            <div *ngIf="Addform.get('im_assignto')?.invalid && (Addform.get('im_assignto')?.dirty || Addform.get('im_assignto')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_assignto')?.errors!required">
+                *Assign to is required
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+        <form [formGroup]="Addform" class="form purform" enctype="multipart/form-data">
+
+
+          <div class="form-control">
+            <label for="name">Audit Report</label>
+            <p-inputGroup class="infiles">
+              <button class="btngroup" type="button" pButton label="">
+              <input
+                  type="file"
+                  formControlName="im_auditreport"
+                  (change)="onFileChange1($event, 'auditreport')"
+                  pInputText
+              /><fa-icon [icon]="uploadss"></fa-icon>
+             </button>
+             <input type="text" [value]="selectedFileName1 || serverFileName1 || 'No file chosen'" pInputText readonly>
+            <p-inputGroupAddon *ngIf="serverFileName1" (click)="openFile1()">
+              <div class="buttonsss"></div>
+            </p-inputGroupAddon>
+        </p-inputGroup>
+
+
+            <div *ngIf="Addform.get('im_auditreport')?.invalid && (Addform.get('im_auditreport')?.dirty || Addform.get('im_auditreport')?.touched)" class="error">
+              <div *ngIf="Addform.get('im_auditreport')?.errors!required">
+                *Audit report is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="name">Send Audit Mail To</label>
+            <input class="input" type="email" maxlength="255" (blur)="Addform.get('im_sendmail')?.updateValueAndValidity()"
+             formControlName="im_sendmail" placeholder="Enter" pInputText required>
+              <div *ngIf="Addform.get('im_sendmail')?.touched && Addform.get('im_sendmail')?.invalid" class="error">
+                <div *ngIf="Addform.get('im_sendmail')?.hasError('required')">
+                  *Email is required
+                </div>
+                <div *ngIf="!Addform.get('im_sendmail')?.hasError('required') && Addform.get('im_sendmail')?.hasError('invalidEmail')">
+                  *Enter a valid Email Id
+                </div>
+              </div>
+          </div>
+
+        </form>
+
+      </div>
+
+    </p-tabPanel> -->
+    <div class="purchasediv">
+
+      <form [formGroup]="Addform" class="form" >
+
+        <div class="form-control">
+          <label for="name">Item Description</label>
+          <input class="input" type="text" maxlength="30" formControlName="br_itemdesc" placeholder="Enter" pInputText required>
+          <div *ngIf="Addform.get('br_itemdesc')?.invalid && (Addform.get('br_itemdesc')?.dirty || Addform.get('br_itemdesc')?.touched)" class="error">
+            <div *ngIf="Addform.get('br_itemdesc')?.errors!required">
+              *Item description is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">Last service</label>
+          <input class="input" type="date" [max]="maxDate" formControlName="br_lastservice" placeholder="DD/MM/YYY"   [style]="{'width':'212px'}"  pInputText required>
+          <div *ngIf="Addform.get('br_lastservice')?.invalid && (Addform.get('br_lastservice')?.dirty || Addform.get('br_lastservice')?.touched)" class="error">
+            <div *ngIf="Addform.get('br_lastservice')?.errors!required">
+              *Last service date is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="name">Next Service</label>
+          <input class="input" type="date" formControlName="wr_expireson" placeholder="Enter"  [style]="{'width':'212px'}" [min]="Addform.get('br_lastservice').value ? Addform.get('br_lastservice').value : null" pInputText required>
+          <div *ngIf="Addform.get('wr_expireson')?.invalid && (Addform.get('wr_expireson')?.dirty || Addform.get('wr_expireson')?.touched)" class="error">
+            <div *ngIf="Addform.get('wr_expireson')?.errors!required">
+              *Next service date is required
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+
+
+    </div>
+    <hr class="line">
+
+    <div class="formdiv">
+
+    <form [formGroup]="Addform" class="form" enctype="multipart/form-data">
+
+    <div class="form-control">
+      <label for="name">Created On</label>
+      <input class="input" type="text" formControlName="im_createdon" placeholder="Enter" [readOnly]="true" pInputText required>
+      <div *ngIf="Addform.get('im_createdon')?.invalid && (Addform.get('im_createdon')?.dirty || Addform.get('im_createdon')?.touched)" class="error">
+        <div *ngIf="Addform.get('im_createdon')?.errors!required">
+          *Required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="name">Created By</label>
+      <input class="input" type="text" formControlName="im_createdby" placeholder="Enter" [readOnly]="true" pInputText required>
+      <div *ngIf="Addform.get('im_createdby')?.invalid && (Addform.get('im_createdby')?.dirty || Addform.get('im_createdby')?.touched)" class="error">
+        <div *ngIf="Addform.get('im_createdby')?.errors!required">
+          *Required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="name">Modified On</label>
+      <input class="input" type="text" formControlName="im_modifiedon" placeholder="Enter" [readOnly]="true" pInputText required>
+      <div *ngIf="Addform.get('im_modifiedon')?.invalid && (Addform.get('im_modifiedon')?.dirty || Addform.get('im_modifiedon')?.touched)" class="error">
+        <div *ngIf="Addform.get('im_modifiedon')?.errors!required">
+          *Required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="name">Modified By</label>
+      <input class="input" type="text" formControlName="im_modifiedby" placeholder="Enter" [readOnly]="true" pInputText required>
+      <div *ngIf="Addform.get('im_modifiedby')?.invalid && (Addform.get('im_modifiedby')?.dirty || Addform.get('im_modifiedby')?.touched)" class="error">
+        <div *ngIf="Addform.get('im_modifiedby')?.errors!required">
+          *Required
+        </div>
+      </div>
+    </div>
+
+    </form>
+    </div>
+
+  </p-tabView>
+
+  <ng-template pTemplate="footer">
+    <div class="foot">
+      <!-- <button class="button close" (click)="closeModal()" >CLOSE<fa-icon [icon]="cross"></fa-icon></button> -->
+
+      <!-- <button pButton pRipple label={{ModalType}} icon="pi pi-check"  (click)="onSubmit()" class="p-button-text" id="savebutton" ></button> -->
+      <button
+          label= ""
+          (click)="onSubmit()"
+          [disabled]="this.Addform.invalid"
+          class="savebutton"
+          [style]="{'border-radius':'15px'}"
+          [ngStyle]="{'cursor': Addform.invalid ? 'not-allowed' : 'pointer'}"
+          >
+          {{ModalType}}
+      </button>
+
+
+    </div>
+    </ng-template>
+
+  </p-dialog>
+
+
+
+
+  <p-dialog [(visible)]="DisplayCamModal" [draggable]="false" [closable]="false" [modal]="true" [style]="{width: '40%',height: '60%'}">
+    <div class="webcam" id="contentToOpen">
+      <div *ngIf="!webcamImage">
+        <webcam
+          [height]="400"
+          [width]="400"
+          (imageCapture)="takePicture($event)"
+          [trigger]="initObservable"
+          *ngIf="showWebcam"
+          [imageQuality]="1"
+          [mirrorImage]="'never'"
+          [allowCameraSwitch]="true"
+          (cameraSwitched)="cameraWasSwitched($event)"
+        ></webcam>
+        <br />
+        <button class="button ok" (click)="takeSnapshot()"> <i class="fi fi-rs-aperture"></i> Capture</button>
+        <!-- <button class="button ok" (click)="showNextCamera()" [disabled]="!multipleWebcamsAvailable"> <i class="fi fi-rs-aperture"></i> Swap </button> -->
+        <br />
+      </div>
+      <div class="snapshot" *ngIf="webcamImage">
+        <h4>Here's Your Snap</h4>
+        <img [src]="webcamImage.imageAsDataUrl" height="270px" width="400px"/>
+        <div>
+          <button class="button close" (click)="retakeSnapshot()"> <i class="fi fi-rr-rotate-left"></i> Retake</button>
+          <button class="button ok" (click)="OkSnapshot(webcamImage)"> <i class="fi fi-ss-check-circle"></i> Ok </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <div class="foot">
+        <button class="button close" (click)="closeWebcamModal()" >CLOSE<fa-icon [icon]="cross"></fa-icon></button>
+      </div>
+      </ng-template>
+
+  </p-dialog>
+
+  </div>

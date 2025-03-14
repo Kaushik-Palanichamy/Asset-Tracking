@@ -1,0 +1,36 @@
+
+
+<div class="container">
+    <p-image  src="assets\image-preview.PNG"  height="180" width="230" *ngIf="!imageData"></p-image>
+
+    <p-image  src="{{ imageData }}" height="180" [preview]="true">   </p-image>
+    <!-- <img [src]="imageData" height="250px">   -->
+        <webcam 
+            [trigger]="triggerObservable"   
+            (imageCapture)="handleImage($event)" 
+            *ngIf="!showWebcam"
+            [height]="180" [width]="230">
+        </webcam>
+
+<form [formGroup]="form" >
+    <div class="icons pt-3" >             
+        
+        <button class="btn btn" (click)="triggerSnapshot();" pTooltip="Take Photo" tooltipPosition="top" ><i class="pi pi-camera"></i></button>
+        <!-- <button class="actionBtn" (click)="toggleWebcam()">Toggle Webcam</button> -->
+
+    
+        <input type="file" class="file-input" formControlName="liveImage" (change)="onSelectFile($event)" #fileUpload >
+
+                <!-- <div class="file-upload"> -->
+                <!-- {{ fileName }} -->
+                    <button  class="btn btn" (click)="fileUpload.click()" pTooltip="Upload Photo" tooltipPosition="top" >
+                    <i class="pi pi-file-o"></i>
+                    </button>                    
+                <!-- </div>   -->
+            
+        
+        <button class="btn btn" (click)="deleteImage()"><i class="pi pi-trash" pTooltip="Delete Photo" tooltipPosition="top"></i></button>
+        <!-- <button (click)="upload()">Upload</button> -->
+    </div>
+    </form>    
+</div> 

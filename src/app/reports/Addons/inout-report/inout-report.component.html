@@ -1,0 +1,177 @@
+
+<!-- <svg id="changeColor" fill="#DC7633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" zoomAndPan="magnify" viewBox="0 0 375 374.9999" height="200" version="1.0"><defs></defs><g></g><g id="inner-icon" transform="translate(85, 75)"> <svg xmlns="http://www.w3.org/2000/svg" width="287" height="287" fill="currentColor" class="bi bi-filter-circle" viewBox="0 0 16 16" id="IconChangeColor"> <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" id="mainIconPathAttribute" stroke-width="0" stroke="#ff0000" fill="#ff0000"></path> <path d="M7 11.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" id="mainIconPathAttribute" stroke="#ff0000" fill="#ff0000"></path> </svg> </g></svg> -->
+
+<div *ngIf="!displaytable">
+
+        <form [formGroup]="form" (ngSubmit)="OnSubmit()" novalidate>
+            <ng-template pTemplate="header">
+
+            </ng-template>
+            <div class="top-align">
+                <div class="field">
+                    <label for="fromdate" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">From Date</label>
+                      <p-calendar
+                        dateFormat="dd.mm.yy"
+                        [maxDate]="maxDate"
+                        [showIcon]="true"
+                        formControlName="io_frmdte"
+                        [style]="{'width':'120px','height':'30px','font-size':'14px'}"
+                        [iconDisplay]="'input'"
+                        placeholder="Select"
+                      >
+                      </p-calendar>
+                        <div *ngIf="form.get('io_frmdte').touched && form.get('io_frmdte').invalid" class="error">
+                          *From date is required
+                        </div>
+                </div>
+                <div class="field">
+                    <label for="todate" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">To Date</label>
+                        <p-calendar
+                          dateFormat="dd.mm.yy"
+                          [maxDate]="maxDate"
+                          [showIcon]="true"
+                          formControlName="io_todte"
+                          [minDate]="form.get('io_frmdte').value ? form.get('io_frmdte').value : null"
+                          [style]="{'width':'120px','height':'30px','font-size':'14px'}"
+                          [iconDisplay]="'input'"
+                          placeholder="Select"
+                        >
+                        </p-calendar>
+                        <div *ngIf="form.get('io_todte').touched && form.get('io_todte').invalid" class="error">
+                          *To date is required
+                        </div>
+                </div>
+                <div class="field">
+                    <label for="dropdown" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">Select site</label>
+                        <p-dropdown  id="dropdown" [options]="sitesname"  optionLabel="sc_name" optionValue="sc_id"   formControlName="io_siteid"  placeholder="Select" class="w-full" ></p-dropdown>
+                        <div *ngIf="form.get('io_siteid').touched && form.get('io_siteid').invalid" class="error">
+                          *Site is required
+                        </div>
+                    </div>
+                <div class="field">
+                    <label for="dropdown" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">Select Area </label>
+                        <p-dropdown  id="dropdown" [options]="areasname" optionLabel="ar_name" optionValue="ar_id"  formControlName="io_areaid" placeholder="Select" class="w-full" ></p-dropdown>
+                        <div *ngIf="form.get('io_areaid').touched && form.get('io_areaid').invalid" class="error">
+                          *Area is required
+                        </div>
+                </div>
+                <div class="field">
+                  <label for="dropdown" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">Start Zone </label>
+                  <p-dropdown id="dropdown" [options]="zonesname"  optionLabel="zn_name" optionValue="zn_id" formControlName="start_zoneid" placeholder="Select" class="w-full" [pTooltip]="getStartLoc()"  tooltipPosition="bottom"></p-dropdown>
+                  <div *ngIf="form.get('start_zoneid').touched && form.get('start_zoneid').invalid" class="error">
+                    *Start zone is required
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="dropdown" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">End Zone</label>
+                  <p-dropdown id="dropdown" [options]="zonesname"  optionLabel="zn_name" optionValue="zn_id" formControlName="end_zoneid" placeholder="Select" class="w-full" [pTooltip]="getEndLoc()"  tooltipPosition="bottom"></p-dropdown>
+                  <div *ngIf="form.get('end_zoneid').touched && form.get('end_zoneid').invalid" class="error">
+                    *End zone is required
+                  </div>
+                </div>
+
+                <div class="field">
+                    <label for="dropdown" class="block mb-2" style="width:110px;font-size:14px;font-weight:600; text-wrap:nowrap">Select Category </label>
+                        <p-dropdown  id="dropdown" [options]="categoriesname" optionLabel="cm_name" optionValue="cm_id" formControlName="io_category" placeholder="Select" class="w-full" [pTooltip]="getCat()"  tooltipPosition="bottom"></p-dropdown>
+                        <div *ngIf="form.get('io_category').touched && form.get('io_category').invalid" class="error">
+                          *Category is required
+                        </div>
+                </div>
+
+                <!-- <div class="field ">
+                    <p-button label="Apply Filter" type="submit" class="block mt-3 pt-2" icon="pi pi-search" styleClass="p-button-danger" [disabled]="!form.valid" ></p-button>
+                </div> -->
+
+                <button class="button mt-4"  type="submit" [disabled]="!form.valid">
+                  Get Data
+                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                   <path
+                     fill-rule="evenodd"
+                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                     clip-rule="evenodd"
+                   ></path>
+                 </svg>
+               </button>
+
+            </div>
+        </form>
+
+</div>
+
+<div *ngIf="showloader" class="divloader">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="displaytable">
+  <!-- <div class="filter-icon-container"   >
+    <button class="filter-button" (click)="openfilter()">
+      <i class="pi pi-filter "></i>
+      <span class="filter-text">Filter</span>
+    </button>
+  </div> -->
+    <div class="mt-2">
+      <div class="searchtab ml-2" >
+        <div class="filter-icon-container">
+          <button class="filter-button" (click)="openfilter()">
+            <i class="pi pi-filter "></i>
+            <span class="filter-text">Filter</span>
+          </button>
+        </div>
+        <div class="search" style="margin-left: 8rem;">
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText  type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Global Search" [style]="{'width':'180px','height':'30px','font-size':'small'}"/>
+          </span>
+        </div>
+
+        <div class="heading">
+            <h6 class="pt-3" style="text-align: center;font-size: 1rem; font-weight: bolder; height: 3rem; margin-top: 0rem;"  >In-Out Report for&nbsp; <span style="color: #da2020; font-size: 1.2rem;">'{{selectedCategoryName }}'</span> </h6>
+        </div>
+
+        <div class="tablehead pb-2 pt-2 mr-2">
+        <p-button icon="pi pi-file-excel" label="Export" styleClass="p-button-raised p-button-success"  pTooltip="XLS" tooltipPosition="bottom"  size="small" class="primebtn" (click)="exportExcel()" [rounded]="true"></p-button>
+        </div>
+        </div>
+
+        <p-table #dt
+            id = "inout"
+            [value]="inoutTable.inoutdata"
+            [scrollable]="true"
+            scrollHeight="59vh"
+            [globalFilterFields]="['name','entrytime','from','exittime','to']"
+            paginatorPosition="bottom"
+            [paginator]="true"
+            [rows]="25"
+            [rowsPerPageOptions]="[25,50,100]"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Entries"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th  pSortableColumn="rowIndex">S.No         <p-sortIcon field="rowIndex" ></p-sortIcon></th>
+                    <th  pSortableColumn="name">Name             <p-sortIcon field="name" ></p-sortIcon></th>
+                    <th  pSortableColumn="from">Entry location    <p-sortIcon field="from" ></p-sortIcon></th>
+                    <th  pSortableColumn="entrytime">Entry time  <p-sortIcon field="entrytime" ></p-sortIcon></th>
+                    <th  pSortableColumn="to">Exit location        <p-sortIcon field="to" ></p-sortIcon></th>
+                    <th  pSortableColumn="exittime">Exit time    <p-sortIcon field="exittime" ></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+                <tr>
+                    <td>{{ rowIndex }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.entrytime }}</td>
+                    <td>{{ i.from  | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+                    <td>{{ i.exittime }}</td>
+                    <td>{{ i.to  | date:'dd-MM-yyyy hh:mm:ss' }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td class="emptymessage" colspan="11">NO DATA FOUND...</td>
+              </tr>
+          </ng-template>
+        </p-table>
+    </div>
+</div>
+

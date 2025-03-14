@@ -1,0 +1,142 @@
+<div *ngIf="show" class="divloader">
+    <div class="loader"></div>
+</div>
+  
+<div class="container-fluid" *ngIf="!show">
+  <div class="mt-5">
+      <p-tabView styleClass="main-tabs" (onChange)="onChange($event)">
+          <p-tabPanel>
+              <ng-template pTemplate="header">
+                <i class="pi pi-spin pi-cog"></i> &nbsp;
+                 <span>General Settings</span>
+              </ng-template>
+              <p-tabView styleClass="inner-tabs" (onChange)="onChange2($event)">
+                  <p-tabPanel class="tab-menu" style="font-size: 17px;">
+                      <ng-template pTemplate="header">
+                           <span>Plant</span>
+                      </ng-template>
+                      <div class="box shadow-sm">
+                          <app-plant-management #plant [plantData]="plantManagementData" [readerData]="readerManagementData"  [userData]="userManagementData"></app-plant-management>
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel class="tab-menu" style="font-size: 17px;">
+                      <ng-template pTemplate="header">
+                        <span>Location</span>
+                      </ng-template>
+                      <div class="box shadow-sm">
+                        
+                        <app-location #location [locationsData]="locationtypeData" (locName)="locAdd($event)"></app-location>
+
+                          <div class="type">
+                            <!-- <p-fieldset legend= {{locationsname}} [collapsed]="true"  [toggleable]="false" class="color">   </p-fieldset> -->
+                              <p-button label={{locationsname}} styleClass="legend"/>
+                          
+                            <p-fieldset legend="Sites" [collapsed]="siteCollapse"  [toggleable]="true">
+                              <app-sites-table #site [siteData]="siteData"></app-sites-table>
+                            </p-fieldset>
+                            <p-fieldset legend="Areas" [collapsed]="areaCollapse" [toggleable]="true">
+                              <app-areas-table #area [siteData]="siteData" [areaData]="areaData"></app-areas-table>
+                            </p-fieldset>
+                            <p-fieldset legend="Zones" [collapsed]="zoneCollapse" [toggleable]="true">
+                              <app-zones-table #zone [siteData]="siteData" [zoneData]="zoneData"></app-zones-table>
+                            </p-fieldset>
+                          </div>
+
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel class="tab-menu" style="font-size: 17px;">
+                      <ng-template pTemplate="header">
+                        <span>Conditions</span>
+                      </ng-template>
+                      <div class="box shadow-sm">
+                          <app-conditions #conditions [conditionsData]="conditionsManagementData"></app-conditions>
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel class="tab-menu" style="font-size: 17px;">
+                      <ng-template pTemplate="header">
+                        <span>Status</span>
+                      </ng-template>
+                      <div class="box shadow-sm">
+                          <app-status #status [statusData]="statusManagementData"></app-status>
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel class="tab-menu" style="padding: 10px 10px ; font-size: 17px;">
+                      <ng-template pTemplate="header">
+                        <span>Category</span>
+                      </ng-template>
+                      <div class="box shadow-sm">
+                          <app-category #category [categoryData]="categoryManagementData"></app-category>
+                      </div>
+                  </p-tabPanel>
+              </p-tabView>
+          </p-tabPanel>
+
+          <p-tabPanel>
+              <ng-template pTemplate="header">
+                <i class="pi pi-wifi fade-in-out" ></i> &nbsp;
+                 <span>Reader Management</span>
+              </ng-template>
+              <div class="box shadow-sm">
+                  <app-reader-management #readerManagement [readerData]="readerManagementData" [conditionData]="conditionsManagementData" [statusData]="statusManagementData" [zoneData]="zoneData"></app-reader-management>
+              </div>
+          </p-tabPanel>
+
+          <p-tabPanel>
+              <ng-template pTemplate="header">
+                <i class="pi pi-users bounce" ></i> &nbsp;
+                 <span>User Management</span>
+              </ng-template>
+              <div class="box shadow-sm">
+                  <app-user-management #userManagement [userData]="userManagementData"></app-user-management>
+              </div>
+          </p-tabPanel>
+      </p-tabView>
+  </div>
+</div>
+
+<!--
+<div class="container-fluid">
+  <div class="mt-4" *ngIf="loadingGif">
+      <p-tabView styleClass="main-tabs">
+          <p-tabPanel header="General Settings" leftIcon="pi pi-cog">
+              <p-tabView styleClass="inner-tabs">
+                  <p-tabPanel header="Plant Management">
+                      <div class="box shadow-sm">
+                          <app-plant-management></app-plant-management>
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel header="Location Settings">
+                      <div class="box shadow-sm">
+                          <app-location></app-location>
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel header="Conditions">
+                      <div class="box shadow-sm">
+                          <app-conditions></app-conditions>
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel header="Status">
+                      <div class="box shadow-sm">
+                          <app-status></app-status>
+                      </div>
+                  </p-tabPanel>
+                  <p-tabPanel header="Category">
+                      <div class="box shadow-sm">
+                          <app-category></app-category>
+                      </div>
+                  </p-tabPanel>
+              </p-tabView>
+          </p-tabPanel>
+          <p-tabPanel header="Reader Management" leftIcon="pi pi-window">
+              <div class="box shadow-sm">
+                  <app-reader-management></app-reader-management>
+              </div>
+          </p-tabPanel>
+          <p-tabPanel header="User Management" leftIcon="pi pi-user">
+              <div class="box shadow-sm">
+                  <app-user-management></app-user-management>
+              </div>
+          </p-tabPanel>
+      </p-tabView>
+  </div>
+</div> -->

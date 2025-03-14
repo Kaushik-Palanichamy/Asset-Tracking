@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~@flaticon/flaticon-uicons/css/all/all.css';
+// @import 'bootstrap/scss/bootstrap';
+
+@font-face {
+    font-family: 'Lexend';
+    src: url('./assets/Lexend-Light.ttf') format('opentype');
+    font-weight: 200;
+  }
+
+  *{
+    font-family: 'Lexend';
+    letter-spacing: 0.7px;
+  }
+
+html, body { height: 100%; background-color: #f9f9f9;font-family: 'Lexend';}
+body { margin: 0; font-family: 'Lexend'; letter-spacing: 0.7px;}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #d15959;
+  border-radius: 20px;
+}
+
+:host ::ng-deep .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text{
+  font-family: 'Lexend';
+}
+
+:host ::ng-deep *::-webkit-scrollbar {
+  width: 10px;
+}
+
+:host ::ng-deep *::-webkit-scrollbar-thumb {
+  background-color: #d15959;
+  border-radius: 20px;
+}
+
+// .inika-regular {
+//   font-family: "Inika", serif;
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// .inika-bold {
+//   font-family: "Inika", serif;
+//   font-weight: 700;
+//   font-style: normal;
+// }

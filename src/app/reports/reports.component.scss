@@ -1,0 +1,312 @@
+/* styles.css */
+
+*{
+  font-family: 'Lexend';
+}
+
+.divloader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 85vh;
+}
+
+.loader {
+  width: 53px;
+  height: 53px;
+  border: 5px dotted #000;
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px dotted #F00;
+  border-style: solid solid dotted;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.container-fluid {
+  margin-left: 60px; /* Sidebar width */
+  margin-top: 50px; /* Topbar height */
+  // margin-bottom: 45px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+:host ::ng-deep p-table {
+  tr:nth-child(even) {
+      background-color: rgb(251, 230, 230);
+  }
+}
+
+.tabHead{
+  text-wrap: nowrap;
+  font-size: 17px;
+}
+
+::ng-deep .p-tabview-nav-container {
+  padding-top: 0px;
+}
+
+
+
+::ng-deep .p-tabview p.p-tabview-nav {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-width: 2px ;
+  display: flex;
+  flex-grow: 2;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+::ng-deep .p-tabview-nav {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow:none;
+  margin-bottom: 0;
+}
+
+::ng-deep .p-tabview-nav li {
+  margin-right: 10px;
+}
+
+
+::ng-deep .p-tabview-nav li .p-tabview-selected a {
+  color: #fff !important;
+  background-color: #da2020 !important;
+  border-color: #da2020 !important;
+}
+
+::ng-deep .p-tabview-nav li .p-tabview-selected a #path {
+  image-rendering: url;
+}
+
+::ng-deep .p-tabview .p-tabview-nav {
+  background: #f9f9f9;
+  height: auto;
+   border:none;
+
+}
+
+::ng-deep .p-tabview-nav li a {
+  // background-color: #fff;
+  // color: #747474 !important;
+  // border: 1px solid #d2d1d1 !important;
+  // height: 30px;
+  // border-radius: 9px !important;
+  // margin-right: 3px !important;
+  // padding: 1px 5px !important;
+  // transition: all 0.3s ease !important;
+  background-color: #ffffff;
+  color: #747474 !important;
+  border: 1px solid #d2d1d1 !important;
+  height: 40px;
+  border-radius: 8px !important;
+  padding: 8px 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+// ::ng-deep .p-tabview-nav li a:hover,
+::ng-deep .p-tabview-nav li.p-highlight a {
+  background: #b71c1c !important;
+  color: #fff !important;
+  position: relative;
+  height: 40px;
+  border-color: #b71c1c;
+}
+
+::ng-deep .p-tabview-nav li.p-highlight a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background-color: #f28b8c; 
+  border-radius: 0 0 8px 8px;
+}
+
+::ng-deep .p-tabview-nav li a:focus {
+  box-shadow: none !important;
+}
+
+::ng-deep .p-tabview .p-tabview-panels {
+  border: 2px !important;
+  padding: 0px !important;
+  background-color: #f9f9f9 !important;
+  border-radius: 0 0 8px 8px !important;
+  // border-top: 1px solid #e0e0e0 !important;
+  // height:860px;
+  // display: none !important;
+}
+
+::ng-deep .p-tabview .p-tabview-panels .p-tabview-panel {
+  padding: 10px 50px 20px 20px !important;
+  height: 80vh;
+}
+
+.tab-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .tab-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+  }
+
+  ::ng-deep .p-tabview-nav li a {
+      padding: 8px 16px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .tab-icon {
+      width: 26px;
+      height: 26px;
+      margin-right: 6px;
+  }
+
+  ::ng-deep .p-tabview-nav li a {
+      padding: 6px 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .tab-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 4px;
+  }
+
+  ::ng-deep .p-tabview-nav {
+      flex-wrap: nowrap;
+      flex-grow: 1;
+      overflow-x: auto;
+  }
+
+  ::ng-deep .p-tabview-nav li {
+      flex: 1 0 auto;
+  }
+
+  ::ng-deep .p-tabview-nav li a {
+      padding: 4px 8px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .tab-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 2px;
+  }
+
+  ::ng-deep .p-tabview-nav {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+  }
+
+  ::ng-deep .p-tabview-nav li {
+      flex: 1 0 auto;
+  }
+
+  ::ng-deep .p-tabview-nav li a {
+      padding: 1px 1px !important;
+      font-size: 2px !important;
+  }
+}
+
+.bg{
+  left: 30%;
+  top: 40%;
+  position: fixed;
+  opacity: .5;
+  overflow: hidden;
+      // z-index: 1; /* Ensure the background image is behind other content */
+}
+
+.bg2{
+  width: 60%;
+  height: auto;
+  position: absolute;
+  left: 15%;
+  top: 200px;
+  opacity: .5;
+  // z-index: 1;
+
+}
+
+.report-container {
+  position: relative; /* Allows child elements to be positioned absolutely or relatively */
+}
+
+// ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link{
+//   width: 100%; //change the width of the tabmenu (pathtracking,mpl,....)
+//   height: 80%;
+// }
+
+::ng-deep .p-tabview-nav-content {
+  overflow-x:visible ;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior: contain auto;
+}
+
+:host {
+  ::ng-deep {
+      * {
+          &::-webkit-scrollbar {
+              width: 10px;
+              height: 8px;
+          }
+          &::-webkit-scrollbar-thumb {
+              background-color: #FFCDCD;
+              border-radius: 20px;
+          }
+      }
+    }
+
+}

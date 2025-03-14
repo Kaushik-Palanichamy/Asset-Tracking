@@ -1,0 +1,280 @@
+<div *ngIf="!displaytable">
+  <div class="custom_form">
+      <form [formGroup]="form" (ngSubmit)="OnSubmit()" novalidate>
+          <ng-template pTemplate="header">
+
+          </ng-template>
+              <div class="formgroup-inline" >
+                  <div class="field">
+                    <label for="dropdown" class="block mb-2"  style="width:100px;font-size:14px;font-weight:600"> Select Asset </label>
+                    <p-dropdown 
+                      (onChange)="OnSelectedChange($event)" 
+                      formControlName="pt_item"  
+                      class="itemDropdown" 
+                      [options]="itemsname" 
+                      optionValue="im_id" 
+                      optionLabel="im_name" 
+                      placeholder="Select Item"  
+                      [required]="true"   
+                      [pTooltip]="getSelectedItemLabel()"  
+                      tooltipPosition="bottom" 
+                      [virtualScroll]="true"
+                      [virtualScrollItemSize]="38"
+                     
+                    > 
+                  </p-dropdown>
+                    <div *ngIf="form.get('pt_item').touched && form.get('pt_item').invalid" class="error">
+                      *Asset is required
+                    </div>
+                </div>
+                  <div class="field">
+                      <label for="number" class="block mb-2"  style="width:100px;font-size:14px;font-weight:600"> Filter</label>
+                      <p-dropdown  id="dropdown" optionLabel="name"  [options]="filterdays"
+                       optionValue="code" placeholder="Days filter" formControlName="pt_filter" [(ngModel)] ="selectedFilter" (onChange)="dropdownChange()" ></p-dropdown>
+                       <div *ngIf="form.get('pt_filter').touched && form.get('pt_filter').invalid" class="error">
+                        *Filter is required
+                      </div>
+                  </div>
+
+                  <div class="field" *ngIf="selectedFilter == 'Custom'">
+                    <label for="number" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">From Date</label>
+                    <p-calendar
+                      dateFormat="dd.mm.yy"
+                      [maxDate]="maxDate"
+                      [showIcon]="true"
+                      formControlName="date1"
+                      [style]="{'width':'120px','height':'30px','font-size':'14px'}"
+                      [iconDisplay]="'input'"
+                      placeholder="Select"
+                    >
+                    </p-calendar>
+                    <div *ngIf="form.get('date1').touched && form.get('date1').invalid" class="errors">
+                      *From date is required
+                    </div>
+                  </div>
+
+                  <div class="field" *ngIf="selectedFilter == 'Custom'">
+                    <label for="number" class="block mb-2" style="width:100px;font-size:14px;font-weight:600">To Date</label>
+                    <p-calendar
+                      dateFormat="dd.mm.yy"
+                      [maxDate]="maxDate"
+                      [showIcon]="true"
+                      formControlName="date2"
+                      [minDate]="form.get('date1').value ? form.get('date1').value : null"
+                      [style]="{'width':'120px','height':'30px','font-size':'14px'}"
+                      [iconDisplay]="'input'"
+                      placeholder="Select"
+                      >
+                    </p-calendar>
+                    <div *ngIf="form.get('date2').touched && form.get('date2').invalid" class="errors">
+                      *To date is required
+                    </div>
+                  </div>
+
+                      <!-- <div class="field mt-1">
+                        <p-button
+                          label="Apply Filter"
+                          type="submit"
+                          class="block mt-3 pt-2"
+                          icon="pi pi-search"
+                          styleClass="p-button-danger"
+                          [disabled]="isButtonDisabled()"
+                        ></p-button>
+                      </div> -->
+                      <button class="button mt-2"  type="submit" [disabled]="isButtonDisabled()">
+                         Get Data
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                          <path
+                            fill-rule="evenodd"
+                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </button>
+
+          </div>
+      </form>
+      <!-- <form [formGroup]="form" (ngSubmit)="OnSubmit()" novalidate>
+        <ng-template pTemplate="header">
+
+        </ng-template>
+            <div class="formgroup-inline" >
+                <div class="field">
+                    <label for="dropdown" class="block mb-2"  style="width:100px;font-size:13px"> Item </label>
+                    <p-dropdown (onChange)="OnSelectedChange($event)"  class="icon" id="dropdown" [options]="itemsname" optionValue="im_id" optionLabel="im_name" placeholder="Select Item"  [required]="true"   > </p-dropdown>
+
+                </div>
+                <div class="field">
+                    <label for="number" class="block mb-2"  style="width:100px;font-size:13px"> Filter</label>
+                    <p-dropdown  id="dropdown" optionLabel="name"  [options]="filterdays"
+                     optionValue="code" placeholder="Days filter"  [(ngModel)] ="selectedFilter" [ngModelOptions]="{standalone: true}" (onChange)="dropdownChange()" ></p-dropdown>
+                </div>
+
+
+                    <div class="field" *ngIf="selectedFilter == 'Custom',">
+                        <label for="number" class="block mb-2"  style="font-size:13px" > From Date </label>
+                        <p-calendar  dateFormat="yy.mm.dd" [maxDate]="maxDate" [showIcon]="true"  formControlName="date1" ></p-calendar>
+                    </div>
+                    <div class="field" *ngIf="selectedFilter == 'Custom'">
+                        <label for="dropdown" class="block mb-2" style="font-size:13px" > To Date </label>
+                        <p-calendar dateFormat="yy.mm.dd" [maxDate]="maxDate" [showIcon]="true"  formControlName="date2"></p-calendar>
+                    </div>
+
+            <div class="field mt-1">
+                <p-button label="Apply Filter" type="submit" class="block mt-3 pt-2"  icon="pi pi-search" styleClass="p-button-danger" [disabled]="!selectedFilter"></p-button>
+            </div>
+
+        </div>
+    </form> -->
+
+  </div>
+</div>
+
+<div *ngIf="showloader" class="divloader">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="displaytable">
+
+  <div class="mt-2">
+      <div class="searchtab ml-2" >
+              <div class="filter-icon-container">
+                <button class="filter-button" (click)="openfilter()">
+                  <i class="pi pi-filter "></i>
+                  <span class="filter-text">Filter</span>
+                </button>
+              </div>
+              <div class="search" style="margin-left: 8rem;">
+                <span class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input pInputText  type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Global Search" [style]="{'width':'180px','height':'30px','font-size':'small'}"/>
+                </span>
+              </div>
+          <div class="heading">
+              <span><h6 class="pt-3" style="text-align: center;font-size: 1rem; font-weight: bolder; height: 3rem; margin-top: 0rem;" >Path Tracking report for&nbsp;  <span style="color: #da2020; font-size: 1.2rem;">"{{AssetDetails.item_name}}"</span>  </h6></span>
+          </div>
+
+          <div class="tablehead pb-2 pt-2 mr-2">
+          <p-button icon="pi pi-file-excel" label="Export"  styleClass="p-button-success" [plain]="true" pTooltip="XLS" tooltipPosition="bottom"  size="small" class="primebtn" (click)="exportExcel()" [rounded]="true"></p-button>
+          </div>
+
+      </div>
+       <div class="pathtable">
+          <p-table #dt
+              id = "dom"
+              [value]="pathTrackingTable.table_data"
+              [scrollable]="true"
+              scrollHeight="59vh"
+              [globalFilterFields]="['from','to','entrytime','exittime']"
+              paginatorPosition="bottom"
+              [paginator]="true"
+              [rows]="25"
+              [rowsPerPageOptions]="[25,50,100]"
+              [showCurrentPageReport]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Entries"
+          >
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th pSortableColumn="rowIndex">S.No           <p-sortIcon field="rowIndex" ></p-sortIcon></th>
+                      <th pSortableColumn="from">Entry location      <p-sortIcon field="from" ></p-sortIcon></th>
+                      <th pSortableColumn="entrytime">Entry time    <p-sortIcon field="entrytime" ></p-sortIcon></th>
+                      <th pSortableColumn="to">Exit location          <p-sortIcon field="to" ></p-sortIcon></th>
+                      <th pSortableColumn="exittime">Exit time      <p-sortIcon field="exittime" ></p-sortIcon></th>
+
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-i let-rowIndex="rowIndex +1">
+                  <tr>
+                      <td>{{ rowIndex }}</td>
+                      <td>{{ i.from }}
+                        <!-- <img *ngIf="i.from === 'MATE III - IN'" src="../../../../assets/icons/in2.png" alt="IN" style="width: 13px; height: 13px; margin-left: 35px;">
+                        <img *ngIf="i.from === 'MATE III - OUT'" src="../../../../assets/icons/truck.png" alt="OUT" style="width: 13px; height: 13px; margin-left: 25px;"> -->
+                      </td>
+                      <td>{{ formatDate(i.entrytime) }}</td>
+                      <td>{{ i.to }}
+                        <!-- <img *ngIf="i.to === 'MATE III - IN'" src="../../../../assets/icons/in2.png" alt="IN" style="width: 13px; height: 13px; margin-left: 35px;">
+                        <img *ngIf="i.to === 'MATE III - OUT'" src="../../../../assets/icons/truck.png" alt="OUT" style="width: 13px; height: 13px; margin-left: 25px;"> -->
+                      </td>
+                      <td>{{ formatDate(i.exittime) }}</td>
+
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td class="emptymessage" colspan="11">NO DATA FOUND...</td>
+                </tr>
+            </ng-template>
+          </p-table>
+      </div>
+
+      <!-- <div class="draggable" (mousedown)="onDragStart($event)" (touchstart)="onDragStart($event)">
+          <img src="../../assets/icons/bot.jpg" alt="bot" class="bot"  (click)="op.toggle($event)" >
+          <p-overlayPanel #op>
+            <div class="flex flex-column gap-3 w-20rem">
+              <u><b><label style="text-align :center">Asset details</label></b></u>
+
+              <table>
+                  <tr>
+                      <td><label><span class="form-style">Asset Name </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp;  {{AssetDetails.item_name }} </span>
+                       </td>
+                  </tr>
+                  <tr>
+                      <td><label><span class="form-style" class="form-style">MAC Address </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.mac_address}} </span></td>
+                  </tr>
+                  <tr>
+                      <td><label><span class="form-style">Category </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.category_name}} </span></td>
+                  </tr>
+                  <tr>
+                      <td><label><span class="form-style">Configured Date</span> </label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.first_update}} </span></td>
+                  </tr>
+                  <tr>
+                      <td><label><span class="form-style">Site </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.site_name}} </span></td>
+                  </tr>
+                  <tr>
+                      <td><label><span class="form-style">Area </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.area_name}} </span></td>
+                  </tr>
+
+                  <tr>
+                      <td><label><span class="form-style">Current Zone </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.zone_name}} </span> </td>
+                  </tr>
+                  <tr>
+                      <td><label><span class="form-style">Last Captured </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.last_update | date: 'medium' }} </span></td>
+                  </tr>
+
+
+                  <tr>
+                      <td><label><span class="form-style">Condition </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.condition_status}} </span></td>
+                  </tr>
+
+                  <tr>
+                      <td><label><span class="form-style">Next Maintenance </span></label></td>&nbsp;
+                      <td>
+                          <span class="semi"> &nbsp; {{AssetDetails.expireson_date}} </span></td>
+                  </tr>
+
+
+              </table>
+            </div>
+          </p-overlayPanel>
+      </div> -->
+
+  </div>
+</div>

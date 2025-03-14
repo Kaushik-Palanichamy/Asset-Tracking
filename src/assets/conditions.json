@@ -1,0 +1,245 @@
+{
+    "condition":[
+    {
+        "cdn_id": 1,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_1",
+        "cdn_name": "Working Active",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 2,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_2",
+        "cdn_name": "Working inventory",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 3,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_3",
+        "cdn_name": "Disposed",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 4,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_4",
+        "cdn_name": "Need Maintenance",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 5,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_5",
+        "cdn_name": "Need Cleaning",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 6,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_6",
+        "cdn_name": "New not used",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 7,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_7",
+        "cdn_name": "Reconditioned",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 8,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_8",
+        "cdn_name": "Broken",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 9,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_9",
+        "cdn_name": "Destroyed",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 10,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_10",
+        "cdn_name": "Not Applicable",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    },
+    {
+        "cdn_id": 11,
+        "cdn_icon": "0",
+        "cdn_code": "CONDITION_11",
+        "cdn_name": "Need Inspection",
+        "cdn_companyid": {
+            "pmid": 1,
+            "pmcode": "PLANT_0001",
+            "pmcompanyname": "MATE U3",
+            "pmmaxsites": 10,
+            "pmmaxarea": 10,
+            "pmmaxzone": 10,
+            "pmmaxgateway": 2,
+            "pmmaxbeacons": 1000,
+            "pmmaxusers": 5
+        },
+        "cdn_active": true,
+        "cdn_createdon": "2022-09-02",
+        "cdn_createdby": "Gokulraj R",
+        "cdn_modifiedon": "2022-09-02",
+        "cdn_modifiedby": "Gokulraj R"
+    }
+]}

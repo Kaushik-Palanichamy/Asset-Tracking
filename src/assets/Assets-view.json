@@ -1,0 +1,218 @@
+{
+    "SiteAreaZoneData":[
+                        {
+                            "Site":"MATE Blr",
+                            "SiteCount":1275,
+                            "SiteData":[
+                                        {
+                                            "Area":"YFG",
+                                            "AreaCount":900,
+                                            "AreaData":[
+                                                {
+                                                    "Zone":"MATE-B IN 2",
+                                                    "ZoneCount":675,
+                                                    "ZoneData":[
+                                                        {
+                                                            "Condition":"Working Active",
+                                                            "ConditionData":520
+                                                        },
+                                                        {
+                                                            "Condition":"In Maintenance",
+                                                            "ConditionData":200
+                                                        },
+                                                        {
+                                                            "Condition":"Broken",
+                                                            "ConditionData":75
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "Zone":"MATE-B IN Out",
+                                                    "ZoneCount":600,
+                                                    "ZoneData":[
+                                                        {
+                                                            "Condition":"Working Active",
+                                                            "ConditionData":40
+                                                        },
+                                                        {
+                                                            "Condition":"In Maintenance",
+                                                            "ConditionData":20
+                                                        },
+                                                        {
+                                                            "Condition":"Broken",
+                                                            "ConditionData":10
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "Area":"560B",
+                                            "AreaCount":375,
+                                            "AreaData":[
+                                                {
+                                                    "Zone":"MATE-B",
+                                                    "ZoneCount":150,
+                                                    "ZoneData":[
+                                                        {
+                                                            "Condition":"Working Active",
+                                                            "ConditionData":40
+                                                        },
+                                                        {
+                                                            "Condition":"In Maintenance",
+                                                            "ConditionData":65
+                                                        },
+                                                        {
+                                                            "Condition":"Broken",
+                                                            "ConditionData":75
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "Zone":"MATE-A",
+                                                    "ZoneCount":200,
+                                                    "ZoneData":[
+                                                        {
+                                                            "Condition":"Working Active",
+                                                            "ConditionData":50
+                                                        },
+                                                        {
+                                                            "Condition":"In Maintenance",
+                                                            "ConditionData":2
+                                                        },
+                                                        {
+                                                            "Condition":"Broken",
+                                                            "ConditionData":8
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                            ]
+                        },
+                        {
+                            "Site":"MATE U3",
+                            "SiteCount":1300,
+                            "SiteData":[
+                                        {
+                                        "Area":"Domestic",
+                                        "AreaCount":750,
+                                        "AreaData":[
+                                            {
+                                                "Zone":"MATE III IN",
+                                                "ZoneCount":300,
+                                                "ZoneData":[
+                                                    {
+                                                        "Condition":"Working Active",
+                                                        "ConditionData":250
+                                                    },
+                                                    {
+                                                        "Condition":"In Maintenance",
+                                                        "ConditionData":25
+                                                    },
+                                                    {
+                                                        "Condition":"Broken",
+                                                        "ConditionData":85
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Zone":"MATE III STORAGE",
+                                                "ZoneCount":100,
+                                                "ZoneData":[
+                                                    {
+                                                        "Condition":"Working Active",
+                                                        "ConditionData":100
+                                                    },
+                                                    {
+                                                        "Condition":"In Maintenance",
+                                                        "ConditionData":0
+                                                    },
+                                                    {
+                                                        "Condition":"Broken",
+                                                        "ConditionData":0
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Zone":"MATE III Out",
+                                                "ZoneCount":250,
+                                                "ZoneData":[
+                                                    {
+                                                        "Condition":"Working Active",
+                                                        "ConditionData":400
+                                                    },
+                                                    {
+                                                        "Condition":"In Maintenance",
+                                                        "ConditionData":0
+                                                    },
+                                                    {
+                                                        "Condition":"Broken",
+                                                        "ConditionData":0
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                        },
+                                        {
+                                            "Area":"Export",
+                                            "AreaCount":550,
+                                            "AreaData":[
+                                                {
+                                                    "Zone":"MATE III IN",
+                                                    "ZoneCount":350,
+                                                    "ZoneData":[
+                                                        {
+                                                            "Condition":"Working Active",
+                                                            "ConditionData":300
+                                                        },
+                                                        {
+                                                            "Condition":"In Maintenance",
+                                                            "ConditionData":40
+                                                        },
+                                                        {
+                                                            "Condition":"Broken",
+                                                            "ConditionData":10
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "Zone":"MATE III Out",
+                                                    "ZoneCount":200,
+                                                    "ZoneData":[
+                                                        {
+                                                            "Condition":"Working Active",
+                                                            "ConditionData":200
+                                                        },
+                                                        {
+                                                            "Condition":"In Maintenance",
+                                                            "ConditionData":0
+                                                        },
+                                                        {
+                                                            "Condition":"Broken",
+                                                            "ConditionData":0
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                            }
+                                       
+                                    ]
+                        }
+                    ],
+    "StatusChart":[
+    {
+        "StatusName":"InProdcution",
+        "Count": 90
+    },
+    {
+        "StatusName":"Dispatched",
+        "Count": 45
+    },
+    {
+        "StatusName":"Maintenance",
+        "Count":3
+    }
+]
+    
+}

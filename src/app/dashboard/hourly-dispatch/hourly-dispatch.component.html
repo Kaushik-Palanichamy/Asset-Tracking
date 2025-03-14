@@ -1,0 +1,91 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="container-fluid" style="display:flex">
+    <mat-card id="chart">
+
+      <mat-card-content >
+        <div class="tabletitle">
+
+            <div>
+                <span class="heading">Hourly Dispatch Details</span>
+            </div>
+
+            <div  class="searchtab">
+
+              <mat-slider
+              class="average"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [discrete]="thumbLabel"
+              [showTickMarks]="showTicks"
+              (change)="onChangeRange(timeSlider)">
+            <input  matSliderThumb [(ngModel)]="value">
+          </mat-slider>
+
+            <!-- <mat-slider tyle="width:40%" thumbLabel name="range1" type="range" tickInterval="1" step="1" min="1" max="24"
+           >
+              <input matSliderThumb>
+            </mat-slider> -->
+
+
+            </div>
+
+            <div class="switch">
+              <p-toggleButton
+              [(ngModel)]="checked"
+              class="custom-toggle-button"
+              (click)="togglebtn()"
+              onLabel="Out"
+              offLabel="In" />
+              <!-- <p-inputSwitch [(ngModel)]="checked" /> &nbsp; <span class="switchText">{{ checked ? 'Assets Out' : 'Assets In' }}</span> -->
+            </div>
+
+
+            <div class="" style="display:inline-block;">
+                <form  [formGroup]="form" >
+                  <p-calendar  
+                    [(ngModel)]="date"
+                    dateFormat="dd.mm.yy"  
+                    formControlName="date" 
+                    (onSelect)="OnSubmit($event)" 
+                    [iconDisplay]="'input'"
+                    [showIcon]="true"  
+                    placeholder="Select Date"  
+                    [style]="{'width':'110px','height':'30px'}"
+                    [minDate]="minDate"
+                    [maxDate]="maxDate"
+                  >
+                  </p-calendar>
+                </form>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="apxchart">
+
+
+          <apx-chart
+          [series]="chartOptions.series!"
+          [chart]="chartOptions.chart!"
+          [xaxis]="chartOptions.xaxis!"
+          [yaxis]="chartOptions.yaxis!"
+          [dataLabels]="chartOptions.dataLabels!"
+          [grid]="chartOptions.grid!"
+          [stroke]="chartOptions.stroke!"
+          [title]="chartOptions.title!"
+          [markers]="chartOptions.markers!"
+        ></apx-chart>
+
+      </div>
+      </mat-card-content>
+
+    </mat-card>
+   </div>
+   </div>
+   </div>
+
+
